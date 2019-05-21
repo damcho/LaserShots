@@ -8,11 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LaserShotsViewController: UIViewController {
 
+    let laserShotGame = LaserShotsGame()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    func createBoardGame() {
+        
     }
 
 

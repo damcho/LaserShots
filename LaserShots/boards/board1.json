@@ -1,0 +1,22 @@
+{
+    "size": 6,
+    "gameElements": [{
+        "type": "laserGun",
+        "x": 0,
+        "y": 0,
+        "direction": "up"
+    },
+    {
+        "type": "laserDestination",
+        "x": 5,
+        "y": 5,
+        "direction": "down"
+    },
+    {
+        "type": "Mirror",
+        "x": 0,
+        "y": 3,
+        "direction": "right"
+    }
+    ]
+}
