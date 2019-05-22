@@ -23,6 +23,15 @@
 		8BFE39682294472000605072 /* LaserShotsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39672294472000605072 /* LaserShotsGame.swift */; };
 		8BFE396A229448A300605072 /* LaserDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3969229448A300605072 /* LaserDestination.swift */; };
 		8BFE397022946B9D00605072 /* board1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE396F22946B9D00605072 /* board1.json */; };
+		8BFE39752295911600605072 /* EmptyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39742295911600605072 /* EmptyCellView.swift */; };
+		8BFE39772295912A00605072 /* LaserGunCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39762295912A00605072 /* LaserGunCellView.swift */; };
+		8BFE39792295913D00605072 /* LaserDestinationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39782295913D00605072 /* LaserDestinationCellView.swift */; };
+		8BFE397B229592CE00605072 /* MirrorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE397A229592CE00605072 /* MirrorCellView.swift */; };
+		8BFE397D22959AA000605072 /* EmptyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE397C22959AA000605072 /* EmptyCellView.xib */; };
+		8BFE397F22959AD400605072 /* LaserGunCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE397E22959AD400605072 /* LaserGunCellView.xib */; };
+		8BFE398122959AFE00605072 /* LaserDestinationCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */; };
+		8BFE398322959B3400605072 /* MirrorCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE398222959B3400605072 /* MirrorCellView.xib */; };
+		8BFE398522959DD700605072 /* voewControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE398422959DD700605072 /* voewControllerProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +65,15 @@
 		8BFE39672294472000605072 /* LaserShotsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsGame.swift; sourceTree = "<group>"; };
 		8BFE3969229448A300605072 /* LaserDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserDestination.swift; sourceTree = "<group>"; };
 		8BFE396F22946B9D00605072 /* board1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = board1.json; sourceTree = "<group>"; };
+		8BFE39742295911600605072 /* EmptyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellView.swift; sourceTree = "<group>"; };
+		8BFE39762295912A00605072 /* LaserGunCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserGunCellView.swift; sourceTree = "<group>"; };
+		8BFE39782295913D00605072 /* LaserDestinationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserDestinationCellView.swift; sourceTree = "<group>"; };
+		8BFE397A229592CE00605072 /* MirrorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorCellView.swift; sourceTree = "<group>"; };
+		8BFE397C22959AA000605072 /* EmptyCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCellView.xib; sourceTree = "<group>"; };
+		8BFE397E22959AD400605072 /* LaserGunCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserGunCellView.xib; sourceTree = "<group>"; };
+		8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserDestinationCellView.xib; sourceTree = "<group>"; };
+		8BFE398222959B3400605072 /* MirrorCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorCellView.xib; sourceTree = "<group>"; };
+		8BFE398422959DD700605072 /* voewControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voewControllerProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +115,7 @@
 		8BFE3934229446CE00605072 /* LaserShots */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE39722295877800605072 /* viewModels */,
 				8BFE3971229483EF00605072 /* viewControllers */,
 				8BFE396C22946A9B00605072 /* boards */,
 				8BFE396B22944A9200605072 /* game */,
@@ -161,9 +180,33 @@
 		8BFE3971229483EF00605072 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE3973229590C200605072 /* views */,
 				8BFE3937229446CE00605072 /* LaserShotsViewController.swift */,
+				8BFE398422959DD700605072 /* voewControllerProtocols.swift */,
 			);
 			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		8BFE39722295877800605072 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		8BFE3973229590C200605072 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8BFE39742295911600605072 /* EmptyCellView.swift */,
+				8BFE397C22959AA000605072 /* EmptyCellView.xib */,
+				8BFE39762295912A00605072 /* LaserGunCellView.swift */,
+				8BFE397E22959AD400605072 /* LaserGunCellView.xib */,
+				8BFE39782295913D00605072 /* LaserDestinationCellView.swift */,
+				8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */,
+				8BFE397A229592CE00605072 /* MirrorCellView.swift */,
+				8BFE398222959B3400605072 /* MirrorCellView.xib */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,10 +290,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BFE398122959AFE00605072 /* LaserDestinationCellView.xib in Resources */,
 				8BFE397022946B9D00605072 /* board1.json in Resources */,
 				8BFE3940229446CF00605072 /* LaunchScreen.storyboard in Resources */,
 				8BFE393D229446CF00605072 /* Assets.xcassets in Resources */,
+				8BFE397D22959AA000605072 /* EmptyCellView.xib in Resources */,
+				8BFE398322959B3400605072 /* MirrorCellView.xib in Resources */,
 				8BFE393B229446CE00605072 /* Main.storyboard in Resources */,
+				8BFE397F22959AD400605072 /* LaserGunCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,14 +317,19 @@
 			files = (
 				8BFE39682294472000605072 /* LaserShotsGame.swift in Sources */,
 				8BFE3961229446F500605072 /* LaserGun.swift in Sources */,
+				8BFE398522959DD700605072 /* voewControllerProtocols.swift in Sources */,
+				8BFE39772295912A00605072 /* LaserGunCellView.swift in Sources */,
+				8BFE39792295913D00605072 /* LaserDestinationCellView.swift in Sources */,
 				8BFE3965229446F500605072 /* Wall.swift in Sources */,
 				8BFE3963229446F500605072 /* Mirror.swift in Sources */,
 				8BFE3962229446F500605072 /* Laser.swift in Sources */,
 				8BFE396A229448A300605072 /* LaserDestination.swift in Sources */,
 				8BFE3938229446CE00605072 /* LaserShotsViewController.swift in Sources */,
 				8BFE395F229446F500605072 /* BoardCell.swift in Sources */,
+				8BFE39752295911600605072 /* EmptyCellView.swift in Sources */,
 				8BFE3966229446F500605072 /* gameProtocols.swift in Sources */,
 				8BFE3960229446F500605072 /* Board.swift in Sources */,
+				8BFE397B229592CE00605072 /* MirrorCellView.swift in Sources */,
 				8BFE3936229446CE00605072 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,18 +9,43 @@
 import UIKit
 
 class LaserShotsViewController: UIViewController {
-
-    let laserShotGame = LaserShotsGame()
+    
+    @IBOutlet weak var laserShotsBoard: UIView!
+    var laserShotGame:LaserShotsGame?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.laserShotGame = LaserShotsGame()
+        self.createBoardGame()
     }
     
     func createBoardGame() {
-        
+        let boardCells = self.laserShotGame!.boardCells()
+        let cellWidth = self.laserShotsBoard.frame.size.width / CGFloat(boardCells.count)
+        let cellHeight = self.laserShotsBoard.frame.size.height /  CGFloat(boardCells[0].count)
+
+        for (iIndex, cellsArray) in boardCells.enumerated() {
+
+            for (jIndex, cell) in cellsArray.enumerated() {
+                let cellView:UIView?
+                switch cell.cellType {
+                case .Empty:
+                    cellView = EmptyCellView.fromNib()
+                case .LaserDestination:
+                    cellView = LaserDestinationCellView.fromNib()
+                case .LaserGun:
+                    cellView = LaserGunCellView.fromNib()
+                case .Mirror:
+                    cellView = MirrorCellView.fromNib()
+                }
+                cellView?.frame = CGRect(x: CGFloat( iIndex) * cellWidth, y: CGFloat(jIndex) * cellHeight, width: cellWidth, height: cellHeight)
+
+                self.laserShotsBoard.addSubview(cellView!)
+            }
+        }
     }
-
-
+    
+    
+    
 }
 

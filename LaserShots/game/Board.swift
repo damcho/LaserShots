@@ -11,15 +11,17 @@ import Foundation
 class Board {
     
     var cells: [[BoardCell]] = []
+    var width:Int = 0
+    var height:Int = 0
     
     init(_ boardName:String) {
         self.loadBoard(name: boardName)
     }
     
-    func createBoard(size:Int) {
-        for i in 0..<size {
+    func createBoard() {
+        for i in 0..<width {
             var cellsRow:[BoardCell] = []
-            for j in 0..<size {
+            for j in 0..<height {
                 let boardCell = BoardCell(x: i, y: j)
                 cellsRow.append(boardCell)
             }
@@ -35,39 +37,43 @@ class Board {
             return
         }
         
-        guard let size = Jsonboard["size"] as? Int else {
+        guard let width = Jsonboard["width"] as? Int else {
             return
         }
+        guard let height = Jsonboard["height"] as? Int else {
+            return
+        }
+        self.width = width
+        self.height = height
+        
         guard let gameElementsJsonRep = Jsonboard["gameElements"] as? Array<Dictionary<String, Any>> else {
             return
         }
-        self.createBoard(size: size)
-        self.populateBoard(jsonArray:gameElementsJsonRep, boardSize:size)
+        self.createBoard()
+        self.populateBoard(jsonArray:gameElementsJsonRep )
 
         print(self.cells)
     }
     
     
-    func populateBoard( jsonArray:Array<Dictionary<String, Any>>, boardSize:Int) {
+    func populateBoard( jsonArray:Array<Dictionary<String, Any>>) {
         for jsonElement in jsonArray {
             let elementType = jsonElement["type"] as! String
             let x = jsonElement["x"] as! Int
             let y = jsonElement["y"] as! Int
             let gameElement:GameElement?
+            
             switch elementType {
             case "laserGun":
                 gameElement = LaserGun(jsonElement: jsonElement)
-                
             case "laserDestination":
                 gameElement = LaserDestination(jsonElement: jsonElement)
-                
             case "Mirror":
                 gameElement = Mirror(jsonElement: jsonElement)
-
             default:
                 return
             }
-            if gameElement != nil && x < boardSize && y < boardSize {
+            if gameElement != nil && x < self.width && y < self.height {
                 self.cells[x][y].gameElement = gameElement
             }
         }

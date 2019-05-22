@@ -12,11 +12,29 @@ class BoardCell:CustomStringConvertible {
     
     let x:Int
     let y:Int
-    var gameElement:GameElement?
+    var gameElement:GameElement? {
+        didSet {
+            self.setCellType()
+        }
+        
+    }
+    var cellType:cellType = .Empty
     
     init(x:Int, y:Int) {
         self.x = x
         self.y = y
+    }
+    
+    func setCellType() {
+        if self.gameElement is LaserGun {
+            cellType = .LaserGun
+        } else if self.gameElement is LaserDestination {
+            cellType = .LaserDestination
+        } else if self.gameElement is Mirror {
+            cellType = .Mirror
+        } else {
+            cellType = .Empty
+        }
     }
     
     var description : String {

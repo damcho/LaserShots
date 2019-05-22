@@ -13,6 +13,13 @@ class LaserShotsGame  {
     
     init() {
         self.board = Board("board1")
-        print(self.board)
+    }
+    
+    func boardSize() -> (Int, Int) {
+        return (self.board.width, self.board.height)
+    }
+    
+    func boardCells() -> [[BoardCell]] {
+        return self.board.cells
     }
 }

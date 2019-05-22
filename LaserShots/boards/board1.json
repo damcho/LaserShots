@@ -1,5 +1,6 @@
 {
-    "size": 6,
+    "width": 6,
+    "height": 6,
     "gameElements": [{
         "type": "laserGun",
         "x": 0,

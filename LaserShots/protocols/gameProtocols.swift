@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum cellType {
+    case LaserGun
+    case LaserDestination
+    case Empty
+    case Mirror
+}
+
 enum flipDirection:String {
     case up
     case down
@@ -18,7 +25,6 @@ enum flipDirection:String {
 protocol GameElement {
     var direction: flipDirection { get }
     var hasLaserBeam:Bool { get set }
-    
 }
 
 protocol Reflectable {
