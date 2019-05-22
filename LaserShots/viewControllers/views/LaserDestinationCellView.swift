@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaserDestinationCellView: UIView, NibInstantiatable {
+class LaserDestinationCellView: LaserShotsBaseCellView {
 
     /*
     // Only override draw() if you perform custom drawing.

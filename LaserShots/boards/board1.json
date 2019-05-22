@@ -5,13 +5,13 @@
         "type": "laserGun",
         "x": 0,
         "y": 0,
-        "direction": "up"
+        "direction": "down"
     },
     {
         "type": "laserDestination",
         "x": 5,
         "y": 5,
-        "direction": "down"
+        "direction": "left"
     },
     {
         "type": "Mirror",

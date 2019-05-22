@@ -9,7 +9,10 @@
 import UIKit
 
 class LaserShotsViewController: UIViewController {
+
     
+    
+    @IBOutlet weak var laserShotsGameBoard: UICollectionView!
     @IBOutlet weak var laserShotsBoard: UIView!
     var laserShotGame:LaserShotsGame?
     
@@ -27,7 +30,7 @@ class LaserShotsViewController: UIViewController {
         for (iIndex, cellsArray) in boardCells.enumerated() {
 
             for (jIndex, cell) in cellsArray.enumerated() {
-                let cellView:UIView?
+                let cellView:LaserShotsBaseCellView?
                 switch cell.cellType {
                 case .Empty:
                     cellView = EmptyCellView.fromNib()
@@ -39,11 +42,12 @@ class LaserShotsViewController: UIViewController {
                     cellView = MirrorCellView.fromNib()
                 }
                 cellView?.frame = CGRect(x: CGFloat( iIndex) * cellWidth, y: CGFloat(jIndex) * cellHeight, width: cellWidth, height: cellHeight)
-
+                cellView?.gameCell = cell
                 self.laserShotsBoard.addSubview(cellView!)
             }
         }
     }
+    
     
     
     

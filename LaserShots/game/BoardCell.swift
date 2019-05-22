@@ -37,6 +37,22 @@ class BoardCell:CustomStringConvertible {
         }
     }
     
+    func rotation() -> Double{
+        guard let gameElement = self.gameElement else {
+            return 0
+        }
+        switch gameElement.direction {
+        case .left:
+            return .pi/2
+        case .right:
+            return .pi * 3/2
+        case .up:
+            return .pi
+        case .down:
+            return 0
+        }
+    }
+    
     var description : String {
         get {
             return "x:`\(x) `\(y) `\(gameElement)"

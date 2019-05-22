@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyCellView: UIView, NibInstantiatable {
+class EmptyCellView: LaserShotsBaseCellView {
 
     /*
     // Only override draw() if you perform custom drawing.

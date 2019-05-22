@@ -32,6 +32,7 @@
 		8BFE398122959AFE00605072 /* LaserDestinationCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */; };
 		8BFE398322959B3400605072 /* MirrorCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE398222959B3400605072 /* MirrorCellView.xib */; };
 		8BFE398522959DD700605072 /* voewControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE398422959DD700605072 /* voewControllerProtocols.swift */; };
+		8BFE39872295C3D300605072 /* LaserShotsBaseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39862295C3D300605072 /* LaserShotsBaseCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserDestinationCellView.xib; sourceTree = "<group>"; };
 		8BFE398222959B3400605072 /* MirrorCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MirrorCellView.xib; sourceTree = "<group>"; };
 		8BFE398422959DD700605072 /* voewControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voewControllerProtocols.swift; sourceTree = "<group>"; };
+		8BFE39862295C3D300605072 /* LaserShotsBaseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsBaseCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */,
 				8BFE397A229592CE00605072 /* MirrorCellView.swift */,
 				8BFE398222959B3400605072 /* MirrorCellView.xib */,
+				8BFE39862295C3D300605072 /* LaserShotsBaseCellView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				8BFE39682294472000605072 /* LaserShotsGame.swift in Sources */,
 				8BFE3961229446F500605072 /* LaserGun.swift in Sources */,
 				8BFE398522959DD700605072 /* voewControllerProtocols.swift in Sources */,
+				8BFE39872295C3D300605072 /* LaserShotsBaseCellView.swift in Sources */,
 				8BFE39772295912A00605072 /* LaserGunCellView.swift in Sources */,
 				8BFE39792295913D00605072 /* LaserDestinationCellView.swift in Sources */,
 				8BFE3965229446F500605072 /* Wall.swift in Sources */,

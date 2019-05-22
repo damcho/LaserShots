@@ -5,8 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,9 +14,26 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyCellView" customModule="LaserShots" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="215" height="211"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w97-FS-lLn">
+                    <rect key="frame" x="97.5" y="0.0" width="20" height="211"/>
+                    <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="ffO-7L-f6i"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="w97-FS-lLn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TYM-AM-qBb"/>
+                <constraint firstItem="w97-FS-lLn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bu0-N9-k1d"/>
+                <constraint firstAttribute="bottom" secondItem="w97-FS-lLn" secondAttribute="bottom" id="kDX-fp-lTU"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="gameElementContainerView" destination="w97-FS-lLn" id="D9o-Uj-2Hg"/>
+            </connections>
             <point key="canvasLocation" x="-6.5217391304347831" y="353.23660714285711"/>
         </view>
     </objects>
