@@ -9,15 +9,17 @@
 import Foundation
 
 class LaserGun: GameElement {
-    var hasLaserBeam = true
-    var direction: flipDirection
+    var direction: pointingDirection
     
+    func reflect() -> pointingDirection {
+        return .none
+    }
     
     init?(jsonElement:Dictionary<String, Any>) {
         
         guard let direction = jsonElement["direction"] as? String else {
             return nil
         }
-        self.direction = flipDirection(rawValue:direction) ?? .down
+        self.direction = pointingDirection(rawValue:direction) ?? .down
     }
 }

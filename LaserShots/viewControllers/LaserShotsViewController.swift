@@ -20,6 +20,7 @@ class LaserShotsViewController: UIViewController {
         super.viewDidLoad()
         self.laserShotGame = LaserShotsGame()
         self.createBoardGame()
+        self.laserShotGame?.start()
     }
     
     func createBoardGame() {
@@ -40,8 +41,11 @@ class LaserShotsViewController: UIViewController {
                     cellView = LaserGunCellView.fromNib()
                 case .Mirror:
                     cellView = MirrorCellView.fromNib()
+                case .Wall:
+                    cellView = WallCellView.fromNib()
                 }
                 cellView?.frame = CGRect(x: CGFloat( iIndex) * cellWidth, y: CGFloat(jIndex) * cellHeight, width: cellWidth, height: cellHeight)
+                
                 cellView?.gameCell = cell
                 self.laserShotsBoard.addSubview(cellView!)
             }

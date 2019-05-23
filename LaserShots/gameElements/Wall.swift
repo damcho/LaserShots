@@ -9,12 +9,13 @@
 import Foundation
 
 class Wall: GameElement {
-    var hasLaserBeam: Bool
-    var direction: flipDirection
+    var direction: pointingDirection
     
-    init(direction:flipDirection) {
+    func reflect() -> pointingDirection {
+        return .none
+    }
+    
+    init(direction:pointingDirection) {
         self.direction = direction
-        self.hasLaserBeam = false
-
     }
 }

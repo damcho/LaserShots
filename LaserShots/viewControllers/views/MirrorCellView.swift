@@ -15,12 +15,17 @@ class MirrorCellView: LaserShotsBaseCellView {
     
     override func awakeFromNib() {
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
-        self.mirrorView.transform = CGAffineTransform(rotationAngle: .pi / 4)
+        self.mirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
+    }
+    
+    override func setupView() {
+        super.setupView()
+      
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         self.mirrorView.transform = self.mirrorView.transform.rotated(by:  .pi / 2)
-
+        self.gameCell?.onTap()
     }
 
 }

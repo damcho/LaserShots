@@ -3,20 +3,26 @@
     "height": 6,
     "gameElements": [{
         "type": "laserGun",
-        "x": 0,
-        "y": 0,
+        "x": 1,
+        "y": 1,
         "direction": "down"
     },
     {
         "type": "laserDestination",
-        "x": 5,
+        "x": 6,
         "y": 5,
         "direction": "left"
     },
     {
         "type": "Mirror",
-        "x": 0,
-        "y": 3,
+        "x": 1,
+        "y": 5,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 4,
+        "y": 5,
         "direction": "right"
     }
     ]

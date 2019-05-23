@@ -22,4 +22,8 @@ class LaserShotsGame  {
     func boardCells() -> [[BoardCell]] {
         return self.board.cells
     }
+    
+    func start() {
+        self.board.shootLaser()
+    }
 }

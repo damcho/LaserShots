@@ -10,17 +10,13 @@ import Foundation
 
 
 class LaserDestination:GameElement{
-    var direction: flipDirection
-    var hasLaserBeam: Bool
+    var direction: pointingDirection
     
     init?(jsonElement:Dictionary<String, Any>) {
         
         guard let direction = jsonElement["direction"] as? String else {
             return nil
         }
-        self.hasLaserBeam = false
-        self.direction = flipDirection(rawValue:direction) ?? .down
+        self.direction = pointingDirection(rawValue:direction) ?? .down
     }
-    
-    
 }

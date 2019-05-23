@@ -14,18 +14,20 @@ class LaserShotsBaseCellView: UIView, NibInstantiatable {
     
     var gameCell:BoardCell? {
         didSet {
-            self.rotate()
+            self.setupView()
         }
     }
     
-    private func rotate() {
+    func setupView() {
+        self.rotate()
+    }
+    
+    func rotate() {
         guard let rotationRadians = gameCell?.rotation() else {
             return
         }
-        self.updateConstraintsIfNeeded()
 
         self.gameElementContainerView.transform = CGAffineTransform(rotationAngle: CGFloat(rotationRadians))
-        self.updateConstraintsIfNeeded()
 /*
         if rotationRadians == .pi/2 || rotationRadians == .pi * 3/2 {
             let viewWidth = self.frame.size.width

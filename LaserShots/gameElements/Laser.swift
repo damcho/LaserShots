@@ -9,10 +9,9 @@
 import Foundation
 
 class Laser: GameElement {
-    var hasLaserBeam = true
-    var direction: flipDirection
+    var direction: pointingDirection
     
-    init(direction:flipDirection) {
+    init(direction:pointingDirection) {
         self.direction = direction
     }
 }

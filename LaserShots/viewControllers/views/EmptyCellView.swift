@@ -10,12 +10,24 @@ import UIKit
 
 class EmptyCellView: LaserShotsBaseCellView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+   
+    
+    override func setupView() {
+        super.setupView()
+        self.gameCell?.onLaserHit = { () -> () in
+            self.gameElementContainerView.isHidden = self.gameCell?.laserBeam == nil
+            self.gameElementContainerView.transform = CGAffineTransform(rotationAngle: CGFloat( CGFloat( self.gameCell?.laserRotation() ?? 0)))
 
+         //   self.gameElementContainerView.transform.rotated(by:)
+
+        }
+    }
+    
+    override func awakeFromNib() {
+        self.gameElementContainerView.isHidden = true
+    }
+    
+    override internal func rotate() {
+       
+    }
 }
