@@ -12,7 +12,7 @@ class BoardCell:CustomStringConvertible {
     
     let i:Int
     let j:Int
-    var onLaserHit: (() -> ())?
+    var onLaserBeamChanged: (() -> ())?
     var onCellTapped: (() -> ())?
     var cellType:cellType = .Empty
     var gameElement:GameElement? {
@@ -20,17 +20,8 @@ class BoardCell:CustomStringConvertible {
             self.setupCell()
         }
     }
-    var horizontalBeam:Laser? {
-        didSet {
-            self.onLaserHit?()
-        }
-    }
-    
-    var verticalBeam:Laser? {
-        didSet {
-            self.onLaserHit?()
-        }
-    }
+    var horizontalBeam:Laser?
+    var verticalBeam:Laser?
   
     
     init(i:Int, j:Int) {
@@ -71,7 +62,7 @@ class BoardCell:CustomStringConvertible {
         }
     }
     
-    func getLaserDirection(direction:pointingDirection = .none) -> pointingDirection {
+    func wasHitByLaser(direction:pointingDirection) {
         switch direction {
         case .down, .up:
             self.verticalBeam = Laser(direction: direction)
@@ -81,12 +72,22 @@ class BoardCell:CustomStringConvertible {
             self.verticalBeam = nil
             self.horizontalBeam = nil
         }
-        if self.gameElement == nil {
+    }
+    
+    func getLaserDirection(direction:pointingDirection = .none) -> pointingDirection {
+        self.wasHitByLaser(direction: direction)
+        
+        if self.cellType == .Empty {
+            self.onLaserBeamChanged?()
             return direction
         } else if self.cellType == .LaserGun {
             return self.gameElement?.direction ?? .none
         } else if self.gameElement is Reflectable {
-            return (self.gameElement as! Reflectable).reflectfrom(direction)
+            let newDirection = (self.gameElement as! Reflectable).reflectfrom(direction)
+            if newDirection != .none {
+                self.onLaserBeamChanged?()
+            }
+            return newDirection
         } else {
             return .none
         }
@@ -102,6 +103,7 @@ class BoardCell:CustomStringConvertible {
     func clear() {
         self.horizontalBeam = nil
         self.verticalBeam = nil
+        self.onLaserBeamChanged?()
     }
     
     var description : String {

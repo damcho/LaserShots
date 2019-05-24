@@ -25,10 +25,6 @@ class LaserShotsGame  {
         }
     }
     
-    func boardSize() -> (Int, Int) {
-        return (self.board.width, self.board.height)
-    }
-    
     func boardCells() -> [[BoardCell]] {
         return self.board.cells
     }

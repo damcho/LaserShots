@@ -35,7 +35,6 @@ class Board {
             }
             self.cells.append(cellsRow)
         }
-        print(self.cells)
     }
     
     func loadBoard(name:String) {
@@ -124,19 +123,14 @@ class Board {
                 nextCell = self.cells[currentCell.i + 1][currentCell.j]
             case .none:
                 self.onUserPlayed?(.playing)
-                print("finished")
                 return
             }
             currentCell = nextCell != nil ? nextCell! : currentCell
         }
         if currentCell.cellType == .Wall {
             self.onUserPlayed?(.gameLost)
-            print("game lost")
-
         } else {
             self.onUserPlayed?(.gameWon)
-            print("game won")
-
         }
     }
 }

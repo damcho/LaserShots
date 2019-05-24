@@ -14,7 +14,7 @@ class EmptyCellView: LaserShotsBaseCellView {
     @IBOutlet weak var verticalLaserView: UIView!
     
     override func setupView() {
-        self.gameCell?.onLaserHit = { () -> () in
+        self.gameCell?.onLaserBeamChanged = { () -> () in
             self.horizontalLaserView.isHidden = self.gameCell?.horizontalBeam == nil
             self.verticalLaserView.isHidden = self.gameCell?.verticalBeam == nil
         }

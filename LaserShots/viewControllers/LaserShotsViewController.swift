@@ -17,7 +17,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.laserShotGame = LaserShotsGame()
-        self.laserShotGame?.delegate = self
+    //    self.laserShotGame?.delegate = self
         self.createBoardGame()
         self.laserShotGame?.start()
     }
