@@ -9,8 +9,9 @@
 import UIKit
 
 class MirrorCellView: LaserShotsBaseCellView {
-
   
+    @IBOutlet weak var laserBeam2View: UIView!
+    @IBOutlet weak var laserBeam1View: UIView!
     @IBOutlet weak var mirrorView: UIView!
     
     override func awakeFromNib() {
@@ -20,7 +21,6 @@ class MirrorCellView: LaserShotsBaseCellView {
     
     override func setupView() {
         super.setupView()
-      
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {

@@ -23,16 +23,28 @@
                         <constraint firstAttribute="width" constant="20" id="ffO-7L-f6i"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhH-Sj-VdH">
+                    <rect key="frame" x="0.0" y="95.5" width="215" height="20"/>
+                    <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="aa6-WL-SuT"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="DhH-Sj-VdH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0wy-8E-KXM"/>
+                <constraint firstAttribute="trailing" secondItem="DhH-Sj-VdH" secondAttribute="trailing" id="4uD-h8-ioP"/>
                 <constraint firstItem="w97-FS-lLn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TYM-AM-qBb"/>
+                <constraint firstItem="DhH-Sj-VdH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ai1-is-2b6"/>
                 <constraint firstItem="w97-FS-lLn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bu0-N9-k1d"/>
                 <constraint firstAttribute="bottom" secondItem="w97-FS-lLn" secondAttribute="bottom" id="kDX-fp-lTU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="gameElementContainerView" destination="w97-FS-lLn" id="D9o-Uj-2Hg"/>
+                <outlet property="horizontalLaserView" destination="DhH-Sj-VdH" id="hvf-0c-Shh"/>
+                <outlet property="verticalLaserView" destination="w97-FS-lLn" id="rwT-KF-AFa"/>
             </connections>
             <point key="canvasLocation" x="-6.5217391304347831" y="353.23660714285711"/>
         </view>

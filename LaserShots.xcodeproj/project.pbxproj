@@ -203,6 +203,7 @@
 		8BFE3973229590C200605072 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE39862295C3D300605072 /* LaserShotsBaseCellView.swift */,
 				8BFE39742295911600605072 /* EmptyCellView.swift */,
 				8BFE397C22959AA000605072 /* EmptyCellView.xib */,
 				8BFE39762295912A00605072 /* LaserGunCellView.swift */,
@@ -211,7 +212,6 @@
 				8BFE398022959AFE00605072 /* LaserDestinationCellView.xib */,
 				8BFE397A229592CE00605072 /* MirrorCellView.swift */,
 				8BFE398222959B3400605072 /* MirrorCellView.xib */,
-				8BFE39862295C3D300605072 /* LaserShotsBaseCellView.swift */,
 				8BFE39882296E52800605072 /* WallCellView.swift */,
 				8BFE398A2296E53600605072 /* WallCellView.xib */,
 			);

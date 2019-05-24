@@ -47,22 +47,14 @@ class Mirror: GameElement, Flipable, Reflectable {
                 return .none
             }
         case .up:
-            if self.direction == .up {
-                return .left
-            } else if self.direction == .right {
+            if self.direction == .down {
                 return .right
+            } else if self.direction == .left {
+                return .left
             } else {
                 return .none
             }
         case .left:
-            if self.direction == .left {
-                return .down
-            } else if self.direction == .down {
-                return .left
-            } else {
-                return .none
-            }
-        case .right:
             if self.direction == .right {
                 return .up
             } else if self.direction == .down {
@@ -70,14 +62,16 @@ class Mirror: GameElement, Flipable, Reflectable {
             } else {
                 return .none
             }
+        case .right:
+            if self.direction == .left {
+                return .down
+            } else if self.direction == .up {
+                return .up
+            } else {
+                return .none
+            }
         default:
             return.none
         }
     }
-    
-    
-
-  
-    
-    
 }

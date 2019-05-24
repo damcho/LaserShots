@@ -10,24 +10,18 @@ import UIKit
 
 class EmptyCellView: LaserShotsBaseCellView {
 
-   
+    @IBOutlet weak var horizontalLaserView: UIView!
+    @IBOutlet weak var verticalLaserView: UIView!
     
     override func setupView() {
-        super.setupView()
         self.gameCell?.onLaserHit = { () -> () in
-            self.gameElementContainerView.isHidden = self.gameCell?.laserBeam == nil
-            self.gameElementContainerView.transform = CGAffineTransform(rotationAngle: CGFloat( CGFloat( self.gameCell?.laserRotation() ?? 0)))
-
-         //   self.gameElementContainerView.transform.rotated(by:)
-
+            self.horizontalLaserView.isHidden = self.gameCell?.horizontalBeam == nil
+            self.verticalLaserView.isHidden = self.gameCell?.verticalBeam == nil
         }
     }
     
     override func awakeFromNib() {
-        self.gameElementContainerView.isHidden = true
-    }
-    
-    override internal func rotate() {
-       
+        self.horizontalLaserView.isHidden = true
+        self.verticalLaserView.isHidden = true
     }
 }

@@ -14,6 +14,7 @@ class Board {
     var width:Int = 0
     var height:Int = 0
     var laserGunCell:BoardCell?
+    var onUserPlayed:((gameState) -> ())?
     
     init(_ boardName:String) {
         self.loadBoard(name: boardName)
@@ -86,7 +87,7 @@ class Board {
             default:
                 return
             }
-            if gameElement != nil && x < self.width+1 && y < self.height+1 {
+            if gameElement != nil && x <= self.width+1 && y <= self.height+1 {
                 self.cells[x][y].gameElement = gameElement
             }
         }
@@ -107,7 +108,7 @@ class Board {
         }
         var laserDirection = currentCell.getLaserDirection( )
 
-        while currentCell.cellType != .Wall {
+        while currentCell.cellType != .Wall && currentCell.cellType != .LaserDestination {
             laserDirection = currentCell.getLaserDirection(direction:laserDirection )
             var nextCell:BoardCell?
             print(currentCell)
@@ -122,10 +123,20 @@ class Board {
             case .right:
                 nextCell = self.cells[currentCell.i + 1][currentCell.j]
             case .none:
-                return
+                self.onUserPlayed?(.playing)
                 print("finished")
+                return
             }
             currentCell = nextCell != nil ? nextCell! : currentCell
+        }
+        if currentCell.cellType == .Wall {
+            self.onUserPlayed?(.gameLost)
+            print("game lost")
+
+        } else {
+            self.onUserPlayed?(.gameWon)
+            print("game won")
+
         }
     }
 }

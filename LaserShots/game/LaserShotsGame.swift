@@ -8,11 +8,21 @@
 
 import Foundation
 
+enum gameState {
+    case gameWon
+    case gameLost
+    case playing
+}
+
 class LaserShotsGame  {
     let board:Board
+    var delegate:laserShotsDelegate?
     
     init() {
         self.board = Board("board1")
+        self.board.onUserPlayed = { (state:gameState) in
+            self.delegate?.gameState(state: state)
+        }
     }
     
     func boardSize() -> (Int, Int) {

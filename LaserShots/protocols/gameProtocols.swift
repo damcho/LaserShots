@@ -25,6 +25,10 @@ enum pointingDirection:String {
     case none
 }
 
+protocol laserShotsDelegate {
+    func gameState(state:gameState) ->()
+}
+
 protocol GameElement {
     var direction: pointingDirection { get set }
 }

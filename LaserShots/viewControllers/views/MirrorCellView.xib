@@ -18,6 +18,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-bF-3l7">
                     <rect key="frame" x="0.0" y="0.0" width="116" height="120"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCR-Ud-Xe9">
+                            <rect key="frame" x="48" y="64" width="20" height="56"/>
+                            <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="eqV-ld-lHZ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-Ba-stB">
+                            <rect key="frame" x="63" y="50" width="53" height="20"/>
+                            <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="hLw-lU-RMg"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf2-4E-7Nt">
                             <rect key="frame" x="0.0" y="51" width="116" height="18"/>
                             <subviews>
@@ -41,9 +55,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <constraints>
+                        <constraint firstItem="uCR-Ud-Xe9" firstAttribute="top" secondItem="Gf2-4E-7Nt" secondAttribute="bottom" constant="-5" id="2TX-aC-Enu"/>
+                        <constraint firstItem="P0l-Ba-stB" firstAttribute="leading" secondItem="uCR-Ud-Xe9" secondAttribute="trailing" constant="-5" id="9vA-n1-eSj"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="B0q-4y-joR"/>
+                        <constraint firstItem="P0l-Ba-stB" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="URd-8T-buB"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="leading" secondItem="vjA-bF-3l7" secondAttribute="leading" id="aHF-Cc-6zX"/>
+                        <constraint firstItem="uCR-Ud-Xe9" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="am3-2B-NaL"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="tzf-Si-vR6"/>
+                        <constraint firstAttribute="bottom" secondItem="uCR-Ud-Xe9" secondAttribute="bottom" id="uMm-jC-4V6"/>
+                        <constraint firstAttribute="trailing" secondItem="P0l-Ba-stB" secondAttribute="trailing" id="zPZ-aM-nFc"/>
                     </constraints>
                 </view>
             </subviews>
@@ -57,6 +77,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="gameElementContainerView" destination="vjA-bF-3l7" id="3mj-5t-FOy"/>
+                <outlet property="laserBeam1View" destination="uCR-Ud-Xe9" id="eBk-0D-Qtb"/>
+                <outlet property="laserBeam2View" destination="P0l-Ba-stB" id="9PQ-xS-Aom"/>
                 <outlet property="mirrorView" destination="Gf2-4E-7Nt" id="DmM-4i-XU9"/>
             </connections>
             <point key="canvasLocation" x="-78.260869565217391" y="384.375"/>

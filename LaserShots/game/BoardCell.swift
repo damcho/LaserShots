@@ -20,7 +20,13 @@ class BoardCell:CustomStringConvertible {
             self.setupCell()
         }
     }
-    var laserBeam:Laser? {
+    var horizontalBeam:Laser? {
+        didSet {
+            self.onLaserHit?()
+        }
+    }
+    
+    var verticalBeam:Laser? {
         didSet {
             self.onLaserHit?()
         }
@@ -65,33 +71,17 @@ class BoardCell:CustomStringConvertible {
         }
     }
     
-    func laserRotation() -> Double {
-        guard let laserBeam = self.laserBeam else {
-            return 0
-        }
-        switch laserBeam.direction {
-        case .down:
-            return 0
-        case .left:
-            return .pi/1
-        case .right:
-            return .pi/2
-        case .up:
-            return .pi
-        default:
-            return 0
-        }
-    }
-    
-    var description : String {
-        get {
-            return "x:`\(i) `\(j) `\(gameElement)"
-        }
-    }
-    
     func getLaserDirection(direction:pointingDirection = .none) -> pointingDirection {
+        switch direction {
+        case .down, .up:
+            self.verticalBeam = Laser(direction: direction)
+        case .left, .right:
+            self.horizontalBeam = Laser(direction: direction)
+        case .none:
+            self.verticalBeam = nil
+            self.horizontalBeam = nil
+        }
         if self.gameElement == nil {
-            self.laserBeam = Laser(direction: direction)
             return direction
         } else if self.cellType == .LaserGun {
             return self.gameElement?.direction ?? .none
@@ -102,10 +92,6 @@ class BoardCell:CustomStringConvertible {
         }
     }
     
-    func hasLaserBeam() -> Bool {
-        return self.laserBeam != nil
-    }
-    
     func onTap() {
         if self.gameElement is Flipable {
             (self.gameElement as! Flipable).flip()
@@ -114,7 +100,13 @@ class BoardCell:CustomStringConvertible {
     }
     
     func clear() {
-        self.laserBeam = nil
+        self.horizontalBeam = nil
+        self.verticalBeam = nil
     }
     
+    var description : String {
+        get {
+            return "x:`\(i) `\(j) `\(gameElement)"
+        }
+    }
 }

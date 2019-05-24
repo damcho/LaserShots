@@ -8,10 +8,8 @@
 
 import UIKit
 
-class LaserShotsViewController: UIViewController {
+class LaserShotsViewController: UIViewController, laserShotsDelegate {
 
-    
-    
     @IBOutlet weak var laserShotsGameBoard: UICollectionView!
     @IBOutlet weak var laserShotsBoard: UIView!
     var laserShotGame:LaserShotsGame?
@@ -19,6 +17,7 @@ class LaserShotsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.laserShotGame = LaserShotsGame()
+        self.laserShotGame?.delegate = self
         self.createBoardGame()
         self.laserShotGame?.start()
     }
@@ -52,8 +51,19 @@ class LaserShotsViewController: UIViewController {
         }
     }
     
-    
-    
-    
+    func gameState(state: gameState) {
+        switch state {
+        case .gameWon:
+            let alert = UIAlertController(title: "YEAH!", message: "You Won!!!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        case .gameLost:
+            let alert = UIAlertController(title: "Upss!", message: "You Lost!!!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        default:
+            return
+        }
+    }
 }
 

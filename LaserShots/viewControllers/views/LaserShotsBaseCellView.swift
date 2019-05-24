@@ -10,7 +10,7 @@ import UIKit
 
 class LaserShotsBaseCellView: UIView, NibInstantiatable {
 
-    @IBOutlet weak var gameElementContainerView: UIView!
+    @IBOutlet weak var gameElementContainerView: UIView?
     
     var gameCell:BoardCell? {
         didSet {
@@ -27,16 +27,6 @@ class LaserShotsBaseCellView: UIView, NibInstantiatable {
             return
         }
 
-        self.gameElementContainerView.transform = CGAffineTransform(rotationAngle: CGFloat(rotationRadians))
-/*
-        if rotationRadians == .pi/2 || rotationRadians == .pi * 3/2 {
-            let viewWidth = self.frame.size.width
-            let height = self.frame.size.height
-            self.frame.size = CGSize(width: height, height: viewWidth)
-        }
- */
-      
+        self.gameElementContainerView?.transform = CGAffineTransform(rotationAngle: CGFloat(rotationRadians))
     }
-    
-
 }
