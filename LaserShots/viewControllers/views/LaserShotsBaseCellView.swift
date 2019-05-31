@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaserShotsBaseCellView: UIView, NibInstantiatable {
+class LaserShotsBaseCellView: UICollectionViewCell, NibInstantiatable {
 
     @IBOutlet weak var gameElementContainerView: UIView?
     

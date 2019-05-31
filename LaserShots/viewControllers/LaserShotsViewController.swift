@@ -8,45 +8,37 @@
 
 import UIKit
 
-class LaserShotsViewController: UIViewController, laserShotsDelegate {
-
-    @IBOutlet weak var laserShotsGameBoard: UICollectionView!
+class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    @IBOutlet weak var gameBoard: UICollectionView!
     @IBOutlet weak var laserShotsBoard: UIView!
     var laserShotGame:LaserShotsGame?
+    var boardCells:[BoardCell] = []
+    var cellsPerRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.gameBoard.register(UINib(nibName: LaserGunCellView.nibName() ,bundle: nil), forCellWithReuseIdentifier: "LaserGunCellView")
+        self.gameBoard.register(UINib(nibName: LaserDestinationCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "LaserDestinationCellView")
+        self.gameBoard.register(UINib(nibName: MirrorCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "MirrorCellView")
+        self.gameBoard.register(UINib(nibName: WallCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "WallCellView")
+        self.gameBoard.register(UINib(nibName: EmptyCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "EmptyCellView")
+        
+        
+        
         self.laserShotGame = LaserShotsGame()
-    //    self.laserShotGame?.delegate = self
+        //    self.laserShotGame?.delegate = self
         self.createBoardGame()
         self.laserShotGame?.start()
     }
     
     func createBoardGame() {
         let boardCells = self.laserShotGame!.boardCells()
-        let cellWidth = self.laserShotsBoard.frame.size.width / CGFloat(boardCells.count)
-        let cellHeight = self.laserShotsBoard.frame.size.height /  CGFloat(boardCells[0].count)
-
-        for (iIndex, cellsArray) in boardCells.enumerated() {
-
-            for (jIndex, cell) in cellsArray.enumerated() {
-                let cellView:LaserShotsBaseCellView?
-                switch cell.cellType {
-                case .Empty:
-                    cellView = EmptyCellView.fromNib()
-                case .LaserDestination:
-                    cellView = LaserDestinationCellView.fromNib()
-                case .LaserGun:
-                    cellView = LaserGunCellView.fromNib()
-                case .Mirror:
-                    cellView = MirrorCellView.fromNib()
-                case .Wall:
-                    cellView = WallCellView.fromNib()
-                }
-                cellView?.frame = CGRect(x: CGFloat( iIndex) * cellWidth, y: CGFloat(jIndex) * cellHeight, width: cellWidth, height: cellHeight)
-                
-                cellView?.gameCell = cell
-                self.laserShotsBoard.addSubview(cellView!)
+        cellsPerRow = boardCells[0].count
+        for cellsArray in boardCells {
+            for cell in cellsArray {
+                self.boardCells.append(cell)
             }
         }
     }
@@ -54,7 +46,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate {
     func gameState(state: gameState) {
         switch state {
         case .gameWon:
-          self.showAlert(title: "YEAHH", msg: "You won")
+            self.showAlert(title: "YEAHH", msg: "You won")
         case .gameLost:
             self.showAlert(title: "Upss", msg: "You Lost")
         default:
@@ -66,6 +58,44 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.boardCells.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let boardCell = self.boardCells[indexPath.row]
+        var cellView:LaserShotsBaseCellView
+        switch boardCell.cellType {
+        case .Empty:
+            cellView = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "EmptyCellView", for: indexPath) as! LaserShotsBaseCellView
+        case .LaserDestination:
+            cellView = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "LaserDestinationCellView", for: indexPath) as! LaserShotsBaseCellView
+        case .LaserGun:
+            cellView = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "LaserGunCellView", for: indexPath) as! LaserShotsBaseCellView
+        case .Mirror:
+            cellView = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "MirrorCellView", for: indexPath) as! LaserShotsBaseCellView
+        case .Wall:
+            cellView = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "WallCellView", for: indexPath) as! LaserShotsBaseCellView
+        }
+        cellView.gameCell = boardCell
+        return cellView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let availableWidth = self.gameBoard.frame.width
+        let widthPerItem = (availableWidth.rounded()) / CGFloat(cellsPerRow)
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
 }
 
