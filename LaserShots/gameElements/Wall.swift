@@ -9,9 +9,11 @@
 import Foundation
 
 class Wall: GameElement {
+ 
+    
     var direction: pointingDirection
     
-    func reflect() -> pointingDirection {
+    func reflect(direction: pointingDirection) -> pointingDirection {
         return .none
     }
     

@@ -8,10 +8,12 @@
 
 import Foundation
 
-class Laser: GameElement {
+class Laser {
     var direction: pointingDirection
     
     init(direction:pointingDirection) {
         self.direction = direction
     }
+    
+  
 }

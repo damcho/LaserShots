@@ -23,10 +23,10 @@
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CZ-KE-oUp">
-                            <rect key="frame" x="52.5" y="51" width="15" height="51"/>
+                            <rect key="frame" x="55" y="51" width="10" height="51"/>
                             <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="15" id="Bpl-tF-g9t"/>
+                                <constraint firstAttribute="width" constant="10" id="Bpl-tF-g9t"/>
                             </constraints>
                         </view>
                     </subviews>

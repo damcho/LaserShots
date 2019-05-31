@@ -59,8 +59,6 @@ class Board {
         }
         self.createBoard()
         self.populateBoard(jsonArray:gameElementsJsonRep )
-
-        print(self.cells)
     }
     
     
@@ -111,7 +109,6 @@ class Board {
             laserDirection = currentCell.getLaserDirection(direction:laserDirection )
             var nextCell:BoardCell?
             print(currentCell)
-
             switch laserDirection {
             case .up:
                 nextCell = self.cells[currentCell.i][currentCell.j - 1]
@@ -123,6 +120,7 @@ class Board {
                 nextCell = self.cells[currentCell.i + 1][currentCell.j]
             case .none:
                 self.onUserPlayed?(.playing)
+                currentCell = nextCell != nil ? nextCell! : currentCell
                 return
             }
             currentCell = nextCell != nil ? nextCell! : currentCell

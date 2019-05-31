@@ -19,4 +19,9 @@ class LaserDestination:GameElement{
         }
         self.direction = pointingDirection(rawValue:direction) ?? .down
     }
+    
+    func reflect(direction: pointingDirection) -> pointingDirection {
+        return .none
+    }
+    
 }

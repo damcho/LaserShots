@@ -30,11 +30,8 @@ protocol laserShotsDelegate {
 }
 
 protocol GameElement {
-    var direction: pointingDirection { get set }
-}
-
-protocol Reflectable {
-    func reflectfrom(_ :pointingDirection) -> pointingDirection
+    var direction: pointingDirection { get }
+    func reflect(direction: pointingDirection) -> pointingDirection 
 }
 
 extension GameElement {

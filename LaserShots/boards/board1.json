@@ -8,12 +8,6 @@
         "direction": "down"
     },
     {
-        "type": "laserDestination",
-        "x": 11,
-        "y": 5,
-        "direction": "left"
-    },
-    {
         "type": "Mirror",
         "x": 1,
         "y": 5,
@@ -54,6 +48,45 @@
         "x": 5,
         "y": 5,
         "direction": "right"
+    },
+ 
+    {
+        "type": "Mirror",
+        "x": 9,
+        "y": 3,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 8,
+        "y": 4,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 8,
+        "y": 9,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 9,
+        "y": 6,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 7,
+        "y": 5,
+        "direction": "right"
+    },
+    {
+        "type": "laserDestination",
+        "x": 11,
+        "y": 7,
+        "direction": "left"
     }
+  
+    
     ]
 }

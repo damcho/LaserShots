@@ -19,10 +19,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="65" height="70"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-s8-9df">
-                            <rect key="frame" x="25" y="35" width="15" height="35"/>
+                            <rect key="frame" x="27.5" y="35" width="10" height="35"/>
                             <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="15" id="d1a-9G-ET9"/>
+                                <constraint firstAttribute="width" constant="10" id="d1a-9G-ET9"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-9x-Vqu">

@@ -69,28 +69,20 @@ class BoardCell:CustomStringConvertible {
         case .left, .right:
             self.horizontalBeam = Laser(direction: direction)
         case .none:
-            self.verticalBeam = nil
-            self.horizontalBeam = nil
+           break
         }
+        self.onLaserBeamChanged?()
     }
     
     func getLaserDirection(direction:pointingDirection = .none) -> pointingDirection {
-        self.wasHitByLaser(direction: direction)
-        
-        if self.cellType == .Empty {
-            self.onLaserBeamChanged?()
-            return direction
-        } else if self.cellType == .LaserGun {
-            return self.gameElement?.direction ?? .none
-        } else if self.gameElement is Reflectable {
-            let newDirection = (self.gameElement as! Reflectable).reflectfrom(direction)
-            if newDirection != .none {
-                self.onLaserBeamChanged?()
-            }
-            return newDirection
-        } else {
-            return .none
+        var reflectDirection = direction
+    
+        if let gameElement = self.gameElement {
+            reflectDirection = gameElement.reflect(direction:direction)
         }
+        self.wasHitByLaser(direction: reflectDirection)
+
+        return reflectDirection
     }
     
     func onTap() {

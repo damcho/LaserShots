@@ -54,16 +54,18 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate {
     func gameState(state: gameState) {
         switch state {
         case .gameWon:
-            let alert = UIAlertController(title: "YEAH!", message: "You Won!!!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+          self.showAlert(title: "YEAHH", msg: "You won")
         case .gameLost:
-            let alert = UIAlertController(title: "Upss!", message: "You Lost!!!", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showAlert(title: "Upss", msg: "You Lost")
         default:
             return
         }
+    }
+    
+    func showAlert(title:String, msg:String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
