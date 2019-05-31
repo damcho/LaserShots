@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="116" height="120"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCR-Ud-Xe9">
-                            <rect key="frame" x="53" y="64" width="10" height="56"/>
+                            <rect key="frame" x="53" y="62.5" width="10" height="57.5"/>
                             <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="10" id="eqV-ld-lHZ"/>
@@ -33,7 +32,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf2-4E-7Nt">
-                            <rect key="frame" x="0.0" y="51" width="116" height="18"/>
+                            <rect key="frame" x="0.0" y="52.5" width="116" height="15"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ub1-sj-H3o">
                                     <rect key="frame" x="0.0" y="0.0" width="116" height="5"/>
@@ -45,7 +44,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="18" id="7zH-Vt-VYV"/>
+                                <constraint firstAttribute="height" constant="15" id="7zH-Vt-VYV"/>
                                 <constraint firstItem="Ub1-sj-H3o" firstAttribute="top" secondItem="Gf2-4E-7Nt" secondAttribute="top" id="WzO-RG-pWq"/>
                                 <constraint firstAttribute="trailing" secondItem="Ub1-sj-H3o" secondAttribute="trailing" id="vmD-Mx-Bdf"/>
                                 <constraint firstItem="Ub1-sj-H3o" firstAttribute="leading" secondItem="Gf2-4E-7Nt" secondAttribute="leading" id="ybt-y0-Fiw"/>
@@ -56,6 +55,7 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="uCR-Ud-Xe9" firstAttribute="top" secondItem="Gf2-4E-7Nt" secondAttribute="bottom" constant="-5" id="2TX-aC-Enu"/>
+                        <constraint firstAttribute="trailing" secondItem="Gf2-4E-7Nt" secondAttribute="trailing" id="4aX-9B-JQ0"/>
                         <constraint firstItem="P0l-Ba-stB" firstAttribute="leading" secondItem="uCR-Ud-Xe9" secondAttribute="trailing" constant="-5" id="9vA-n1-eSj"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="B0q-4y-joR"/>
                         <constraint firstItem="P0l-Ba-stB" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="URd-8T-buB"/>
@@ -81,7 +81,7 @@
                 <outlet property="laserBeam2View" destination="P0l-Ba-stB" id="9PQ-xS-Aom"/>
                 <outlet property="mirrorView" destination="Gf2-4E-7Nt" id="DmM-4i-XU9"/>
             </connections>
-            <point key="canvasLocation" x="-78.260869565217391" y="384.375"/>
+            <point key="canvasLocation" x="-519" y="3"/>
         </view>
     </objects>
 </document>

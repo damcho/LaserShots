@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-de-dfd">
-                                <rect key="frame" x="366" y="24" width="1000" height="1000"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-de-dfd">
+                                <rect key="frame" x="342" y="0.0" width="1024" height="1024"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="sO6-de-dfd" secondAttribute="height" multiplier="50:50" id="BSq-Ys-roI"/>
+                                    <constraint firstAttribute="width" secondItem="sO6-de-dfd" secondAttribute="height" multiplier="1:1" id="BSq-Ys-roI"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1JR-6i-gPJ">
                                     <size key="itemSize" width="50" height="50"/>
@@ -44,14 +43,20 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="l7b-CF-Ly4"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-MW-Jkd">
+                                <rect key="frame" x="85" y="73" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sO6-de-dfd" secondAttribute="bottom" id="FgZ-gG-UhP"/>
-                            <constraint firstItem="sO6-de-dfd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="366" id="X63-yH-HeJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sO6-de-dfd" secondAttribute="trailing" id="YcZ-ro-TUu"/>
+                            <constraint firstAttribute="bottom" secondItem="sO6-de-dfd" secondAttribute="bottom" id="FgZ-gG-UhP"/>
+                            <constraint firstAttribute="trailing" secondItem="sO6-de-dfd" secondAttribute="trailing" id="HXf-Bh-xXa"/>
+                            <constraint firstItem="sO6-de-dfd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LNf-1J-2NS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="gameBoard" destination="sO6-de-dfd" id="0ry-hz-ovN"/>
