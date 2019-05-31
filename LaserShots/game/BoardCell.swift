@@ -74,11 +74,11 @@ class BoardCell:CustomStringConvertible {
         self.onLaserBeamChanged?()
     }
     
-    func getLaserDirection(direction:pointingDirection = .none) -> pointingDirection {
-        var reflectDirection = direction
+    func getLaserReflection(from:pointingDirection = .none) -> pointingDirection {
+        var reflectDirection = from
     
         if let gameElement = self.gameElement {
-            reflectDirection = gameElement.reflect(direction:direction)
+            reflectDirection = gameElement.reflect(direction:from)
         }
         self.wasHitByLaser(direction: reflectDirection)
 

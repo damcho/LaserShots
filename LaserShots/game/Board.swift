@@ -15,7 +15,7 @@ class Board {
     var height:Int = 0
     var laserGunCell:BoardCell?
     var onUserPlayed:((gameState) -> ())?
-    
+    var onCellTapHandler :(() -> ())?
     init(_ boardName:String) {
         self.loadBoard(name: boardName)
     }
@@ -34,6 +34,11 @@ class Board {
                 }
             }
             self.cells.append(cellsRow)
+        }
+        
+        self.onCellTapHandler = { () -> () in
+            self.clearBoard()
+            self.shootLaser()
         }
     }
     
@@ -68,10 +73,7 @@ class Board {
             let x = jsonElement["x"] as! Int
             let y = jsonElement["y"] as! Int
             let gameElement:GameElement?
-            let onCellTapHandler = { () -> () in
-                self.clearBoard()
-                self.shootLaser()
-            }
+
             switch elementType {
             case "laserGun":
                 gameElement = LaserGun(jsonElement: jsonElement)
@@ -79,7 +81,7 @@ class Board {
             case "laserDestination":
                 gameElement = LaserDestination(jsonElement: jsonElement)
             case "Mirror":
-                 self.cells[x][y].onCellTapped = onCellTapHandler
+                 self.cells[x][y].onCellTapped = self.onCellTapHandler
                 gameElement = Mirror(jsonElement: jsonElement)
             default:
                 return
@@ -103,12 +105,10 @@ class Board {
         guard var currentCell = self.laserGunCell else {
             return
         }
-        var laserDirection = currentCell.getLaserDirection( )
-
+        var nextCell:BoardCell?
+        var laserDirection = currentCell.getLaserReflection()
         while currentCell.cellType != .Wall && currentCell.cellType != .LaserDestination {
-            laserDirection = currentCell.getLaserDirection(direction:laserDirection )
-            var nextCell:BoardCell?
-            print(currentCell)
+            laserDirection = currentCell.getLaserReflection(from:laserDirection )
             switch laserDirection {
             case .up:
                 nextCell = self.cells[currentCell.i][currentCell.j - 1]
@@ -120,10 +120,12 @@ class Board {
                 nextCell = self.cells[currentCell.i + 1][currentCell.j]
             case .none:
                 self.onUserPlayed?(.playing)
-                currentCell = nextCell != nil ? nextCell! : currentCell
-                return
             }
             currentCell = nextCell != nil ? nextCell! : currentCell
+
+            if laserDirection == .none {
+                break
+            }
         }
         if currentCell.cellType == .Wall {
             self.onUserPlayed?(.gameLost)
