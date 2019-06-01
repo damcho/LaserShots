@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BoardCell:CustomStringConvertible {
+class BoardCell {
     
     let i:Int
     let j:Int
@@ -45,6 +45,8 @@ class BoardCell:CustomStringConvertible {
             cellType = .Wall
         } else if self.gameElement is LaserTrap{
             cellType = .LaserTrap
+        } else if self.gameElement is TransparentMirror{
+            cellType = .TransparentMirror
         }
     }
     
@@ -101,11 +103,5 @@ class BoardCell:CustomStringConvertible {
         self.horizontalBeam = nil
         self.verticalBeam = nil
         self.onLaserBeamChanged?()
-    }
-    
-    var description : String {
-        get {
-            return "x:`\(i) `\(j) `\(gameElement)"
-        }
     }
 }

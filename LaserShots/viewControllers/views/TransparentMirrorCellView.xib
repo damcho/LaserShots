@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TransparentMirrorCellView" customModule="LaserShots" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="147" height="122"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="147" height="122"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my9-Kw-mCe">
+                        <rect key="frame" x="0.0" y="0.0" width="147" height="122"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eje-c6-BER">
+                                <rect key="frame" x="5" y="53.5" width="137" height="15"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ie2-Nk-ioc">
+                                        <rect key="frame" x="0.0" y="0.0" width="137" height="5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5" id="f3O-fb-Q0p"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.073973064940450417" green="1" blue="0.99566923928298023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="FVL-ac-BM9"/>
+                                    <constraint firstItem="ie2-Nk-ioc" firstAttribute="leading" secondItem="eje-c6-BER" secondAttribute="leading" id="Wl0-Qa-JrU"/>
+                                    <constraint firstItem="ie2-Nk-ioc" firstAttribute="top" secondItem="eje-c6-BER" secondAttribute="top" id="evw-fr-eqo"/>
+                                    <constraint firstAttribute="trailing" secondItem="ie2-Nk-ioc" secondAttribute="trailing" id="g7l-lV-VUf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eje-c6-BER" firstAttribute="centerX" secondItem="my9-Kw-mCe" secondAttribute="centerX" id="7bE-gB-eUo"/>
+                            <constraint firstItem="eje-c6-BER" firstAttribute="leading" secondItem="my9-Kw-mCe" secondAttribute="leading" constant="5" id="MfT-H3-BiL"/>
+                            <constraint firstItem="eje-c6-BER" firstAttribute="centerY" secondItem="my9-Kw-mCe" secondAttribute="centerY" id="ObX-gr-R3m"/>
+                            <constraint firstAttribute="trailing" secondItem="eje-c6-BER" secondAttribute="trailing" constant="5" id="k4r-ql-HzF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="my9-Kw-mCe" secondAttribute="trailing" id="Dtv-KL-g05"/>
+                <constraint firstAttribute="top" secondItem="my9-Kw-mCe" secondAttribute="top" id="JvY-T2-SHm"/>
+                <constraint firstItem="my9-Kw-mCe" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottom" id="dJk-nK-zJx"/>
+                <constraint firstItem="my9-Kw-mCe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fwe-x5-5ce"/>
+            </constraints>
+            <size key="customSize" width="147" height="122"/>
+            <connections>
+                <outlet property="gameElementContainerView" destination="my9-Kw-mCe" id="QlB-nx-TbK"/>
+                <outlet property="transparentMirrorView" destination="eje-c6-BER" id="e5n-JN-K4p"/>
+            </connections>
+            <point key="canvasLocation" x="207.97101449275365" y="126.5625"/>
+        </collectionViewCell>
+    </objects>
+</document>

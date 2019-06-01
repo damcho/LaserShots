@@ -83,6 +83,9 @@ class Board {
             case "Mirror":
                  self.cells[x][y].onCellTapped = self.onCellTapHandler
                 gameElement = Mirror(jsonElement: jsonElement)
+            case "TransparentMirror":
+                self.cells[x][y].onCellTapped = self.onCellTapHandler
+                gameElement = TransparentMirror(jsonElement: jsonElement)
             case "laserTrap":
                 gameElement = LaserTrap()
             default:

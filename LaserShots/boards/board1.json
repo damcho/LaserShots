@@ -96,6 +96,13 @@
         "type": "laserTrap",
         "x": 7,
         "y": 7,
-    }
+    },
+    {
+        "type": "TransparentMirror",
+        "x": 1,
+        "y": 9,
+        "direction": "left"
+    },
+    
     ]
 }

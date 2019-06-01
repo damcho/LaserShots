@@ -14,6 +14,7 @@ enum cellType {
     case LaserDestination
     case Empty
     case Mirror
+    case TransparentMirror
     case Wall
     case LaserTrap
 }
