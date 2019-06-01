@@ -81,20 +81,25 @@ class BoardCell {
         self.onLaserBeamChanged?()
     }
     
-    func getLaserReflection(from:pointingDirection = .none) -> pointingDirection {
-        var reflectDirection = from
+    private func isReflecting () -> Bool {
+        return self.horizontalBeam != nil || self.verticalBeam != nil
+    }
+    
+    func getLaserReflection(from:pointingDirection = .none) -> [pointingDirection] {
+        var reflectDirections = [from]
     
         if let gameElement = self.gameElement {
-            reflectDirection = gameElement.reflect(direction:from)
+            reflectDirections = gameElement.reflect(direction:from)
         }
-        self.wasHitByLaser(direction: reflectDirection)
+        self.wasHitByLaser(direction: reflectDirections[0])
 
-        return reflectDirection
+        return reflectDirections
     }
     
     func onTap() {
-        if self.gameElement is Flipable {
-            (self.gameElement as! Flipable).flip()
+        if let element = self.gameElement, element.isFlipable {
+            var flipableElement = element as! Flipable & GameElement
+            flipableElement.flip()
             self.onCellTapped?()
         }
     }
@@ -103,5 +108,16 @@ class BoardCell {
         self.horizontalBeam = nil
         self.verticalBeam = nil
         self.onLaserBeamChanged?()
+    }
+    
+    func getInitialShot() -> pointingDirection {
+        if let laserGun = (self.gameElement as? LaserGun) {
+            let laserDirection = laserGun.shoot()
+            self.horizontalBeam = Laser(direction: laserDirection)
+            self.onLaserBeamChanged?()
+            return laserDirection
+        } else {
+            return .none
+        }
     }
 }

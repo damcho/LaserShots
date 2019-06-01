@@ -32,8 +32,8 @@ protocol laserShotsDelegate {
 }
 
 protocol GameElement {
-    var direction: pointingDirection { get }
-    func reflect(direction: pointingDirection) -> pointingDirection 
+    var direction: pointingDirection { get set }
+    func reflect(direction: pointingDirection) -> [pointingDirection]
 }
 
 extension GameElement {
@@ -41,7 +41,26 @@ extension GameElement {
 }
 
 protocol Flipable {
-    func flip() -> ()
+
+}
+
+extension Flipable where Self:GameElement {
+    mutating func flip()  {
+        var newDirection = self.direction
+        switch direction {
+        case .down:
+            newDirection = .left
+        case .up:
+            newDirection = .right
+        case .left:
+            newDirection = .up
+        case .right:
+            newDirection = .down
+        default:
+            newDirection = .none
+        }
+        self.direction = newDirection
+    }
 }
 
 

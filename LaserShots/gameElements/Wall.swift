@@ -12,7 +12,7 @@ class Wall: GameElement {
  
     var direction: pointingDirection = .none
     
-    func reflect(direction: pointingDirection) -> pointingDirection {
-        return self.direction
+    func reflect(direction: pointingDirection) -> [pointingDirection] {
+        return [self.direction]
     }
 }

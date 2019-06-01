@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TransparentMirror: GameElement {
+class TransparentMirror: GameElement, Flipable {
     var direction: pointingDirection
     
     init?(jsonElement:Dictionary<String, Any>) {
@@ -19,8 +19,43 @@ class TransparentMirror: GameElement {
         self.direction = pointingDirection(rawValue:direction) ?? .down
     }
     
-    func reflect(direction: pointingDirection) -> pointingDirection {
-        return .none
+    func reflect(direction: pointingDirection) -> [pointingDirection] {
+        switch direction {
+        case .down:
+            if self.direction == .up {
+                return [.left, .down]
+            } else if self.direction == .right {
+                return [.right, .down]
+            } else {
+                return [.none]
+            }
+        case .up:
+            if self.direction == .down {
+                return [.right, .up]
+            } else if self.direction == .left {
+                return [.left, .up]
+            } else {
+                return [.none]
+            }
+        case .left:
+            if self.direction == .right {
+                return [.up, .left]
+            } else if self.direction == .down {
+                return [.down, .left]
+            } else {
+                return [.none]
+            }
+        case .right:
+            if self.direction == .left {
+                return [.down, .right]
+            } else if self.direction == .up {
+                return [.up, .right]
+            } else {
+                return [.none]
+            }
+        default:
+            return [.none]
+        }
     }
     
     

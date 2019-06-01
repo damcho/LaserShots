@@ -14,7 +14,7 @@
         "direction": "right"
     },
     {
-        "type": "Mirror",
+        "type": "TransparentMirror",
         "x": 4,
         "y": 5,
         "direction": "right"

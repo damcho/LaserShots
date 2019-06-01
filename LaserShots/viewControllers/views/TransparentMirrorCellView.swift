@@ -11,19 +11,23 @@ import UIKit
 class TransparentMirrorCellView: LaserShotsBaseCellView {
 
     @IBOutlet weak var transparentMirrorView: UIView!
+    @IBOutlet weak var LaserBeam1View: UIView!
+    @IBOutlet weak var LaserBeam2View: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
         self.transparentMirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
+        self.LaserBeam1View.isHidden = true
+        self.LaserBeam2View.isHidden = true
     }
     
     override func setupView() {
         super.setupView()
         self.gameCell?.onLaserBeamChanged = { () -> () in
             let shouldhideBeams = self.gameCell?.horizontalBeam == nil && self.gameCell?.verticalBeam == nil
-      //      self.laserBeam2View.isHidden = shouldhideBeams
-    //        self.laserBeam1View.isHidden = shouldhideBeams
+            self.LaserBeam1View.isHidden = shouldhideBeams
+            self.LaserBeam2View.isHidden = shouldhideBeams
         }
     }
     

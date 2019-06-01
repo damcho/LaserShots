@@ -120,23 +120,30 @@ class Board {
         }
     }
     
-    func shootLaser() {
-        guard var currentCell = self.laserGunCell else {
-            return
-        }
-        var nextCell:BoardCell?
-        var laserDirection = self.laserGunCell?.getLaserReflection() ?? .none
-        while laserDirection != .none {
-            nextCell = self.getNextCellfor(direction: laserDirection, currentCell: currentCell)
-            currentCell = nextCell != nil ? nextCell! : currentCell
-            laserDirection = currentCell.getLaserReflection(from:laserDirection )
-        }
+    private func shootNext(directions:[pointingDirection], currentCell:BoardCell) {
+
         if currentCell.cellType == .LaserTrap {
             self.onUserPlayed?(.gameLost)
+            return
         } else if currentCell.cellType == .LaserDestination{
             self.onUserPlayed?(.gameWon)
-        } else {
-            self.onUserPlayed?(.playing)
+            return
         }
+        
+        for laserDirection in directions {
+            let nextCell = self.getNextCellfor(direction: laserDirection, currentCell: currentCell)
+            if nextCell != nil {
+                let newDirections = nextCell!.getLaserReflection(from: laserDirection)
+                self.shootNext(directions: newDirections, currentCell: nextCell!)
+            }
+        }
+    }
+    
+    func shootLaser() {
+        guard let laserGunCell = self.laserGunCell else {
+            return
+        }
+        let laserDirection = laserGunCell.getInitialShot()
+        self.shootNext(directions: [laserDirection], currentCell: laserGunCell)
     }
 }

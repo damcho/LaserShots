@@ -19,7 +19,11 @@ class LaserGun: GameElement {
         self.direction = pointingDirection(rawValue:direction) ?? .down
     }
     
-    func reflect(direction: pointingDirection) -> pointingDirection {
+    func shoot() -> pointingDirection {
         return self.direction
+    }
+    
+    func reflect(direction: pointingDirection) -> [pointingDirection] {
+        return [.none]
     }
 }

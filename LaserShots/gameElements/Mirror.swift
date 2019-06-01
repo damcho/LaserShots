@@ -18,60 +18,43 @@ class Mirror: GameElement, Flipable {
         }
         self.direction = pointingDirection(rawValue:direction) ?? .down
     }
-    
-    func flip()  {
-        var newDirection = self.direction
-        switch direction {
-        case .down:
-            newDirection = .left
-        case .up:
-            newDirection = .right
-        case .left:
-            newDirection = .up
-        case .right:
-            newDirection = .down
-        default:
-            newDirection = .none
-        }
-        self.direction = newDirection
-    }
 
-    func reflect(direction: pointingDirection) -> pointingDirection {
+    func reflect(direction: pointingDirection) -> [pointingDirection] {
         switch direction {
         case .down:
             if self.direction == .up {
-                return .left
+                return [.left]
             } else if self.direction == .right {
-                return .right
+                return [.right]
             } else {
-                return .none
+                return [.none]
             }
         case .up:
             if self.direction == .down {
-                return .right
+                return [.right]
             } else if self.direction == .left {
-                return .left
+                return [.left]
             } else {
-                return .none
+                return [.none]
             }
         case .left:
             if self.direction == .right {
-                return .up
+                return [.up]
             } else if self.direction == .down {
-                return .down
+                return [.down]
             } else {
-                return .none
+                return [.none]
             }
         case .right:
             if self.direction == .left {
-                return .down
+                return [.down]
             } else if self.direction == .up {
-                return .up
+                return [.up]
             } else {
-                return .none
+                return [.none]
             }
         default:
-            return.none
+            return [.none]
         }
     }
 }
