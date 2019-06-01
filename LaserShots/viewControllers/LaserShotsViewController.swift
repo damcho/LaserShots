@@ -24,7 +24,8 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         self.gameBoard.register(UINib(nibName: MirrorCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "MirrorCellView")
         self.gameBoard.register(UINib(nibName: WallCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "WallCellView")
         self.gameBoard.register(UINib(nibName: EmptyCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "EmptyCellView")
-        
+        self.gameBoard.register(UINib(nibName: LaserTrapCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "LaserTrapCellView")
+
         
         
         self.laserShotGame = LaserShotsGame()
@@ -83,6 +84,9 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         case .Wall:
             cellView = collectionView
                 .dequeueReusableCell(withReuseIdentifier: "WallCellView", for: indexPath) as! LaserShotsBaseCellView
+        case .LaserTrap:
+            cellView = collectionView
+                .dequeueReusableCell(withReuseIdentifier: "LaserTrapCellView", for: indexPath) as! LaserShotsBaseCellView
         }
         cellView.gameCell = boardCell
         return cellView

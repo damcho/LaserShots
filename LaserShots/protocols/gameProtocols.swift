@@ -15,6 +15,7 @@ enum cellType {
     case Empty
     case Mirror
     case Wall
+    case LaserTrap
 }
 
 enum pointingDirection:String {

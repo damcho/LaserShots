@@ -43,6 +43,8 @@ class BoardCell:CustomStringConvertible {
             cellType = .Mirror
         } else if self.gameElement is Wall{
             cellType = .Wall
+        } else if self.gameElement is LaserTrap{
+            cellType = .LaserTrap
         }
     }
     

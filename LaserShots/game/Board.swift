@@ -22,18 +22,18 @@ class Board {
     
     func createBoard() {
         for i in 0...width + 1 {
-            var cellsRow:[BoardCell] = []
+            var cellColumn:[BoardCell] = []
             for j in 0...height + 1 {
                 let boardCell = BoardCell(i: i, j: j)
-                cellsRow.append(boardCell)
-                if j == height+1 || j == 0 {
-                    boardCell.gameElement = Wall(direction: .down)
-                }
-                if i == height+1 || i == 0 {
-                    boardCell.gameElement = Wall(direction: .left)
+                cellColumn.append(boardCell)
+                if j == height+1 ||
+                    j == 0 ||
+                    i == height+1 ||
+                    i == 0{
+                    boardCell.gameElement = Wall()
                 }
             }
-            self.cells.append(cellsRow)
+            self.cells.append(cellColumn)
         }
         
         self.onCellTapHandler = { () -> () in
@@ -83,6 +83,8 @@ class Board {
             case "Mirror":
                  self.cells[x][y].onCellTapped = self.onCellTapHandler
                 gameElement = Mirror(jsonElement: jsonElement)
+            case "laserTrap":
+                gameElement = LaserTrap()
             default:
                 return
             }

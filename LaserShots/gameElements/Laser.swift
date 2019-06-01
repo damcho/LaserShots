@@ -14,6 +14,4 @@ class Laser {
     init(direction:pointingDirection) {
         self.direction = direction
     }
-    
-  
 }

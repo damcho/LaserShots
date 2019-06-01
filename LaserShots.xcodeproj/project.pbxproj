@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */; };
+		8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */; };
+		8BE846B122A1F32A00A40AF1 /* LaserTrapCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */; };
 		8BFE3936229446CE00605072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3935229446CE00605072 /* AppDelegate.swift */; };
 		8BFE3938229446CE00605072 /* LaserShotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3937229446CE00605072 /* LaserShotsViewController.swift */; };
 		8BFE393B229446CE00605072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE3939229446CE00605072 /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrap.swift; sourceTree = "<group>"; };
+		8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrapCellView.swift; sourceTree = "<group>"; };
+		8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserTrapCellView.xib; sourceTree = "<group>"; };
 		8BFE3932229446CE00605072 /* LaserShots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaserShots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BFE3935229446CE00605072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BFE3937229446CE00605072 /* LaserShotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 				8BFE395A229446F500605072 /* Mirror.swift */,
 				8BFE395C229446F500605072 /* Wall.swift */,
 				8BFE3969229448A300605072 /* LaserDestination.swift */,
+				8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */,
 			);
 			path = gameElements;
 			sourceTree = "<group>";
@@ -214,6 +221,8 @@
 				8BFE398222959B3400605072 /* MirrorCellView.xib */,
 				8BFE39882296E52800605072 /* WallCellView.swift */,
 				8BFE398A2296E53600605072 /* WallCellView.xib */,
+				8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */,
+				8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -299,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE846B122A1F32A00A40AF1 /* LaserTrapCellView.xib in Resources */,
 				8BFE398122959AFE00605072 /* LaserDestinationCellView.xib in Resources */,
 				8BFE397022946B9D00605072 /* board1.json in Resources */,
 				8BFE3940229446CF00605072 /* LaunchScreen.storyboard in Resources */,
@@ -333,6 +343,8 @@
 				8BFE39792295913D00605072 /* LaserDestinationCellView.swift in Sources */,
 				8BFE3965229446F500605072 /* Wall.swift in Sources */,
 				8BFE3963229446F500605072 /* Mirror.swift in Sources */,
+				8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */,
+				8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */,
 				8BFE3962229446F500605072 /* Laser.swift in Sources */,
 				8BFE396A229448A300605072 /* LaserDestination.swift in Sources */,
 				8BFE3938229446CE00605072 /* LaserShotsViewController.swift in Sources */,

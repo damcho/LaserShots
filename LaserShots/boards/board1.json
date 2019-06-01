@@ -85,8 +85,11 @@
         "x": 11,
         "y": 7,
         "direction": "left"
+    },
+    {
+        "type": "laserTrap",
+        "x": 7,
+        "y": 7,
     }
-  
-    
     ]
 }

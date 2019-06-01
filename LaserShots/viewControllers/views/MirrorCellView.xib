@@ -32,10 +32,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf2-4E-7Nt">
-                            <rect key="frame" x="0.0" y="52.5" width="116" height="15"/>
+                            <rect key="frame" x="5" y="52.5" width="106" height="15"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ub1-sj-H3o">
-                                    <rect key="frame" x="0.0" y="0.0" width="116" height="5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="106" height="5"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="5" id="WqT-Jk-j1Q"/>
@@ -55,11 +55,11 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="uCR-Ud-Xe9" firstAttribute="top" secondItem="Gf2-4E-7Nt" secondAttribute="bottom" constant="-5" id="2TX-aC-Enu"/>
-                        <constraint firstAttribute="trailing" secondItem="Gf2-4E-7Nt" secondAttribute="trailing" id="4aX-9B-JQ0"/>
+                        <constraint firstAttribute="trailing" secondItem="Gf2-4E-7Nt" secondAttribute="trailing" constant="5" id="4aX-9B-JQ0"/>
                         <constraint firstItem="P0l-Ba-stB" firstAttribute="leading" secondItem="uCR-Ud-Xe9" secondAttribute="trailing" constant="-5" id="9vA-n1-eSj"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="B0q-4y-joR"/>
                         <constraint firstItem="P0l-Ba-stB" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="URd-8T-buB"/>
-                        <constraint firstItem="Gf2-4E-7Nt" firstAttribute="leading" secondItem="vjA-bF-3l7" secondAttribute="leading" id="aHF-Cc-6zX"/>
+                        <constraint firstItem="Gf2-4E-7Nt" firstAttribute="leading" secondItem="vjA-bF-3l7" secondAttribute="leading" constant="5" id="aHF-Cc-6zX"/>
                         <constraint firstItem="uCR-Ud-Xe9" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="am3-2B-NaL"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="tzf-Si-vR6"/>
                         <constraint firstAttribute="bottom" secondItem="uCR-Ud-Xe9" secondAttribute="bottom" id="uMm-jC-4V6"/>
