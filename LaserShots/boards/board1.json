@@ -71,13 +71,19 @@
     {
         "type": "Mirror",
         "x": 9,
-        "y": 6,
+        "y": 7,
         "direction": "right"
     },
     {
         "type": "Mirror",
         "x": 7,
         "y": 5,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 7,
+        "y": 3,
         "direction": "right"
     },
     {

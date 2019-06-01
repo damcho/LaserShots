@@ -18,6 +18,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.gameBoard.isUserInteractionEnabled = false
         
         self.gameBoard.register(UINib(nibName: LaserGunCellView.nibName() ,bundle: nil), forCellWithReuseIdentifier: "LaserGunCellView")
         self.gameBoard.register(UINib(nibName: LaserDestinationCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "LaserDestinationCellView")
@@ -29,9 +30,8 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         
         
         self.laserShotGame = LaserShotsGame()
-        //    self.laserShotGame?.delegate = self
+        self.laserShotGame?.delegate = self
         self.createBoardGame()
-        self.laserShotGame?.start()
     }
     
     func createBoardGame() {
@@ -68,26 +68,23 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let boardCell = self.boardCells[indexPath.row]
         var cellView:LaserShotsBaseCellView
+        var reuseIdentifier:String
         switch boardCell.cellType {
         case .Empty:
-            cellView = collectionView
-                .dequeueReusableCell(withReuseIdentifier: "EmptyCellView", for: indexPath) as! LaserShotsBaseCellView
+            reuseIdentifier = "EmptyCellView"
         case .LaserDestination:
-            cellView = collectionView
-                .dequeueReusableCell(withReuseIdentifier: "LaserDestinationCellView", for: indexPath) as! LaserShotsBaseCellView
+            reuseIdentifier = "LaserDestinationCellView"
         case .LaserGun:
-            cellView = collectionView
-                .dequeueReusableCell(withReuseIdentifier: "LaserGunCellView", for: indexPath) as! LaserShotsBaseCellView
+            reuseIdentifier = "LaserGunCellView"
         case .Mirror:
-            cellView = collectionView
-                .dequeueReusableCell(withReuseIdentifier: "MirrorCellView", for: indexPath) as! LaserShotsBaseCellView
+            reuseIdentifier = "MirrorCellView"
         case .Wall:
-            cellView = collectionView
-                .dequeueReusableCell(withReuseIdentifier: "WallCellView", for: indexPath) as! LaserShotsBaseCellView
+            reuseIdentifier = "WallCellView"
         case .LaserTrap:
-            cellView = collectionView
-                .dequeueReusableCell(withReuseIdentifier: "LaserTrapCellView", for: indexPath) as! LaserShotsBaseCellView
+            reuseIdentifier = "LaserTrapCellView"
         }
+        cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
+
         cellView.gameCell = boardCell
         return cellView
     }
@@ -97,9 +94,15 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let availableWidth = self.gameBoard.frame.width
-        let widthPerItem = (availableWidth.rounded()) / CGFloat(cellsPerRow)
+        let widthPerItem = availableWidth.rounded() / CGFloat(cellsPerRow)
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
+    
+    @IBAction func onStartButtonTapped(_ sender: Any) {
+        self.laserShotGame?.start()
+        self.gameBoard.isUserInteractionEnabled = true
+    }
+    
 }
 

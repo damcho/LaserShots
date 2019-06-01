@@ -71,6 +71,9 @@ class BoardCell:CustomStringConvertible {
         case .left, .right:
             self.horizontalBeam = Laser(direction: direction)
         case .none:
+            if self.gameElement is LaserDestination {
+                self.horizontalBeam = Laser(direction: direction)
+            }
            break
         }
         self.onLaserBeamChanged?()

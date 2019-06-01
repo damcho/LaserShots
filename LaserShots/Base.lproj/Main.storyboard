@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-de-dfd">
-                                <rect key="frame" x="342" y="0.0" width="1024" height="1024"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-de-dfd">
+                                <rect key="frame" x="362" y="20" width="1004" height="1004"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sO6-de-dfd" secondAttribute="height" multiplier="1:1" id="BSq-Ys-roI"/>
@@ -43,20 +44,39 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="l7b-CF-Ly4"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-MW-Jkd">
-                                <rect key="frame" x="85" y="73" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser Shots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-MW-Jkd">
+                                <rect key="frame" x="5" y="58" width="352" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4z-N4-lwp">
+                                <rect key="frame" x="146" y="141" width="70" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="1Tm-vb-3e4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="9k4-05-4tH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="onStartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0xw-Ra-xPP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="sO6-de-dfd" secondAttribute="bottom" id="FgZ-gG-UhP"/>
-                            <constraint firstAttribute="trailing" secondItem="sO6-de-dfd" secondAttribute="trailing" id="HXf-Bh-xXa"/>
-                            <constraint firstItem="sO6-de-dfd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LNf-1J-2NS"/>
+                            <constraint firstItem="Y4z-N4-lwp" firstAttribute="top" secondItem="fxf-MW-Jkd" secondAttribute="bottom" constant="40" id="6DF-4k-Bs4"/>
+                            <constraint firstItem="sO6-de-dfd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y4z-N4-lwp" secondAttribute="trailing" constant="10" id="Es9-eZ-rHU"/>
+                            <constraint firstItem="fxf-MW-Jkd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="FF6-x0-63b"/>
+                            <constraint firstItem="MOb-wp-iVH" firstAttribute="bottom" secondItem="sO6-de-dfd" secondAttribute="bottom" id="FuX-7H-cBN"/>
+                            <constraint firstItem="MOb-wp-iVH" firstAttribute="trailing" secondItem="sO6-de-dfd" secondAttribute="trailing" id="QcN-sX-vs8"/>
+                            <constraint firstItem="fxf-MW-Jkd" firstAttribute="centerX" secondItem="Y4z-N4-lwp" secondAttribute="centerX" id="f4j-SF-Fnm"/>
+                            <constraint firstItem="MOb-wp-iVH" firstAttribute="top" secondItem="sO6-de-dfd" secondAttribute="top" id="fYZ-If-66t"/>
+                            <constraint firstItem="sO6-de-dfd" firstAttribute="leading" secondItem="fxf-MW-Jkd" secondAttribute="trailing" constant="5" id="i5a-O9-skw"/>
+                            <constraint firstItem="Y4z-N4-lwp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="q4r-r9-McT"/>
+                            <constraint firstItem="fxf-MW-Jkd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="58" id="rd6-yw-Rly"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="MOb-wp-iVH"/>
                     </view>
                     <connections>
                         <outlet property="gameBoard" destination="sO6-de-dfd" id="0ry-hz-ovN"/>

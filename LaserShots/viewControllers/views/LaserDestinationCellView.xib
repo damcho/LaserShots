@@ -52,6 +52,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="gameElementContainerView" destination="RBO-6A-Skw" id="m4P-pj-yU6"/>
+                <outlet property="laserView" destination="XtC-s8-9df" id="bQS-cA-m29"/>
             </connections>
             <point key="canvasLocation" x="-136.23188405797103" y="101.11607142857143"/>
         </view>

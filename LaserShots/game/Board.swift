@@ -102,37 +102,38 @@ class Board {
         }
     }
     
+    private func getNextCellfor(direction:pointingDirection, currentCell:BoardCell) -> BoardCell? {
+        switch direction {
+        case .up:
+            return self.cells[currentCell.i][currentCell.j - 1]
+        case .down:
+           return self.cells[currentCell.i ][currentCell.j + 1]
+        case .left:
+            return self.cells[currentCell.i - 1][currentCell.j]
+        case .right:
+            return self.cells[currentCell.i + 1][currentCell.j]
+        case .none:
+            return nil
+        }
+    }
     
     func shootLaser() {
         guard var currentCell = self.laserGunCell else {
             return
         }
         var nextCell:BoardCell?
-        var laserDirection = currentCell.getLaserReflection()
-        while currentCell.cellType != .Wall && currentCell.cellType != .LaserDestination {
-            laserDirection = currentCell.getLaserReflection(from:laserDirection )
-            switch laserDirection {
-            case .up:
-                nextCell = self.cells[currentCell.i][currentCell.j - 1]
-            case .down:
-                nextCell = self.cells[currentCell.i ][currentCell.j + 1]
-            case .left:
-                nextCell = self.cells[currentCell.i - 1][currentCell.j]
-            case .right:
-                nextCell = self.cells[currentCell.i + 1][currentCell.j]
-            case .none:
-                self.onUserPlayed?(.playing)
-            }
+        var laserDirection = self.laserGunCell?.getLaserReflection() ?? .none
+        while laserDirection != .none {
+            nextCell = self.getNextCellfor(direction: laserDirection, currentCell: currentCell)
             currentCell = nextCell != nil ? nextCell! : currentCell
-
-            if laserDirection == .none {
-                break
-            }
+            laserDirection = currentCell.getLaserReflection(from:laserDirection )
         }
-        if currentCell.cellType == .Wall {
+        if currentCell.cellType == .LaserTrap {
             self.onUserPlayed?(.gameLost)
-        } else {
+        } else if currentCell.cellType == .LaserDestination{
             self.onUserPlayed?(.gameWon)
+        } else {
+            self.onUserPlayed?(.playing)
         }
     }
 }
