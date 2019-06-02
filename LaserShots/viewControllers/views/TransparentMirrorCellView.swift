@@ -9,25 +9,48 @@
 import UIKit
 
 class TransparentMirrorCellView: LaserShotsBaseCellView {
-
+    
+    @IBOutlet weak var horizontalLaserBeam1: UIView!
+    @IBOutlet weak var horizontalLaserBeam2: UIView!
+    @IBOutlet weak var verticalLaserBeam1: UIView!
+    @IBOutlet weak var verticalLaserBeam2: UIView!
     @IBOutlet weak var transparentMirrorView: UIView!
-    @IBOutlet weak var LaserBeam1View: UIView!
-    @IBOutlet weak var LaserBeam2View: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
         self.transparentMirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
-        self.LaserBeam1View.isHidden = true
-        self.LaserBeam2View.isHidden = true
+        self.horizontalLaserBeam1.isHidden = true
+        self.horizontalLaserBeam2.isHidden = true
+        self.verticalLaserBeam1.isHidden = true
+        self.verticalLaserBeam2.isHidden = true
+        
     }
     
     override func setupView() {
         super.setupView()
-        self.gameCell?.onLaserBeamChanged = { () -> () in
-            let shouldhideBeams = self.gameCell?.horizontalBeam == nil && self.gameCell?.verticalBeam == nil
-            self.LaserBeam1View.isHidden = shouldhideBeams
-            self.LaserBeam2View.isHidden = shouldhideBeams
+        self.gameCell?.onLaserBeamChanged = { (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+            
+            let shouldHideLaserBeams = self.gameCell?.laserBeam == nil
+            let shouldShowHorizontalBeam = self.gameCell?.laserBeam == nil
+            if shouldHideLaserBeams {
+                self.horizontalLaserBeam2.isHidden = shouldHideLaserBeams
+                self.horizontalLaserBeam1.isHidden = shouldHideLaserBeams
+                self.verticalLaserBeam1.isHidden = shouldHideLaserBeams
+                self.verticalLaserBeam2.isHidden = shouldHideLaserBeams
+                
+            } else if shouldShowHorizontalBeam && direction == .right{
+                self.horizontalLaserBeam2.isHidden = !shouldShowHorizontalBeam
+                self.horizontalLaserBeam1.isHidden = !shouldShowHorizontalBeam
+                self.verticalLaserBeam1.isHidden = !shouldShowHorizontalBeam
+                self.verticalLaserBeam2.isHidden = shouldShowHorizontalBeam
+            } else if shouldShowHorizontalBeam && direction == .left {
+                self.horizontalLaserBeam2.isHidden = !shouldShowHorizontalBeam
+                self.horizontalLaserBeam1.isHidden = !shouldShowHorizontalBeam
+                self.verticalLaserBeam1.isHidden = !shouldShowHorizontalBeam
+                self.verticalLaserBeam2.isHidden = shouldShowHorizontalBeam
+            }
+            
         }
     }
     
@@ -38,5 +61,5 @@ class TransparentMirrorCellView: LaserShotsBaseCellView {
         rotatingView.transform = rotatingView.transform.rotated(by:  .pi / 2)
         self.gameCell?.onTap()
     }
-
+    
 }

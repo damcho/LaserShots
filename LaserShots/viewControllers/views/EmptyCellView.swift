@@ -14,9 +14,15 @@ class EmptyCellView: LaserShotsBaseCellView {
     @IBOutlet weak var verticalLaserView: UIView!
     
     override func setupView() {
-        self.gameCell?.onLaserBeamChanged = { () -> () in
-            self.horizontalLaserView.isHidden = self.gameCell?.horizontalBeam == nil
-            self.verticalLaserView.isHidden = self.gameCell?.verticalBeam == nil
+        self.gameCell?.onLaserBeamChanged = { (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+            if direction == .none {
+                self.horizontalLaserView.isHidden = true
+                self.verticalLaserView.isHidden = true
+            } else if  direction == .up || direction == .down {
+                self.verticalLaserView.isHidden = false
+            } else {
+                self.horizontalLaserView.isHidden = false
+            }
         }
     }
     

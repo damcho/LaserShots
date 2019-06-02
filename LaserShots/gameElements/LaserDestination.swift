@@ -21,7 +21,7 @@ class LaserDestination:GameElement{
     }
     
     func reflect(direction: pointingDirection) -> [pointingDirection] {
-        return [.none]
+        return []
     }
     
 }

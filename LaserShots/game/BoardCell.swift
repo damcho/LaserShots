@@ -12,7 +12,7 @@ class BoardCell {
     
     let i:Int
     let j:Int
-    var onLaserBeamChanged: (() -> ())?
+    var onLaserBeamChanged: ((pointingDirection, [pointingDirection]) -> ())?
     var onCellTapped: (() -> ())?
     var cellType:cellType = .Empty
     var gameElement:GameElement? {
@@ -20,8 +20,7 @@ class BoardCell {
             self.setupCell()
         }
     }
-    var horizontalBeam:Laser?
-    var verticalBeam:Laser?
+    var laserBeam:Laser?
   
     
     init(i:Int, j:Int) {
@@ -66,23 +65,8 @@ class BoardCell {
         }
     }
     
-    func wasHitByLaser(direction:pointingDirection) {
-        switch direction {
-        case .down, .up:
-            self.verticalBeam = Laser(direction: direction)
-        case .left, .right:
-            self.horizontalBeam = Laser(direction: direction)
-        case .none:
-            if self.gameElement is LaserDestination {
-                self.horizontalBeam = Laser(direction: direction)
-            }
-           break
-        }
-        self.onLaserBeamChanged?()
-    }
-    
-    private func isReflecting () -> Bool {
-        return self.horizontalBeam != nil || self.verticalBeam != nil
+    func isReflecting () -> Bool {
+        return self.laserBeam != nil
     }
     
     func getLaserReflection(from:pointingDirection = .none) -> [pointingDirection] {
@@ -90,8 +74,11 @@ class BoardCell {
     
         if let gameElement = self.gameElement {
             reflectDirections = gameElement.reflect(direction:from)
+            if !reflectDirections.isEmpty {
+                self.laserBeam = Laser(direction: from)
+            }
         }
-        self.wasHitByLaser(direction: reflectDirections[0])
+        self.onLaserBeamChanged?(from, reflectDirections)
 
         return reflectDirections
     }
@@ -105,16 +92,15 @@ class BoardCell {
     }
     
     func clear() {
-        self.horizontalBeam = nil
-        self.verticalBeam = nil
-        self.onLaserBeamChanged?()
+        self.laserBeam = nil
+        self.onLaserBeamChanged?(.none, [])
     }
     
     func getInitialShot() -> pointingDirection {
         if let laserGun = (self.gameElement as? LaserGun) {
             let laserDirection = laserGun.shoot()
-            self.horizontalBeam = Laser(direction: laserDirection)
-            self.onLaserBeamChanged?()
+            self.laserBeam = Laser(direction: laserDirection)
+            self.onLaserBeamChanged?(laserDirection, [laserDirection])
             return laserDirection
         } else {
             return .none
