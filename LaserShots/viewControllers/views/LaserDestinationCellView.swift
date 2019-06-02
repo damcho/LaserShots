@@ -14,9 +14,8 @@ class LaserDestinationCellView: LaserShotsBaseCellView {
     
     override func setupView() {
         super.setupView()
-        self.gameCell?.onLaserBeamChanged = { (direction:pointingDirection, reflections:[pointingDirection]) -> () in
-            self.laserView.isHidden = self.gameCell?.laserBeam == nil
-            
+        self.gameCell?.onLaserBeamChanged = { [weak self] (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+            self?.laserView.isHidden = direction == .none
         }
     }
     
