@@ -22,11 +22,21 @@ class LaserShotsBaseCellView: UICollectionViewCell, NibInstantiatable {
         self.rotate()
     }
     
-    func rotate() {
-        guard let rotationRadians = gameCell?.rotation() else {
+    func rotate(){
+        guard let gameElement = self.gameCell else {
             return
         }
-
-        self.gameElementContainerView?.transform = CGAffineTransform(rotationAngle: CGFloat(rotationRadians))
+        var radiansToRotate:CGFloat
+        switch gameElement.getDirection() {
+        case .left:
+            radiansToRotate = .pi/2
+        case .right:
+            radiansToRotate = .pi * 3/2
+        case .up:
+            radiansToRotate = .pi
+        default:
+            radiansToRotate = 0
+        }
+        self.gameElementContainerView?.transform = CGAffineTransform(rotationAngle: radiansToRotate)
     }
 }

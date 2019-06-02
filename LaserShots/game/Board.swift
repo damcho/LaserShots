@@ -20,7 +20,7 @@ class Board {
         self.loadBoard(name: boardName)
     }
     
-    func createBoard() {
+    private func createBoard() {
         for i in 0...width + 1 {
             var cellColumn:[BoardCell] = []
             for j in 0...height + 1 {
@@ -67,7 +67,7 @@ class Board {
     }
     
     
-    func populateBoard( jsonArray:Array<Dictionary<String, Any>>) {
+    private func populateBoard( jsonArray:Array<Dictionary<String, Any>>) {
         for jsonElement in jsonArray {
             let elementType = jsonElement["type"] as! String
             let x = jsonElement["x"] as! Int
@@ -143,7 +143,7 @@ class Board {
         guard let laserGunCell = self.laserGunCell else {
             return
         }
-        let laserDirection = laserGunCell.getInitialShot()
+        let laserDirection = laserGunCell.getInitialShotDirection()
         self.shootNext(directions: [laserDirection], currentCell: laserGunCell)
     }
 }

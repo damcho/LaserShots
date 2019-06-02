@@ -23,10 +23,10 @@ class MirrorCellView: LaserShotsBaseCellView {
     
     override func setupView() {
         super.setupView()
-        self.gameCell?.onLaserBeamChanged = { (direction:pointingDirection, reflections:[pointingDirection]) -> () in
-            let shouldShowLaserBeam =  !reflections.isEmpty || self.gameCell?.isReflecting() ?? false
-            self.laserBeam2View.isHidden = !shouldShowLaserBeam
-            self.laserBeam1View.isHidden = !shouldShowLaserBeam
+        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+            let shouldShowLaserBeam = !reflections.isEmpty || self?.gameCell?.isReflecting() ?? false
+            self?.laserBeam2View.isHidden = !shouldShowLaserBeam
+            self?.laserBeam1View.isHidden = !shouldShowLaserBeam
         }
     }
     

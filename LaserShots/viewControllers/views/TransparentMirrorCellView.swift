@@ -31,40 +31,39 @@ class TransparentMirrorCellView: LaserShotsBaseCellView {
         }
         rotatingView.transform = rotatingView.transform.rotated(by:  -.pi / 4)
 
-        self.gameCell?.onLaserBeamChanged = { (direction:pointingDirection, reflections:[pointingDirection]) -> () in
-            guard let gameCell = self.gameCell else {
+        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+            guard let gameCell = self?.gameCell else {
                 return
             }
             let shouldHideLaserBeams = !gameCell.isReflecting()
             
             if shouldHideLaserBeams {
-                self.horizontalLaserBeam2.isHidden = shouldHideLaserBeams
-                self.horizontalLaserBeam1.isHidden = shouldHideLaserBeams
-                self.verticalLaserBeam1.isHidden = shouldHideLaserBeams
-                self.verticalLaserBeam2.isHidden = shouldHideLaserBeams
+                self?.horizontalLaserBeam2.isHidden = shouldHideLaserBeams
+                self?.horizontalLaserBeam1.isHidden = shouldHideLaserBeams
+                self?.verticalLaserBeam1.isHidden = shouldHideLaserBeams
+                self?.verticalLaserBeam2.isHidden = shouldHideLaserBeams
                 
             } else if direction == .right || direction == .left{
-                self.horizontalLaserBeam2.isHidden = false
-                self.horizontalLaserBeam1.isHidden = false
+                self?.horizontalLaserBeam2.isHidden = false
+                self?.horizontalLaserBeam1.isHidden = false
                 for laserDirection in reflections {
                     if laserDirection == .up {
-                        self.verticalLaserBeam1.isHidden = false
+                        self?.verticalLaserBeam1.isHidden = false
                     } else if laserDirection == .down{
-                        self.verticalLaserBeam2.isHidden = false
+                        self?.verticalLaserBeam2.isHidden = false
                     }
                 }
             } else if direction == .up || direction == .down {
                 for laserDirection in reflections {
                     if laserDirection == .left {
-                        self.horizontalLaserBeam1.isHidden = false
+                        self?.horizontalLaserBeam1.isHidden = false
                     } else if laserDirection == .right{
-                        self.horizontalLaserBeam2.isHidden = false
+                        self?.horizontalLaserBeam2.isHidden = false
                     }
                 }
-                self.verticalLaserBeam1.isHidden = false
-                self.verticalLaserBeam2.isHidden = false
+                self?.verticalLaserBeam1.isHidden = false
+                self?.verticalLaserBeam2.isHidden = false
             }
-            
         }
     }
     
