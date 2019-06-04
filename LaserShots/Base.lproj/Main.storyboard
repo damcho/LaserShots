@@ -32,39 +32,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFz-Ec-11N">
-                                <rect key="frame" x="50" y="123" width="1266" height="67"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFz-Ec-11N">
+                                <rect key="frame" x="50" y="232" width="1266" height="217"/>
                                 <string key="text">Shoot the laser gun and reflect the laser beam by tapping on a mirror and rotating it clockwise until you reach the laser destination in red. Beware of the tblack holes that pull everything in!!.. even light</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser destination: Laser beam shot by the laser gun should reach this game element" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP8-ZZ-Gl4">
-                                <rect key="frame" x="300" y="367" width="1046" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser destination: Laser beam shot by the laser gun should reach this game element" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TP8-ZZ-Gl4">
+                                <rect key="frame" x="675.5" y="593" width="670.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mirror: reflects a laser beam 90º to the correspongin angle to where it is pointing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oet-AR-7T2">
-                                <rect key="frame" x="300" y="487" width="1046" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mirror: reflects a laser beam 90º to the correspongin angle to where it is pointing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oet-AR-7T2">
+                                <rect key="frame" x="675.5" y="684" width="670.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TransparentMirror: Similar to the mirror but it also lets the laser beam through the mirror" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-WX-LAr">
-                                <rect key="frame" x="300" y="607" width="1046" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TransparentMirror: Similar to the mirror but it also lets the laser beam through the mirror" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-WX-LAr">
+                                <rect key="frame" x="675.5" y="775" width="670.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trap: Absorbs any Laser beam that reaches it and the game is over" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SC3-Nx-XAK">
-                                <rect key="frame" x="300" y="727" width="1046" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trap: Absorbs any Laser beam that reaches it and the game is over" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SC3-Nx-XAK">
+                                <rect key="frame" x="675.5" y="866" width="670.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cva-oH-9op">
-                                <rect key="frame" x="505" y="800" width="356" height="70"/>
+                                <rect key="frame" x="505" y="929" width="356" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="356" id="SPI-Qc-rcm"/>
                                     <constraint firstAttribute="height" constant="70" id="Vx0-Tt-jCd"/>
@@ -75,34 +75,37 @@
                                     <action selector="onLetsGoButtonPressed:" destination="UmE-0O-xN2" eventType="touchUpInside" id="Wgv-Ck-Pg4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" text="Laser Shots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4u-Rx-4fQ">
-                                <rect key="frame" x="555" y="54" width="256" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" verticalCompressionResistancePriority="755" text="Laser Shots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4u-Rx-4fQ">
+                                <rect key="frame" x="555" y="24" width="256" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="WLE-D2-CEZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="51"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laserGun" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-ld-xCr">
-                                <rect key="frame" x="150" y="210" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="laserGun" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-ld-xCr">
+                                <rect key="frame" x="553.5" y="469" width="112" height="86"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="1Bb-io-FXW"/>
-                                    <constraint firstAttribute="height" constant="100" id="wt5-D3-Q4y"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="1Bb-io-FXW"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="wt5-D3-Q4y"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laserDestination" translatesAutoresizingMaskIntoConstraints="NO" id="P9E-GX-1Yv">
-                                <rect key="frame" x="150" y="330" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="laserDestination" translatesAutoresizingMaskIntoConstraints="NO" id="P9E-GX-1Yv">
+                                <rect key="frame" x="553.5" y="560" width="112" height="86"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mirror" translatesAutoresizingMaskIntoConstraints="NO" id="OVI-mn-UGE">
-                                <rect key="frame" x="150" y="450" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="mirror" translatesAutoresizingMaskIntoConstraints="NO" id="OVI-mn-UGE">
+                                <rect key="frame" x="553.5" y="651" width="112" height="86"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparentMirror" translatesAutoresizingMaskIntoConstraints="NO" id="Atq-4g-nWK">
-                                <rect key="frame" x="150" y="570" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="transparentMirror" translatesAutoresizingMaskIntoConstraints="NO" id="Atq-4g-nWK">
+                                <rect key="frame" x="553.5" y="742" width="112" height="86"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackHole" translatesAutoresizingMaskIntoConstraints="NO" id="8M1-tp-phg">
-                                <rect key="frame" x="150" y="690" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="blackHole" translatesAutoresizingMaskIntoConstraints="NO" id="8M1-tp-phg">
+                                <rect key="frame" x="553.5" y="833" width="112" height="86"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser Gun: will shoot a beam of laser" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnc-aw-C5H">
-                                <rect key="frame" x="300" y="247" width="1046" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Laser Gun: will shoot a beam of laser" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qnc-aw-C5H">
+                                <rect key="frame" x="675.5" y="502" width="670.5" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -114,20 +117,21 @@
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="4vZ-PT-CCG"/>
                             <constraint firstItem="P9E-GX-1Yv" firstAttribute="width" secondItem="IAd-ld-xCr" secondAttribute="width" id="5Zt-QW-7Ww"/>
                             <constraint firstItem="OVI-mn-UGE" firstAttribute="height" secondItem="IAd-ld-xCr" secondAttribute="height" id="5qK-YO-DMO"/>
-                            <constraint firstItem="qnc-aw-C5H" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="trailing" constant="50" id="6VV-fD-lBZ"/>
+                            <constraint firstItem="qnc-aw-C5H" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="trailing" constant="10" id="6VV-fD-lBZ"/>
                             <constraint firstItem="qnc-aw-C5H" firstAttribute="centerY" secondItem="IAd-ld-xCr" secondAttribute="centerY" id="6WL-dp-NqV"/>
                             <constraint firstItem="8M1-tp-phg" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="leading" id="6tE-sh-rNJ"/>
-                            <constraint firstItem="8M1-tp-phg" firstAttribute="top" secondItem="Atq-4g-nWK" secondAttribute="bottom" constant="20" id="AYQ-9c-H31"/>
+                            <constraint firstItem="8M1-tp-phg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Atq-4g-nWK" secondAttribute="bottom" constant="5" id="AYQ-9c-H31"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="SC3-Nx-XAK" secondAttribute="trailing" constant="20" id="B4F-cD-M08"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="leading" secondItem="TP8-ZZ-Gl4" secondAttribute="leading" id="BGf-lT-7eE"/>
                             <constraint firstItem="TP8-ZZ-Gl4" firstAttribute="width" secondItem="qnc-aw-C5H" secondAttribute="width" id="Ceg-aG-Evw"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="centerY" secondItem="OVI-mn-UGE" secondAttribute="centerY" id="DN3-DV-o1b"/>
-                            <constraint firstItem="OVI-mn-UGE" firstAttribute="top" secondItem="P9E-GX-1Yv" secondAttribute="bottom" constant="20" id="E43-c1-QOQ"/>
+                            <constraint firstItem="TP8-ZZ-Gl4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qnc-aw-C5H" secondAttribute="bottom" id="E3m-oG-ata"/>
+                            <constraint firstItem="OVI-mn-UGE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P9E-GX-1Yv" secondAttribute="bottom" constant="5" id="E43-c1-QOQ"/>
                             <constraint firstItem="SC3-Nx-XAK" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="GCS-Cc-m2x"/>
                             <constraint firstItem="SC3-Nx-XAK" firstAttribute="leading" secondItem="TP8-ZZ-Gl4" secondAttribute="leading" id="Gsv-a2-wGE"/>
-                            <constraint firstItem="Atq-4g-nWK" firstAttribute="top" secondItem="OVI-mn-UGE" secondAttribute="bottom" constant="20" id="HXz-Qf-C8K"/>
+                            <constraint firstItem="Atq-4g-nWK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OVI-mn-UGE" secondAttribute="bottom" constant="5" id="HXz-Qf-C8K"/>
                             <constraint firstItem="A4u-Rx-4fQ" firstAttribute="centerX" secondItem="5Vf-Xq-jBg" secondAttribute="centerX" id="Hr4-D8-AwC"/>
-                            <constraint firstItem="5Vf-Xq-jBg" firstAttribute="bottom" secondItem="cva-oH-9op" secondAttribute="bottom" constant="20" id="JCg-2S-iFA"/>
+                            <constraint firstItem="5Vf-Xq-jBg" firstAttribute="bottom" secondItem="cva-oH-9op" secondAttribute="bottom" constant="5" id="JCg-2S-iFA"/>
                             <constraint firstItem="8M1-tp-phg" firstAttribute="width" secondItem="IAd-ld-xCr" secondAttribute="width" id="KO1-0j-kBP"/>
                             <constraint firstItem="CFz-Ec-11N" firstAttribute="leading" secondItem="5Vf-Xq-jBg" secondAttribute="leading" constant="50" id="Mk7-vn-lvG"/>
                             <constraint firstItem="TP8-ZZ-Gl4" firstAttribute="centerY" secondItem="P9E-GX-1Yv" secondAttribute="centerY" id="NY5-IR-kxe"/>
@@ -137,28 +141,31 @@
                             <constraint firstItem="cva-oH-9op" firstAttribute="top" secondItem="8M1-tp-phg" secondAttribute="bottom" constant="10" id="TfP-va-TfQ"/>
                             <constraint firstItem="OVI-mn-UGE" firstAttribute="width" secondItem="IAd-ld-xCr" secondAttribute="width" id="WOH-wK-dd9"/>
                             <constraint firstItem="P9E-GX-1Yv" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="leading" id="WZM-fh-jOL"/>
-                            <constraint firstItem="P9E-GX-1Yv" firstAttribute="top" secondItem="IAd-ld-xCr" secondAttribute="bottom" constant="20" id="Zj4-SC-w7t"/>
-                            <constraint firstItem="A4u-Rx-4fQ" firstAttribute="top" secondItem="5Vf-Xq-jBg" secondAttribute="top" constant="30" id="Zqe-wn-fdI"/>
+                            <constraint firstItem="P9E-GX-1Yv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IAd-ld-xCr" secondAttribute="bottom" constant="5" id="Zj4-SC-w7t"/>
+                            <constraint firstItem="A4u-Rx-4fQ" firstAttribute="top" secondItem="5Vf-Xq-jBg" secondAttribute="top" id="Zqe-wn-fdI"/>
                             <constraint firstItem="CFz-Ec-11N" firstAttribute="centerX" secondItem="A4u-Rx-4fQ" secondAttribute="centerX" id="aFa-HO-dUW"/>
+                            <constraint firstItem="SC3-Nx-XAK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lm8-WX-LAr" secondAttribute="bottom" id="bPp-hl-0qJ"/>
                             <constraint firstItem="P9E-GX-1Yv" firstAttribute="height" secondItem="IAd-ld-xCr" secondAttribute="height" id="bfw-5U-kvf"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="qnc-aw-C5H" secondAttribute="trailing" constant="20" id="bwj-Xe-xfd"/>
                             <constraint firstItem="cva-oH-9op" firstAttribute="centerX" secondItem="5Vf-Xq-jBg" secondAttribute="centerX" id="c4d-bD-t0T"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="dha-Fo-bPe"/>
                             <constraint firstItem="SC3-Nx-XAK" firstAttribute="centerY" secondItem="8M1-tp-phg" secondAttribute="centerY" id="dqA-Bb-1I5"/>
+                            <constraint firstItem="oet-AR-7T2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TP8-ZZ-Gl4" secondAttribute="bottom" id="fTH-sF-AZV"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="oet-AR-7T2" secondAttribute="trailing" constant="20" id="fWh-5d-VNU"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="hCj-qZ-ZzY"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="iLR-yc-bsw"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="centerY" secondItem="Atq-4g-nWK" secondAttribute="centerY" id="jEF-KQ-ocP"/>
                             <constraint firstItem="Atq-4g-nWK" firstAttribute="height" secondItem="IAd-ld-xCr" secondAttribute="height" id="kWg-Dx-Q1v"/>
-                            <constraint firstItem="IAd-ld-xCr" firstAttribute="leading" secondItem="5Vf-Xq-jBg" secondAttribute="leading" constant="150" id="mFr-Nv-qlH"/>
+                            <constraint firstItem="IAd-ld-xCr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5Vf-Xq-jBg" secondAttribute="leading" constant="20" id="mFr-Nv-qlH"/>
                             <constraint firstItem="CFz-Ec-11N" firstAttribute="top" secondItem="A4u-Rx-4fQ" secondAttribute="bottom" constant="8" id="o5Z-Cg-wFm"/>
                             <constraint firstItem="IAd-ld-xCr" firstAttribute="top" secondItem="CFz-Ec-11N" secondAttribute="bottom" constant="20" id="pZE-TI-dPd"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="height" secondItem="TP8-ZZ-Gl4" secondAttribute="height" id="qHo-S2-cGK"/>
                             <constraint firstItem="SC3-Nx-XAK" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="sLR-en-Dfi"/>
                             <constraint firstItem="8M1-tp-phg" firstAttribute="height" secondItem="IAd-ld-xCr" secondAttribute="height" id="tOe-K6-tQ5"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="lm8-WX-LAr" secondAttribute="trailing" constant="20" id="toP-zi-HpS"/>
+                            <constraint firstItem="lm8-WX-LAr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oet-AR-7T2" secondAttribute="bottom" id="xQH-FV-ynn"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="leading" secondItem="TP8-ZZ-Gl4" secondAttribute="leading" id="xUA-Gd-sWH"/>
-                            <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="qnc-aw-C5H" secondAttribute="trailing" constant="20" id="yJn-Wt-FsI"/>
+                            <constraint firstItem="cva-oH-9op" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SC3-Nx-XAK" secondAttribute="bottom" id="yXH-a4-EKa"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="TP8-ZZ-Gl4" secondAttribute="trailing" constant="20" id="ymr-PK-5dS"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="height" secondItem="TP8-ZZ-Gl4" secondAttribute="height" id="zKf-j4-PsN"/>
                             <constraint firstItem="TP8-ZZ-Gl4" firstAttribute="leading" secondItem="qnc-aw-C5H" secondAttribute="leading" id="zgA-Ym-so4"/>
