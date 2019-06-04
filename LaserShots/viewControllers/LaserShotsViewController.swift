@@ -89,6 +89,8 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
 
         cellView.gameCell = boardCell
+        cellView.layoutIfNeeded()
+
         return cellView
     }
     
