@@ -11,18 +11,29 @@ import Foundation
 enum gameState {
     case gameWon
     case gameLost
-    case playing
+    case nextLevel
 }
 
 class LaserShotsGame  {
+    let numberOfLevels = 2
     let currentLevel:Board
     weak var delegate:laserShotsDelegate?
     
     init() {
         self.currentLevel = Board()
-        self.currentLevel.onUserPlayed = {[unowned self] (state:gameState) in
-            self.delegate?.gameState(state: state)
+        self.currentLevel.onGameStateChanged = {[unowned self] (state:gameState) in
+            switch state {
+            case .nextLevel:
+                if self.currentLevel.levelIndex < self.numberOfLevels {
+                    self.delegate?.gameState(state: state)
+                } else {
+                    self.delegate?.gameState(state: .gameWon)
+                }
+            default:
+                self.delegate?.gameState(state: state)
+            }
         }
+        
         self.currentLevel.onLevelLoaded = { [unowned self] () -> () in
             self.delegate?.levelLoaded()
         }

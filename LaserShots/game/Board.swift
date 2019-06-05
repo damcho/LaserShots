@@ -14,9 +14,9 @@ class Board {
     private var height:Int = 0
     private var laserGunCell:BoardCell?
     private let boardLevelName:String = "level"
-    private var levelIndex = 1
+    var levelIndex = 1
     var cells: [[BoardCell]] = []
-    var onUserPlayed:((gameState) -> ())?
+    var onGameStateChanged:((gameState) -> ())?
     var onLevelLoaded:(() -> ())?
     var onCellTapHandler :(() -> ())?
     
@@ -138,10 +138,10 @@ class Board {
     private func shootNext(directions:[pointingDirection], currentCell:BoardCell) {
 
         if currentCell.cellType == .LaserTrap {
-            self.onUserPlayed?(.gameLost)
+            self.onGameStateChanged?(.gameLost)
             return
         } else if currentCell.cellType == .LaserDestination{
-            self.onUserPlayed?(.gameWon)
+            self.onGameStateChanged?(.nextLevel)
             return
         }
         

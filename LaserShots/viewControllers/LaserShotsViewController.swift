@@ -51,18 +51,21 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     
     func gameState(state: gameState) {
         switch state {
-        case .gameWon:
+        case .nextLevel:
             let action = UIAlertAction(title: "next level", style: .default, handler: {(action:UIAlertAction) ->() in
                 self.laserShotGame?.nextLevel()
             })
-            self.showAlert(title: "YEAHH", msg: "You won", action: action)
+            self.showAlert(title: "YEAHH", msg: "You passed to the next level", action: action)
+        case .gameWon:
+            let action = UIAlertAction(title: "Main screen", style: .default, handler: {(action:UIAlertAction) ->() in
+                self.navigationController?.popViewController(animated: true)
+            })
+            self.showAlert(title: "YEAHH", msg: "You Finished all the levels", action: action)
         case .gameLost:
             let action = UIAlertAction(title: "restart", style: .default, handler: {(action:UIAlertAction) ->() in
                 self.laserShotGame?.restart()
             })
             self.showAlert(title: "Upss", msg: "You Lost", action: action)
-        default:
-            return
         }
     }
     
@@ -103,17 +106,17 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
             reuseIdentifier = "TransparentMirrorCellView"
         }
         cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
-
+        
         cellView.gameCell = boardCell
         cellView.layoutIfNeeded()
-
+        
         return cellView
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let availableWidth = self.gameBoard.frame.width
         let widthPerItem = availableWidth.rounded() / CGFloat(cellsPerRow)
         
