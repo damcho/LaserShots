@@ -29,6 +29,7 @@ enum pointingDirection:String {
 
 protocol laserShotsDelegate {
     func gameState(state:gameState) ->()
+    func levelLoaded() -> ()
 }
 
 protocol GameElement {

@@ -19,7 +19,13 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.gameBoard.isUserInteractionEnabled = false
-        
+        self.registerNibs()
+        self.laserShotGame = LaserShotsGame()
+        self.laserShotGame?.delegate = self
+        self.createBoardGame()
+    }
+    
+    private func registerNibs () {
         self.gameBoard.register(UINib(nibName: LaserGunCellView.nibName() ,bundle: nil), forCellWithReuseIdentifier: "LaserGunCellView")
         self.gameBoard.register(UINib(nibName: LaserDestinationCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "LaserDestinationCellView")
         self.gameBoard.register(UINib(nibName: MirrorCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "MirrorCellView")
@@ -27,38 +33,47 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         self.gameBoard.register(UINib(nibName: EmptyCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "EmptyCellView")
         self.gameBoard.register(UINib(nibName: LaserTrapCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "LaserTrapCellView")
         self.gameBoard.register(UINib(nibName: TransparentMirrorCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "TransparentMirrorCellView")
-
-        
-        
-        self.laserShotGame = LaserShotsGame()
-        self.laserShotGame?.delegate = self
-        self.createBoardGame()
     }
     
     func createBoardGame() {
-        let boardCells = self.laserShotGame!.boardCells()
-        cellsPerRow = boardCells[0].count
-        for cellsArray in boardCells {
+        self.boardCells = []
+        guard let gameBoardCells = self.laserShotGame?.boardCells() else {
+            return
+        }
+        cellsPerRow = gameBoardCells[0].count
+        for cellsArray in gameBoardCells {
             for cell in cellsArray {
                 self.boardCells.append(cell)
             }
         }
+        
     }
     
     func gameState(state: gameState) {
         switch state {
         case .gameWon:
-            self.showAlert(title: "YEAHH", msg: "You won")
+            let action = UIAlertAction(title: "next level", style: .default, handler: {(action:UIAlertAction) ->() in
+                self.laserShotGame?.nextLevel()
+            })
+            self.showAlert(title: "YEAHH", msg: "You won", action: action)
         case .gameLost:
-            self.showAlert(title: "Upss", msg: "You Lost")
+            let action = UIAlertAction(title: "restart", style: .default, handler: {(action:UIAlertAction) ->() in
+                self.laserShotGame?.restart()
+            })
+            self.showAlert(title: "Upss", msg: "You Lost", action: action)
         default:
             return
         }
     }
     
-    func showAlert(title:String, msg:String) {
+    func levelLoaded() {
+        self.createBoardGame()
+        self.gameBoard.reloadData()
+    }
+    
+    func showAlert(title:String, msg:String, action:UIAlertAction) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -15,21 +15,33 @@ enum gameState {
 }
 
 class LaserShotsGame  {
-    let board:Board
+    let currentLevel:Board
     var delegate:laserShotsDelegate?
     
     init() {
-        self.board = Board("board1")
-        self.board.onUserPlayed = { (state:gameState) in
+        self.currentLevel = Board()
+        self.currentLevel.onUserPlayed = { (state:gameState) in
             self.delegate?.gameState(state: state)
         }
+        self.currentLevel.onLevelLoaded = { () -> () in
+            self.delegate?.levelLoaded()
+        }
+        self.currentLevel.loadLevel()
     }
     
     func boardCells() -> [[BoardCell]] {
-        return self.board.cells
+        return self.currentLevel.cells
     }
     
     func start() {
-        self.board.shootLaser()
+        self.currentLevel.shootLaser()
+    }
+    
+    func restart(){
+        self.currentLevel.loadLevel()
+    }
+    
+    func nextLevel() {
+        self.currentLevel.loadNextLevel()
     }
 }

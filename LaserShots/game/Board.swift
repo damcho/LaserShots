@@ -10,17 +10,28 @@ import Foundation
 
 class Board {
     
+    private var width:Int = 0
+    private var height:Int = 0
+    private var laserGunCell:BoardCell?
+    private let boardLevelName:String = "level"
+    private var levelIndex = 1
     var cells: [[BoardCell]] = []
-    var width:Int = 0
-    var height:Int = 0
-    var laserGunCell:BoardCell?
     var onUserPlayed:((gameState) -> ())?
+    var onLevelLoaded:(() -> ())?
     var onCellTapHandler :(() -> ())?
-    init(_ boardName:String) {
-        self.loadBoard(name: boardName)
+    
+    func loadLevel() {
+        self.loadBoard(name: self.boardLevelName + "\(self.levelIndex)")
+        self.onLevelLoaded?()
     }
     
-    private func createBoard() {
+    func loadNextLevel() {
+        self.levelIndex += 1
+        self.loadLevel()
+    }
+    
+    private func createEmptyBoard() {
+        self.cells = []
         for i in 0...width + 1 {
             var cellColumn:[BoardCell] = []
             for j in 0...height + 1 {
@@ -43,8 +54,12 @@ class Board {
     }
     
     func loadBoard(name:String) {
-        let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
+        guard let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "json") else {
+            return
+        }
+        guard let data = NSData(contentsOfFile: path) else {
+            return
+        }
         
         guard let Jsonboard = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? Dictionary<String, Any> else {
             return
@@ -62,7 +77,7 @@ class Board {
         guard let gameElementsJsonRep = Jsonboard["gameElements"] as? Array<Dictionary<String, Any>> else {
             return
         }
-        self.createBoard()
+        self.createEmptyBoard()
         self.populateBoard(jsonArray:gameElementsJsonRep )
     }
     
@@ -146,4 +161,6 @@ class Board {
         let laserDirection = laserGunCell.getInitialShotDirection()
         self.shootNext(directions: [laserDirection], currentCell: laserGunCell)
     }
+    
+   
 }

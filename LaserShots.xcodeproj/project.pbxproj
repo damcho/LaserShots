@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B19F25222A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */; };
+		8B19F25422A753B30030BB1E /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F25322A753B30030BB1E /* level2.json */; };
 		8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */; };
 		8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */; };
 		8BE846B122A1F32A00A40AF1 /* LaserTrapCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */; };
@@ -29,7 +30,7 @@
 		8BFE3966229446F500605072 /* gameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE395E229446F500605072 /* gameProtocols.swift */; };
 		8BFE39682294472000605072 /* LaserShotsGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39672294472000605072 /* LaserShotsGame.swift */; };
 		8BFE396A229448A300605072 /* LaserDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3969229448A300605072 /* LaserDestination.swift */; };
-		8BFE397022946B9D00605072 /* board1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE396F22946B9D00605072 /* board1.json */; };
+		8BFE397022946B9D00605072 /* level1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE396F22946B9D00605072 /* level1.json */; };
 		8BFE39752295911600605072 /* EmptyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39742295911600605072 /* EmptyCellView.swift */; };
 		8BFE39772295912A00605072 /* LaserGunCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39762295912A00605072 /* LaserGunCellView.swift */; };
 		8BFE39792295913D00605072 /* LaserDestinationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE39782295913D00605072 /* LaserDestinationCellView.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsInstructionsViewController.swift; sourceTree = "<group>"; };
+		8B19F25322A753B30030BB1E /* level2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
 		8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrap.swift; sourceTree = "<group>"; };
 		8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrapCellView.swift; sourceTree = "<group>"; };
 		8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserTrapCellView.xib; sourceTree = "<group>"; };
@@ -81,7 +83,7 @@
 		8BFE395E229446F500605072 /* gameProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameProtocols.swift; sourceTree = "<group>"; };
 		8BFE39672294472000605072 /* LaserShotsGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsGame.swift; sourceTree = "<group>"; };
 		8BFE3969229448A300605072 /* LaserDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserDestination.swift; sourceTree = "<group>"; };
-		8BFE396F22946B9D00605072 /* board1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = board1.json; sourceTree = "<group>"; };
+		8BFE396F22946B9D00605072 /* level1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level1.json; sourceTree = "<group>"; };
 		8BFE39742295911600605072 /* EmptyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellView.swift; sourceTree = "<group>"; };
 		8BFE39762295912A00605072 /* LaserGunCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserGunCellView.swift; sourceTree = "<group>"; };
 		8BFE39782295913D00605072 /* LaserDestinationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserDestinationCellView.swift; sourceTree = "<group>"; };
@@ -194,7 +196,8 @@
 		8BFE396C22946A9B00605072 /* boards */ = {
 			isa = PBXGroup;
 			children = (
-				8BFE396F22946B9D00605072 /* board1.json */,
+				8BFE396F22946B9D00605072 /* level1.json */,
+				8B19F25322A753B30030BB1E /* level2.json */,
 			);
 			path = boards;
 			sourceTree = "<group>";
@@ -321,8 +324,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE846B122A1F32A00A40AF1 /* LaserTrapCellView.xib in Resources */,
+				8B19F25422A753B30030BB1E /* level2.json in Resources */,
 				8BFE398122959AFE00605072 /* LaserDestinationCellView.xib in Resources */,
-				8BFE397022946B9D00605072 /* board1.json in Resources */,
+				8BFE397022946B9D00605072 /* level1.json in Resources */,
 				8BFE3940229446CF00605072 /* LaunchScreen.storyboard in Resources */,
 				8BFE393D229446CF00605072 /* Assets.xcassets in Resources */,
 				8BFE397D22959AA000605072 /* EmptyCellView.xib in Resources */,

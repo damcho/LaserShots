@@ -1,0 +1,90 @@
+
+{
+    "width": 10,
+    "height": 10,
+    "gameElements": [{
+        "type": "laserGun",
+        "x": 1,
+        "y": 0,
+        "direction": "down"
+    },
+    {
+        "type": "TransparentMirror",
+        "x": 1,
+        "y": 5,
+        "direction": "right"
+    },
+    {
+        "type": "TransparentMirror",
+        "x": 4,
+        "y": 5,
+        "direction": "right"
+    },
+    {
+        "type": "TransparentMirror",
+        "x": 4,
+        "y": 2,
+        "direction": "right"
+    },
+    {
+        "type": "TransparentMirror",
+        "x": 2,
+        "y": 2,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 2,
+        "y": 6,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 8,
+        "y": 4,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 8,
+        "y": 9,
+        "direction": "right"
+    },
+    {
+        "type": "Mirror",
+        "x": 7,
+        "y": 5,
+        "direction": "right"
+    },
+    {
+        "type": "laserDestination",
+        "x": 11,
+        "y": 7,
+        "direction": "left"
+    },
+    {
+        "type": "laserTrap",
+        "x": 2,
+        "y": 2,
+    },
+    {
+        "type": "TransparentMirror",
+        "x": 1,
+        "y": 3,
+        "direction": "left"
+    },
+    {
+        "type": "Mirror",
+        "x": 7,
+        "y": 4,
+        "direction": "left"
+    },
+    {
+        "type": "Mirror",
+        "x": 7,
+        "y": 7,
+        "direction": "left"
+    },
+    
+    ]
+}

@@ -10,6 +10,5 @@ import UIKit
 
 class WallCellView: LaserShotsBaseCellView {
 
-   
 
 }

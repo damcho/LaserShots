@@ -18,14 +18,14 @@ class TransparentMirrorCellView: LaserShotsBaseCellView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
-        self.horizontalLaserBeam1.isHidden = true
-        self.horizontalLaserBeam2.isHidden = true
-        self.verticalLaserBeam1.isHidden = true
-        self.verticalLaserBeam2.isHidden = true
     }
     
     override func setupView() {
         super.setupView()
+        self.horizontalLaserBeam1.isHidden = true
+        self.horizontalLaserBeam2.isHidden = true
+        self.verticalLaserBeam1.isHidden = true
+        self.verticalLaserBeam2.isHidden = true
         guard let rotatingView = self.gameElementContainerView else {
             return
         }

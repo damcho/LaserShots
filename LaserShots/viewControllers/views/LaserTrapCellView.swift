@@ -16,6 +16,7 @@ class LaserTrapCellView: LaserShotsBaseCellView {
     @IBOutlet weak var horizontalLaser2View: UIView!
     
     override func setupView() {
+        self.hideLaserBeams()
         self.gameCell?.onLaserBeamChanged = {[weak self] (direction:pointingDirection, reflections:[pointingDirection]) -> () in
             switch direction {
             case .right:
@@ -37,11 +38,6 @@ class LaserTrapCellView: LaserShotsBaseCellView {
         verticalLaser1View.isHidden = true
         horizontalLaser1View.isHidden = true
         horizontalLaser2View.isHidden = true
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.hideLaserBeams()
     }
     
     override func layoutIfNeeded() {
