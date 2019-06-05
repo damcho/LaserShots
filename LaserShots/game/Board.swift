@@ -161,6 +161,4 @@ class Board {
         let laserDirection = laserGunCell.getInitialShotDirection()
         self.shootNext(directions: [laserDirection], currentCell: laserGunCell)
     }
-    
-   
 }

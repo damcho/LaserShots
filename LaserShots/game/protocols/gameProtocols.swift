@@ -27,7 +27,7 @@ enum pointingDirection:String {
     case none
 }
 
-protocol laserShotsDelegate {
+protocol laserShotsDelegate:class {
     func gameState(state:gameState) ->()
     func levelLoaded() -> ()
 }

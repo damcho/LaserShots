@@ -16,14 +16,14 @@ enum gameState {
 
 class LaserShotsGame  {
     let currentLevel:Board
-    var delegate:laserShotsDelegate?
+    weak var delegate:laserShotsDelegate?
     
     init() {
         self.currentLevel = Board()
-        self.currentLevel.onUserPlayed = { (state:gameState) in
+        self.currentLevel.onUserPlayed = {[unowned self] (state:gameState) in
             self.delegate?.gameState(state: state)
         }
-        self.currentLevel.onLevelLoaded = { () -> () in
+        self.currentLevel.onLevelLoaded = { [unowned self] () -> () in
             self.delegate?.levelLoaded()
         }
         self.currentLevel.loadLevel()
