@@ -22,7 +22,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         self.registerNibs()
         self.laserShotGame = LaserShotsGame()
         self.laserShotGame?.delegate = self
-        self.createBoardGame()
+        self.laserShotGame?.nextLevel()
     }
     
     private func registerNibs () {
@@ -63,7 +63,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
             self.showAlert(title: "YEAHH", msg: "You Finished all the levels", action: action)
         case .gameLost:
             let action = UIAlertAction(title: "restart", style: .default, handler: {(action:UIAlertAction) ->() in
-                self.laserShotGame?.restart()
+                self.laserShotGame?.restartLevel()
             })
             self.showAlert(title: "Upss", msg: "You Lost", action: action)
         }

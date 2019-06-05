@@ -13,22 +13,11 @@ class Board {
     private var width:Int = 0
     private var height:Int = 0
     private var laserGunCell:BoardCell?
-    private let boardLevelName:String = "level"
-    var levelIndex = 1
+
     var cells: [[BoardCell]] = []
     var onGameStateChanged:((gameState) -> ())?
     var onLevelLoaded:(() -> ())?
     var onCellTapHandler :(() -> ())?
-    
-    func loadLevel() {
-        self.loadBoard(name: self.boardLevelName + "\(self.levelIndex)")
-        self.onLevelLoaded?()
-    }
-    
-    func loadNextLevel() {
-        self.levelIndex += 1
-        self.loadLevel()
-    }
     
     private func createEmptyBoard() {
         self.cells = []
@@ -79,6 +68,7 @@ class Board {
         }
         self.createEmptyBoard()
         self.populateBoard(jsonArray:gameElementsJsonRep )
+        self.onLevelLoaded?()
     }
     
     

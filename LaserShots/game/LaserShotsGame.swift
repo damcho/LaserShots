@@ -15,16 +15,42 @@ enum gameState {
 }
 
 class LaserShotsGame  {
-    let numberOfLevels = 2
-    let currentLevel:Board
+    private let numberOfLevels = 2
+    private let boardLevelName:String = "level"
+    private var levelIndex = 0
+    private var currentLevel:Board?
     weak var delegate:laserShotsDelegate?
     
-    init() {
+    func boardCells() -> [[BoardCell]] {
+        guard let boardCells = self.currentLevel?.cells else {
+            return []
+        }
+        return boardCells
+    }
+    
+    func start() {
+        self.currentLevel?.shootLaser()
+    }
+    
+    func restartLevel(){
+        self.loadLevel()
+    }
+    
+    func nextLevel() {
+        self.levelIndex += 1
+        self.loadLevel()
+    }
+    
+    private func loadLevel() {
+        let nextLevelName = self.boardLevelName + "\(self.levelIndex)"
         self.currentLevel = Board()
-        self.currentLevel.onGameStateChanged = {[unowned self] (state:gameState) in
+        self.currentLevel?.onLevelLoaded = { [unowned self] () -> () in
+            self.delegate?.levelLoaded()
+        }
+        self.currentLevel?.onGameStateChanged = {[unowned self] (state:gameState) in
             switch state {
             case .nextLevel:
-                if self.currentLevel.levelIndex < self.numberOfLevels {
+                if self.levelIndex < self.numberOfLevels {
                     self.delegate?.gameState(state: state)
                 } else {
                     self.delegate?.gameState(state: .gameWon)
@@ -34,25 +60,6 @@ class LaserShotsGame  {
             }
         }
         
-        self.currentLevel.onLevelLoaded = { [unowned self] () -> () in
-            self.delegate?.levelLoaded()
-        }
-        self.currentLevel.loadLevel()
-    }
-    
-    func boardCells() -> [[BoardCell]] {
-        return self.currentLevel.cells
-    }
-    
-    func start() {
-        self.currentLevel.shootLaser()
-    }
-    
-    func restart(){
-        self.currentLevel.loadLevel()
-    }
-    
-    func nextLevel() {
-        self.currentLevel.loadNextLevel()
+        self.currentLevel?.loadBoard(name: nextLevelName)
     }
 }
