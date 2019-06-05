@@ -137,12 +137,8 @@
 		8BFE3934229446CE00605072 /* LaserShots */ = {
 			isa = PBXGroup;
 			children = (
-				8BFE39722295877800605072 /* viewModels */,
 				8BFE3971229483EF00605072 /* viewControllers */,
-				8BFE396C22946A9B00605072 /* boards */,
 				8BFE396B22944A9200605072 /* game */,
-				8BFE3955229446F500605072 /* gameElements */,
-				8BFE395D229446F500605072 /* protocols */,
 				8BFE3935229446CE00605072 /* AppDelegate.swift */,
 				8BFE3939229446CE00605072 /* Main.storyboard */,
 				8BFE393C229446CF00605072 /* Assets.xcassets */,
@@ -186,6 +182,9 @@
 		8BFE396B22944A9200605072 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE396C22946A9B00605072 /* boards */,
+				8BFE395D229446F500605072 /* protocols */,
+				8BFE3955229446F500605072 /* gameElements */,
 				8BFE3956229446F500605072 /* BoardCell.swift */,
 				8BFE3957229446F500605072 /* Board.swift */,
 				8BFE39672294472000605072 /* LaserShotsGame.swift */,
@@ -211,13 +210,6 @@
 				8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */,
 			);
 			path = viewControllers;
-			sourceTree = "<group>";
-		};
-		8BFE39722295877800605072 /* viewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = viewModels;
 			sourceTree = "<group>";
 		};
 		8BFE3973229590C200605072 /* views */ = {

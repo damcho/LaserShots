@@ -69,6 +69,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     func levelLoaded() {
         self.createBoardGame()
         self.gameBoard.reloadData()
+        self.gameBoard.isUserInteractionEnabled = false
     }
     
     func showAlert(title:String, msg:String, action:UIAlertAction) {
@@ -123,6 +124,5 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         self.laserShotGame?.start()
         self.gameBoard.isUserInteractionEnabled = true
     }
-    
 }
 
