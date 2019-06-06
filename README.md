@@ -3,6 +3,9 @@
 ## Description
 ### Version of the Laser shots game. The objective is to reflect the laser beam shot with mirrors so that it reaches the laser beam destination.
 
+## Devices
+### iPhone, iPad (better displayed in iPad)
+
 ## How to install
 1. Clone project
 2. open Xcode and load LaserShots project file
