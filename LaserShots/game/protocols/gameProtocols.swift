@@ -27,6 +27,10 @@ enum pointingDirection:String {
     case none
 }
 
+protocol BoardLoaderDelegate {
+    func levelLoaded(board:[[BoardCell]], laserGun:BoardCell)
+}
+
 protocol laserShotsDelegate:class {
     func gameState(state:gameState) ->()
     func levelLoaded() -> ()
