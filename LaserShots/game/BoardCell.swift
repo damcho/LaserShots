@@ -72,9 +72,9 @@ class BoardCell {
     }
     
     func onTap() {
-        if let element = self.gameElement, element.isFlipable {
-            var flipableElement = element as! Flipable & GameElement
-            flipableElement.flip()
+        if let element = self.gameElement, element.isRotatable {
+            var rotatableElement = element as! Rotatable & GameElement
+            rotatableElement.rotate()
             self.onCellTapped?()
         }
     }

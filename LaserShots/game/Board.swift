@@ -11,7 +11,7 @@ import Foundation
 class Board :BoardLoaderDelegate{
     
     private var laserGunCell:BoardCell?
-    private let boardLoader = BundleLevelLoader()
+    private let boardLoader = LevelLoader()
     var cells: [[BoardCell]] = []
     var onGameStateChanged:((gameState) -> ())?
     var onLevelLoaded:(() -> ())?

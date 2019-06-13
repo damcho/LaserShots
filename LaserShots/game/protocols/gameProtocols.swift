@@ -31,6 +31,10 @@ protocol BoardLoaderDelegate {
     func levelLoaded(board:[[BoardCell]], laserGun:BoardCell)
 }
 
+protocol LaserShotsLevelLoader {
+    func loadLevel(name:String, levelLoadedHandler:(Data) -> ())
+}
+
 protocol laserShotsDelegate:class {
     func gameState(state:gameState) ->()
     func levelLoaded() -> ()
@@ -42,15 +46,15 @@ protocol GameElement {
 }
 
 extension GameElement {
-    var isFlipable: Bool { return self is Flipable }
+    var isRotatable: Bool { return self is Rotatable }
 }
 
-protocol Flipable {
+protocol Rotatable {
 
 }
 
-extension Flipable where Self:GameElement {
-    mutating func flip()  {
+extension Rotatable where Self:GameElement {
+    mutating func rotate()  {
         var newDirection = self.direction
         switch direction {
         case .down:

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B194D9222B1B2EB00B5A74C /* BundleLevelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B194D9122B1B2EB00B5A74C /* BundleLevelLoader.swift */; };
+		8B194D9222B1B2EB00B5A74C /* LevelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B194D9122B1B2EB00B5A74C /* LevelLoader.swift */; };
+		8B194D9422B2F5EF00B5A74C /* BundleLevelLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B194D9322B2F5EF00B5A74C /* BundleLevelLoader.swift */; };
 		8B19F25222A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */; };
 		8B19F25422A753B30030BB1E /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F25322A753B30030BB1E /* level2.json */; };
 		8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */; };
@@ -57,7 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8B194D9122B1B2EB00B5A74C /* BundleLevelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleLevelLoader.swift; sourceTree = "<group>"; };
+		8B194D9122B1B2EB00B5A74C /* LevelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLoader.swift; sourceTree = "<group>"; };
+		8B194D9322B2F5EF00B5A74C /* BundleLevelLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleLevelLoader.swift; sourceTree = "<group>"; };
 		8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsInstructionsViewController.swift; sourceTree = "<group>"; };
 		8B19F25322A753B30030BB1E /* level2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
 		8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrap.swift; sourceTree = "<group>"; };
@@ -118,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B194D9522B2F9F800B5A74C /* levelLoader */ = {
+			isa = PBXGroup;
+			children = (
+				8B194D9322B2F5EF00B5A74C /* BundleLevelLoader.swift */,
+				8B194D9122B1B2EB00B5A74C /* LevelLoader.swift */,
+			);
+			path = levelLoader;
+			sourceTree = "<group>";
+		};
 		8BFE3929229446CE00605072 = {
 			isa = PBXGroup;
 			children = (
@@ -184,24 +195,24 @@
 		8BFE396B22944A9200605072 /* game */ = {
 			isa = PBXGroup;
 			children = (
-				8BFE396C22946A9B00605072 /* boards */,
+				8B194D9522B2F9F800B5A74C /* levelLoader */,
+				8BFE396C22946A9B00605072 /* levels */,
 				8BFE395D229446F500605072 /* protocols */,
 				8BFE3955229446F500605072 /* gameElements */,
 				8BFE3956229446F500605072 /* BoardCell.swift */,
 				8BFE3957229446F500605072 /* Board.swift */,
 				8BFE39672294472000605072 /* LaserShotsGame.swift */,
-				8B194D9122B1B2EB00B5A74C /* BundleLevelLoader.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
 		};
-		8BFE396C22946A9B00605072 /* boards */ = {
+		8BFE396C22946A9B00605072 /* levels */ = {
 			isa = PBXGroup;
 			children = (
 				8BFE396F22946B9D00605072 /* level1.json */,
 				8B19F25322A753B30030BB1E /* level2.json */,
 			);
-			path = boards;
+			path = levels;
 			sourceTree = "<group>";
 		};
 		8BFE3971229483EF00605072 /* viewControllers */ = {
@@ -365,8 +376,9 @@
 				8BFE395F229446F500605072 /* BoardCell.swift in Sources */,
 				8B19F25222A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift in Sources */,
 				8BFE39892296E52800605072 /* WallCellView.swift in Sources */,
+				8B194D9422B2F5EF00B5A74C /* BundleLevelLoader.swift in Sources */,
 				8BFE39752295911600605072 /* EmptyCellView.swift in Sources */,
-				8B194D9222B1B2EB00B5A74C /* BundleLevelLoader.swift in Sources */,
+				8B194D9222B1B2EB00B5A74C /* LevelLoader.swift in Sources */,
 				8BFE3966229446F500605072 /* gameProtocols.swift in Sources */,
 				8BFE3960229446F500605072 /* Board.swift in Sources */,
 				8BFE397B229592CE00605072 /* MirrorCellView.swift in Sources */,

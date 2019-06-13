@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Mirror: GameElement, Flipable {
+class Mirror: GameElement, Rotatable {
     var direction: pointingDirection
     
     init?(jsonElement:Dictionary<String, Any>) {

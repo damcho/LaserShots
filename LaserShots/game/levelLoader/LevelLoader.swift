@@ -8,41 +8,38 @@
 
 import Foundation
 
-class BundleLevelLoader  {
+class LevelLoader  {
     
     var delegate:BoardLoaderDelegate?
     private var width:Int = 0
     private var height:Int = 0
+    private let levelLoader:LaserShotsLevelLoader = BundleLevelLoader()
     
     func loadBoard(name: String, actionHandler: @escaping () -> () ) {
-        guard let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "json") else {
-            return
-        }
-        guard let data = NSData(contentsOfFile: path) else {
-            return
-        }
-        
-        guard let Jsonboard = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? Dictionary<String, Any> else {
-            return
-        }
-        
-        guard let width = Jsonboard["width"] as? Int else {
-            return
-        }
-        guard let height = Jsonboard["height"] as? Int else {
-            return
-        }
-        self.width = width
-        self.height = height
-        
-        guard let gameElementsJsonRep = Jsonboard["gameElements"] as? Array<Dictionary<String, Any>> else {
-            return
-        }
-        let boardCells = self.createEmptyBoard()
-        guard let laserGunCell = self.populateBoard(board:boardCells, elements:gameElementsJsonRep, handler:actionHandler ) else {
-            return
-        }
-        self.delegate?.levelLoaded(board: boardCells, laserGun: laserGunCell)
+
+        self.levelLoader.loadLevel(name: name, levelLoadedHandler: {[unowned self] (data) ->() in
+            guard let Jsonboard = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? Dictionary<String, Any> else {
+                return
+            }
+            
+            guard let width = Jsonboard["width"] as? Int else {
+                return
+            }
+            guard let height = Jsonboard["height"] as? Int else {
+                return
+            }
+            self.width = width
+            self.height = height
+            
+            guard let gameElementsJsonRep = Jsonboard["gameElements"] as? Array<Dictionary<String, Any>> else {
+                return
+            }
+            let boardCells = self.createEmptyBoard()
+            guard let laserGunCell = self.populateBoard(board:boardCells, elements:gameElementsJsonRep, handler:actionHandler ) else {
+                return
+            }
+            self.delegate?.levelLoaded(board: boardCells, laserGun: laserGunCell)
+        })
     }
     
     private func populateBoard(board:[[BoardCell]], elements:Array<Dictionary<String, Any>>, handler: @escaping () -> ()) -> BoardCell? {
