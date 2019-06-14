@@ -19,7 +19,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zve-GX-eto">
                             <rect key="frame" x="0.0" y="0.0" width="120" height="51"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.1324024821" green="0.1094454963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CZ-KE-oUp">
                             <rect key="frame" x="55" y="51" width="10" height="51"/>
@@ -29,7 +29,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="6CZ-KE-oUp" firstAttribute="height" secondItem="Zve-GX-eto" secondAttribute="height" id="0Bm-Ki-YFS"/>
                         <constraint firstAttribute="trailing" secondItem="Zve-GX-eto" secondAttribute="trailing" id="5DN-Hm-3mO"/>
@@ -40,7 +40,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="1QL-Re-Yo6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0cS-fB-LXa"/>
                 <constraint firstAttribute="bottom" secondItem="1QL-Re-Yo6" secondAttribute="bottom" id="bno-Lz-E7z"/>
@@ -54,7 +54,7 @@
                 <outlet property="gameElementContainerView" destination="1QL-Re-Yo6" id="Aqa-pQ-wSW"/>
                 <outlet property="laserView" destination="6CZ-KE-oUp" id="0FC-ng-ZuK"/>
             </connections>
-            <point key="canvasLocation" x="-170" y="5"/>
+            <point key="canvasLocation" x="-171.01449275362319" y="4.6875"/>
         </view>
     </objects>
 </document>

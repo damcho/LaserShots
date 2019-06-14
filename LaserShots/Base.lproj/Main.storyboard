@@ -188,9 +188,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lasers" translatesAutoresizingMaskIntoConstraints="NO" id="YVX-Va-1Da">
+                                <rect key="frame" x="0.0" y="24" width="386" height="980"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="space2" translatesAutoresizingMaskIntoConstraints="NO" id="8PA-31-FGO">
+                                <rect key="frame" x="386" y="24" width="980" height="980"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-de-dfd">
                                 <rect key="frame" x="386" y="24" width="980" height="980"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sO6-de-dfd" secondAttribute="height" multiplier="1:1" id="BSq-Ys-roI"/>
                                 </constraints>
@@ -216,34 +222,42 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser Shots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-MW-Jkd">
-                                <rect key="frame" x="5" y="58" width="376" height="43"/>
+                                <rect key="frame" x="5" y="30" width="376" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4z-N4-lwp">
-                                <rect key="frame" x="148" y="141" width="90" height="61"/>
+                                <rect key="frame" x="148" y="113" width="90" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="1Tm-vb-3e4"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="9k4-05-4tH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="onStartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0xw-Ra-xPP"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.044063141351313131" green="0.095899508262090552" blue="0.66970935880829008" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="sO6-de-dfd" firstAttribute="leading" secondItem="YVX-Va-1Da" secondAttribute="trailing" id="3FT-lz-6al"/>
                             <constraint firstItem="Y4z-N4-lwp" firstAttribute="top" secondItem="fxf-MW-Jkd" secondAttribute="bottom" constant="40" id="6DF-4k-Bs4"/>
+                            <constraint firstItem="MOb-wp-iVH" firstAttribute="bottom" secondItem="YVX-Va-1Da" secondAttribute="bottom" id="6fS-Ur-lSM"/>
+                            <constraint firstItem="MOb-wp-iVH" firstAttribute="trailing" secondItem="8PA-31-FGO" secondAttribute="trailing" id="CQR-aZ-Rz3"/>
+                            <constraint firstItem="YVX-Va-1Da" firstAttribute="top" secondItem="MOb-wp-iVH" secondAttribute="top" id="DMT-af-n4U"/>
                             <constraint firstItem="fxf-MW-Jkd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="FF6-x0-63b"/>
+                            <constraint firstItem="8PA-31-FGO" firstAttribute="height" secondItem="sO6-de-dfd" secondAttribute="height" id="FSO-bi-MC1"/>
                             <constraint firstItem="MOb-wp-iVH" firstAttribute="bottom" secondItem="sO6-de-dfd" secondAttribute="bottom" id="FuX-7H-cBN"/>
                             <constraint firstItem="MOb-wp-iVH" firstAttribute="trailing" secondItem="sO6-de-dfd" secondAttribute="trailing" id="QcN-sX-vs8"/>
+                            <constraint firstItem="8PA-31-FGO" firstAttribute="width" secondItem="sO6-de-dfd" secondAttribute="width" id="dbe-ew-aWt"/>
                             <constraint firstItem="fxf-MW-Jkd" firstAttribute="centerX" secondItem="Y4z-N4-lwp" secondAttribute="centerX" id="f4j-SF-Fnm"/>
                             <constraint firstItem="MOb-wp-iVH" firstAttribute="top" secondItem="sO6-de-dfd" secondAttribute="top" id="fYZ-If-66t"/>
+                            <constraint firstItem="YVX-Va-1Da" firstAttribute="leading" secondItem="MOb-wp-iVH" secondAttribute="leading" id="gXY-dZ-2Ed"/>
                             <constraint firstItem="sO6-de-dfd" firstAttribute="leading" secondItem="fxf-MW-Jkd" secondAttribute="trailing" constant="5" id="i5a-O9-skw"/>
-                            <constraint firstItem="fxf-MW-Jkd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="58" id="rd6-yw-Rly"/>
+                            <constraint firstItem="fxf-MW-Jkd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="rd6-yw-Rly"/>
+                            <constraint firstItem="8PA-31-FGO" firstAttribute="top" secondItem="MOb-wp-iVH" secondAttribute="top" id="w9j-eL-TPP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MOb-wp-iVH"/>
                     </view>
@@ -261,7 +275,9 @@
         <image name="blackHole" width="112" height="90"/>
         <image name="laserDestination" width="72" height="82"/>
         <image name="laserGun" width="88" height="90"/>
+        <image name="lasers" width="413" height="606"/>
         <image name="mirror" width="74" height="62"/>
+        <image name="space2" width="1920" height="1200"/>
         <image name="transparentMirror" width="84" height="80"/>
     </resources>
 </document>

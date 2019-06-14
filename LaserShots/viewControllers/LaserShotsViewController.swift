@@ -16,6 +16,10 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     var boardCells:[BoardCell] = []
     var cellsPerRow = 0
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.gameBoard.isUserInteractionEnabled = false
