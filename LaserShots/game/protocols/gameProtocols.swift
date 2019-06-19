@@ -27,7 +27,7 @@ enum pointingDirection:String {
     case none
 }
 
-protocol BoardLoaderDelegate {
+protocol BoardLoaderDelegate: class {
     func levelLoaded(board:[[BoardCell]], laserGun:BoardCell)
 }
 

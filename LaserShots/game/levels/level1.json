@@ -1,6 +1,6 @@
 {
-    "width": 10,
-    "height": 10,
+    "width": 12,
+    "height": 12,
     "gameElements": [{
         "type": "laserGun",
         "x": 1,
@@ -88,7 +88,7 @@
     },
     {
         "type": "laserDestination",
-        "x": 11,
+        "x": 13,
         "y": 7,
         "direction": "left"
     },

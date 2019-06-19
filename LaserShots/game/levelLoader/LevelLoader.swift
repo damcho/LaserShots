@@ -10,7 +10,7 @@ import Foundation
 
 class LevelLoader  {
     
-    var delegate:BoardLoaderDelegate?
+    weak var delegate:BoardLoaderDelegate?
     private var width:Int = 0
     private var height:Int = 0
     private let levelLoader:LaserShotsLevelLoader = BundleLevelLoader()

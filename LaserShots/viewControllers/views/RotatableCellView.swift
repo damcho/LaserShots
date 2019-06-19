@@ -11,6 +11,7 @@ import UIKit
 class RotatableCellView : LaserShotsBaseCellView {
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
     }
     
