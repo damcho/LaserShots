@@ -8,17 +8,12 @@
 
 import UIKit
 
-class TransparentMirrorCellView: LaserShotsBaseCellView {
+class TransparentMirrorCellView: RotatableCellView {
     
     @IBOutlet weak var horizontalLaserBeam1: UIView!
     @IBOutlet weak var horizontalLaserBeam2: UIView!
     @IBOutlet weak var verticalLaserBeam1: UIView!
     @IBOutlet weak var verticalLaserBeam2: UIView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
-    }
     
     override func setupView() {
         super.setupView()
@@ -66,13 +61,4 @@ class TransparentMirrorCellView: LaserShotsBaseCellView {
             }
         }
     }
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        guard let rotatingView = self.gameElementContainerView else {
-            return
-        }
-        rotatingView.transform = rotatingView.transform.rotated(by:  .pi / 2)
-        self.gameCell?.onTap()
-    }
-    
 }

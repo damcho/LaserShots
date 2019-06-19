@@ -8,15 +8,11 @@
 
 import UIKit
 
-class MirrorCellView: LaserShotsBaseCellView {
+class MirrorCellView: RotatableCellView {
   
     @IBOutlet weak var laserBeam2View: UIView!
     @IBOutlet weak var laserBeam1View: UIView!
     @IBOutlet weak var mirrorView: UIView!
-    
-    override func awakeFromNib() {
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:))))
-    }
     
     override func setupView() {
         super.setupView()
@@ -29,13 +25,4 @@ class MirrorCellView: LaserShotsBaseCellView {
             self?.laserBeam1View.isHidden = !shouldShowLaserBeam
         }
     }
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        guard let rotatingView = self.gameElementContainerView else {
-            return
-        }
-        rotatingView.transform = rotatingView.transform.rotated(by:  .pi / 2)
-        self.gameCell?.onTap()
-    }
-
 }
