@@ -25,4 +25,10 @@ class MirrorCellView: RotatableCellView {
             self?.laserBeam1View.isHidden = !shouldShowLaserBeam
         }
     }
+    
+    @objc override func handleTap(_ sender: UITapGestureRecognizer) {
+        self.laserBeam2View.isHidden = true
+        self.laserBeam1View.isHidden = true
+        super.handleTap(sender)
+    }
 }

@@ -10,7 +10,9 @@ import UIKit
 
 class LaserShotsInstructionsViewController: UIViewController {
 
-    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
     @IBAction func onLetsGoButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let laserShotGameVC = storyboard.instantiateViewController(withIdentifier: "LaserShotsViewController")

@@ -19,7 +19,7 @@ class RotatableCellView : LaserShotsBaseCellView {
         guard let rotatingView = self.gameElementContainerView else {
             return
         }
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+        UIView.animate(withDuration: 0.15, animations: { () -> Void in
             rotatingView.transform = rotatingView.transform.rotated(by:  .pi / 2)
         }) {[weak self] (succeed) -> Void in
             self?.gameCell?.onTap()

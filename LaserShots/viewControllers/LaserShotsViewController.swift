@@ -11,7 +11,7 @@ import UIKit
 class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var gameBoard: UICollectionView!
-    @IBOutlet weak var laserShotsBoard: UIView!
+    
     var laserShotGame:LaserShotsGame?
     var boardCells:[BoardCell] = []
     var cellsPerRow = 0
@@ -53,21 +53,32 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         
     }
     
+    private func animateLevelTransition() {
+        UIView.animate(withDuration: 1, animations: {[weak self] () -> Void in
+            self?.gameBoard.alpha = 0
+        }) {[weak self] (succeed) -> Void in
+            self?.laserShotGame?.nextLevel()
+            UIView.animate(withDuration: 1, animations: {[weak self] () -> Void in
+                self?.gameBoard.alpha = 1
+            })
+        }
+    }
+    
     func gameState(state: gameState) {
         switch state {
         case .nextLevel:
-            let action = UIAlertAction(title: "next level", style: .default, handler: {(action:UIAlertAction) ->() in
-                self.laserShotGame?.nextLevel()
+            let action = UIAlertAction(title: "next level", style: .default, handler: {[weak self](action:UIAlertAction) ->() in
+                self?.animateLevelTransition()
             })
             self.showAlert(title: "YEAHH", msg: "You passed to the next level", action: action)
         case .gameWon:
-            let action = UIAlertAction(title: "Main screen", style: .default, handler: {(action:UIAlertAction) ->() in
-                self.navigationController?.popViewController(animated: true)
+            let action = UIAlertAction(title: "Main screen", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
+                self?.navigationController?.popViewController(animated: true)
             })
             self.showAlert(title: "YEAHH", msg: "You Finished all the levels", action: action)
         case .gameLost:
-            let action = UIAlertAction(title: "restart", style: .default, handler: {(action:UIAlertAction) ->() in
-                self.laserShotGame?.restartLevel()
+            let action = UIAlertAction(title: "restart", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
+                self?.laserShotGame?.restartLevel()
             })
             self.showAlert(title: "Upss", msg: "You Lost", action: action)
         }

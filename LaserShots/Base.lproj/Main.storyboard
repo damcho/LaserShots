@@ -32,35 +32,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lasers" translatesAutoresizingMaskIntoConstraints="NO" id="Dqr-WI-Gsy">
+                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFz-Ec-11N">
                                 <rect key="frame" x="50" y="232" width="1266" height="217"/>
                                 <string key="text">Shoot the laser gun and reflect the laser beam by tapping on a mirror and rotating it clockwise until you reach the laser destination in red. Beware of the tblack holes that pull everything in!!.. even light</string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser destination: Laser beam shot by the laser gun should reach this game element" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TP8-ZZ-Gl4">
                                 <rect key="frame" x="675.5" y="593" width="670.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mirror: reflects a laser beam 90º to the correspongin angle to where it is pointing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oet-AR-7T2">
                                 <rect key="frame" x="675.5" y="684" width="670.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TransparentMirror: Similar to the mirror but it also lets the laser beam through the mirror" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lm8-WX-LAr">
                                 <rect key="frame" x="675.5" y="775" width="670.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trap: Absorbs any Laser beam that reaches it and the game is over" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SC3-Nx-XAK">
                                 <rect key="frame" x="675.5" y="866" width="670.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cva-oH-9op">
@@ -81,7 +84,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="WLE-D2-CEZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="51"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="laserGun" translatesAutoresizingMaskIntoConstraints="NO" id="IAd-ld-xCr">
@@ -106,11 +109,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Laser Gun: will shoot a beam of laser" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qnc-aw-C5H">
                                 <rect key="frame" x="675.5" y="502" width="670.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.044063141350000001" green="0.095899508260000002" blue="0.66970935880000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="CFz-Ec-11N" secondAttribute="trailing" constant="50" id="0eJ-4m-Blb"/>
                             <constraint firstItem="IAd-ld-xCr" firstAttribute="centerY" secondItem="klA-1H-j3F" secondAttribute="centerY" id="1x4-VJ-3XC"/>
@@ -120,6 +123,7 @@
                             <constraint firstItem="qnc-aw-C5H" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="trailing" constant="10" id="6VV-fD-lBZ"/>
                             <constraint firstItem="qnc-aw-C5H" firstAttribute="centerY" secondItem="IAd-ld-xCr" secondAttribute="centerY" id="6WL-dp-NqV"/>
                             <constraint firstItem="8M1-tp-phg" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="leading" id="6tE-sh-rNJ"/>
+                            <constraint firstItem="Dqr-WI-Gsy" firstAttribute="top" secondItem="5Vf-Xq-jBg" secondAttribute="top" id="7R7-mk-f1F"/>
                             <constraint firstItem="8M1-tp-phg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Atq-4g-nWK" secondAttribute="bottom" constant="5" id="AYQ-9c-H31"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="SC3-Nx-XAK" secondAttribute="trailing" constant="20" id="B4F-cD-M08"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="leading" secondItem="TP8-ZZ-Gl4" secondAttribute="leading" id="BGf-lT-7eE"/>
@@ -133,6 +137,7 @@
                             <constraint firstItem="A4u-Rx-4fQ" firstAttribute="centerX" secondItem="5Vf-Xq-jBg" secondAttribute="centerX" id="Hr4-D8-AwC"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="bottom" secondItem="cva-oH-9op" secondAttribute="bottom" constant="5" id="JCg-2S-iFA"/>
                             <constraint firstItem="8M1-tp-phg" firstAttribute="width" secondItem="IAd-ld-xCr" secondAttribute="width" id="KO1-0j-kBP"/>
+                            <constraint firstItem="5Vf-Xq-jBg" firstAttribute="bottom" secondItem="Dqr-WI-Gsy" secondAttribute="bottom" id="Kml-ip-xoN"/>
                             <constraint firstItem="CFz-Ec-11N" firstAttribute="leading" secondItem="5Vf-Xq-jBg" secondAttribute="leading" constant="50" id="Mk7-vn-lvG"/>
                             <constraint firstItem="TP8-ZZ-Gl4" firstAttribute="centerY" secondItem="P9E-GX-1Yv" secondAttribute="centerY" id="NY5-IR-kxe"/>
                             <constraint firstItem="OVI-mn-UGE" firstAttribute="leading" secondItem="IAd-ld-xCr" secondAttribute="leading" id="NcM-2N-cxL"/>
@@ -151,10 +156,12 @@
                             <constraint firstItem="oet-AR-7T2" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="dha-Fo-bPe"/>
                             <constraint firstItem="SC3-Nx-XAK" firstAttribute="centerY" secondItem="8M1-tp-phg" secondAttribute="centerY" id="dqA-Bb-1I5"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TP8-ZZ-Gl4" secondAttribute="bottom" id="fTH-sF-AZV"/>
+                            <constraint firstItem="Dqr-WI-Gsy" firstAttribute="leading" secondItem="5Vf-Xq-jBg" secondAttribute="leading" id="fTM-iY-5gB"/>
                             <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="oet-AR-7T2" secondAttribute="trailing" constant="20" id="fWh-5d-VNU"/>
                             <constraint firstItem="oet-AR-7T2" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="hCj-qZ-ZzY"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="width" secondItem="TP8-ZZ-Gl4" secondAttribute="width" id="iLR-yc-bsw"/>
                             <constraint firstItem="lm8-WX-LAr" firstAttribute="centerY" secondItem="Atq-4g-nWK" secondAttribute="centerY" id="jEF-KQ-ocP"/>
+                            <constraint firstItem="5Vf-Xq-jBg" firstAttribute="trailing" secondItem="Dqr-WI-Gsy" secondAttribute="trailing" id="kD9-Tt-zJA"/>
                             <constraint firstItem="Atq-4g-nWK" firstAttribute="height" secondItem="IAd-ld-xCr" secondAttribute="height" id="kWg-Dx-Q1v"/>
                             <constraint firstItem="IAd-ld-xCr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5Vf-Xq-jBg" secondAttribute="leading" constant="20" id="mFr-Nv-qlH"/>
                             <constraint firstItem="CFz-Ec-11N" firstAttribute="top" secondItem="A4u-Rx-4fQ" secondAttribute="bottom" constant="8" id="o5Z-Cg-wFm"/>
@@ -263,7 +270,6 @@
                     </view>
                     <connections>
                         <outlet property="gameBoard" destination="sO6-de-dfd" id="0ry-hz-ovN"/>
-                        <outlet property="laserShotsBoard" destination="sO6-de-dfd" id="WcJ-7p-g2i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
