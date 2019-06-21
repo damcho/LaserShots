@@ -65,30 +65,35 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     }
     
     func gameState(state: gameState) {
-        var title:String!
-        var msg:String!
-        var action:UIAlertAction!
+        var title:String
+        var actionTitle:String
+        var msg:String
+        var action:(UIAlertAction) -> Void
         switch state {
         case .nextLevel:
-            action = UIAlertAction(title: "next level", style: .default, handler: {[weak self](action:UIAlertAction) ->() in
+            action = {[weak self](action:UIAlertAction) ->() in
                 self?.animateLevelTransition()
-            })
+            }
+            actionTitle = "next level"
             msg = "YEAHH"
             title = "You passed to the next level"
         case .gameWon:
-            action = UIAlertAction(title: "Main screen", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
+            action = {[weak self](action:UIAlertAction) ->() in
                 self?.navigationController?.popViewController(animated: true)
-            })
+            }
+            actionTitle = "Main screen"
             msg = "YEAHH"
             title = "You Finished all the levels"
         case .gameLost:
-            action = UIAlertAction(title: "restart", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
+            action = {[weak self](action:UIAlertAction) ->() in
                 self?.laserShotGame?.restartLevel()
-            })
+            }
+            actionTitle = "Restart level"
             msg = "You lost"
             title = "Ups"
         }
-        self.showAlert(title: title, msg: msg, action: action)
+        
+        self.showAlert(title: title, msg: msg, action: UIAlertAction(title:actionTitle , style: .default, handler:action))
     }
     
     func levelLoaded() {
