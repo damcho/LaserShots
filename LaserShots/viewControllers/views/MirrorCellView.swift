@@ -17,18 +17,21 @@ class MirrorCellView: RotatableCellView {
     override func setupView() {
         super.setupView()
         self.mirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
-        self.laserBeam2View.isHidden = true
-        self.laserBeam1View.isHidden = true
+        self.shouldShowLaserBeam(false)
+
         self.gameCell?.onLaserBeamChanged = {[weak self] (direction:pointingDirection, reflections:[pointingDirection]) -> () in
             let shouldShowLaserBeam = !reflections.isEmpty || self?.gameCell?.isReflecting() ?? false
-            self?.laserBeam2View.isHidden = !shouldShowLaserBeam
-            self?.laserBeam1View.isHidden = !shouldShowLaserBeam
+            self?.shouldShowLaserBeam( shouldShowLaserBeam)
         }
     }
     
+    private func shouldShowLaserBeam(_ should:Bool) {
+        self.laserBeam2View.isHidden = !should
+        self.laserBeam1View.isHidden = !should
+    }
+    
     @objc override func handleTap(_ sender: UITapGestureRecognizer) {
-        self.laserBeam2View.isHidden = true
-        self.laserBeam1View.isHidden = true
+        self.shouldShowLaserBeam(false)
         super.handleTap(sender)
     }
 }

@@ -65,23 +65,30 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     }
     
     func gameState(state: gameState) {
+        var title:String!
+        var msg:String!
+        var action:UIAlertAction!
         switch state {
         case .nextLevel:
-            let action = UIAlertAction(title: "next level", style: .default, handler: {[weak self](action:UIAlertAction) ->() in
+            action = UIAlertAction(title: "next level", style: .default, handler: {[weak self](action:UIAlertAction) ->() in
                 self?.animateLevelTransition()
             })
-            self.showAlert(title: "YEAHH", msg: "You passed to the next level", action: action)
+            msg = "YEAHH"
+            title = "You passed to the next level"
         case .gameWon:
-            let action = UIAlertAction(title: "Main screen", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
+            action = UIAlertAction(title: "Main screen", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
                 self?.navigationController?.popViewController(animated: true)
             })
-            self.showAlert(title: "YEAHH", msg: "You Finished all the levels", action: action)
+            msg = "YEAHH"
+            title = "You Finished all the levels"
         case .gameLost:
-            let action = UIAlertAction(title: "restart", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
+            action = UIAlertAction(title: "restart", style: .default, handler: {[weak self] (action:UIAlertAction) ->() in
                 self?.laserShotGame?.restartLevel()
             })
-            self.showAlert(title: "Upss", msg: "You Lost", action: action)
+            msg = "You lost"
+            title = "Ups"
         }
+        self.showAlert(title: title, msg: msg, action: action)
     }
     
     func levelLoaded() {
