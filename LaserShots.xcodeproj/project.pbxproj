@@ -12,6 +12,7 @@
 		8B194D9822BAB49500B5A74C /* RotatableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B194D9722BAB49500B5A74C /* RotatableCellView.swift */; };
 		8B19F25222A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */; };
 		8B19F25422A753B30030BB1E /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F25322A753B30030BB1E /* level2.json */; };
+		8B8313CE2490E146005C119C /* LevelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8313CD2490E146005C119C /* LevelLoaderTests.swift */; };
 		8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */; };
 		8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */; };
 		8BE846B122A1F32A00A40AF1 /* LaserTrapCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */; };
@@ -64,6 +65,7 @@
 		8B194D9722BAB49500B5A74C /* RotatableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatableCellView.swift; sourceTree = "<group>"; };
 		8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsInstructionsViewController.swift; sourceTree = "<group>"; };
 		8B19F25322A753B30030BB1E /* level2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
+		8B8313CD2490E146005C119C /* LevelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLoaderTests.swift; sourceTree = "<group>"; };
 		8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrap.swift; sourceTree = "<group>"; };
 		8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrapCellView.swift; sourceTree = "<group>"; };
 		8BE846AF22A1F32A00A40AF1 /* LaserTrapCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaserTrapCellView.xib; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				8BFE394A229446D000605072 /* LaserShotsTests.swift */,
 				8BFE394C229446D000605072 /* Info.plist */,
+				8B8313CD2490E146005C119C /* LevelLoaderTests.swift */,
 			);
 			path = LaserShotsTests;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BFE394B229446D000605072 /* LaserShotsTests.swift in Sources */,
+				8B8313CE2490E146005C119C /* LevelLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
