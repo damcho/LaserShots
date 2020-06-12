@@ -24,7 +24,6 @@
 		8BFE393B229446CE00605072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE3939229446CE00605072 /* Main.storyboard */; };
 		8BFE393D229446CF00605072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE393C229446CF00605072 /* Assets.xcassets */; };
 		8BFE3940229446CF00605072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BFE393E229446CF00605072 /* LaunchScreen.storyboard */; };
-		8BFE394B229446D000605072 /* LaserShotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE394A229446D000605072 /* LaserShotsTests.swift */; };
 		8BFE395F229446F500605072 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3956229446F500605072 /* BoardCell.swift */; };
 		8BFE3960229446F500605072 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3957229446F500605072 /* Board.swift */; };
 		8BFE3961229446F500605072 /* LaserGun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE3958229446F500605072 /* LaserGun.swift */; };
@@ -80,7 +79,6 @@
 		8BFE393F229446CF00605072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BFE3941229446CF00605072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BFE3946229446D000605072 /* LaserShotsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaserShotsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BFE394A229446D000605072 /* LaserShotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsTests.swift; sourceTree = "<group>"; };
 		8BFE394C229446D000605072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BFE3956229446F500605072 /* BoardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		8BFE3957229446F500605072 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 		8BFE3949229446D000605072 /* LaserShotsTests */ = {
 			isa = PBXGroup;
 			children = (
-				8BFE394A229446D000605072 /* LaserShotsTests.swift */,
 				8BFE394C229446D000605072 /* Info.plist */,
 				8B8313CD2490E146005C119C /* LevelLoaderTests.swift */,
 			);
@@ -397,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFE394B229446D000605072 /* LaserShotsTests.swift in Sources */,
 				8B8313CE2490E146005C119C /* LevelLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Board :BoardLoaderDelegate{
+public final class Board :BoardLoaderDelegate{
     
     private var laserGunCell:BoardCell?
     private let boardLoader = LevelLoader()

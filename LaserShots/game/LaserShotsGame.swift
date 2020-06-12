@@ -21,6 +21,12 @@ class LaserShotsGame  {
     private var currentLevel:Board?
     weak var delegate:laserShotsDelegate?
     
+    let levelLoader: LaserShotsLevelLoader
+    
+    init(levelLoader: LaserShotsLevelLoader) {
+        self.levelLoader = levelLoader
+    }
+    
     func boardCells() -> [[BoardCell]] {
         guard let boardCells = self.currentLevel?.cells else {
             return []

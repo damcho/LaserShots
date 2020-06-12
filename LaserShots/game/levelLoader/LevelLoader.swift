@@ -8,7 +8,11 @@
 
 import Foundation
 
-class LevelLoader  {
+class LevelLoader: LaserShotsLevelLoader  {
+    func loadLevel(name: String, levelLoadedHandler: (Data) -> ()) {
+        
+    }
+    
     
     weak var delegate:BoardLoaderDelegate?
     private var width:Int = 0

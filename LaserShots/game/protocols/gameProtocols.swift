@@ -19,7 +19,7 @@ enum cellType {
     case LaserTrap
 }
 
-enum pointingDirection:String {
+public enum pointingDirection:String {
     case up
     case down
     case left
@@ -40,7 +40,7 @@ protocol laserShotsDelegate:class {
     func levelLoaded() -> ()
 }
 
-protocol GameElement {
+public protocol GameElement {
     var direction: pointingDirection { get set }
     func reflect(direction: pointingDirection) -> [pointingDirection]
 }
