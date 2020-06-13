@@ -124,11 +124,23 @@ class LevelLoaderTests: XCTestCase {
         })
     }
     
-    func test_returnsArrayOfGameElementsOnValidJSON() {
+    func test_returnsValidGameElementsOnlyWhenJSONContainsInvalidElement() {
+        let (sut, loaderClient) = makeSUT()
+        let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
+        let invalidLaserGun2JSON = ["type": "LaserGun", "x": 1, "y": 1,"direction": "wrong direction"] as [String : Any]
+        let levelWithInvalidGameElement = ["width": 2, "height": 2, "gameElements":[laserJSON1, invalidLaserGun2JSON]] as [String : Any]
+        let levelData = try! JSONSerialization.data(withJSONObject: levelWithInvalidGameElement)
+
+        expectSuccessFor(sut: sut, toCompleteWith: [laserGun1], when: {
+            loaderClient.completeWithData(data: levelData)
+        })
+    }
+    
+    func test_returnsArrayOfGameElementsOnValidJSONLevel() {
         let (sut, loaderClient) = makeSUT()
         let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
         let (mirror1, mirrorJSON1) = makeGameElement("Mirror", xPos: 1, yPos: 1, pointing: "left")
-
+        
         let levelJSON = ["width": 2, "height": 2, "gameElements":[laserJSON1, mirrorJSON1]] as [String : Any]
         let levelData = try! JSONSerialization.data(withJSONObject: levelJSON)
         
