@@ -74,8 +74,8 @@ class LevelLoaderTests: XCTestCase {
     private func makeGameElement(_ type: String, xPos: Int, yPos: Int, pointing: String) -> (GameElement, [String: Any]) {
         let gameElementJSON = ["type": type, "x": xPos, "y": yPos,"direction": pointing] as [String : Any]
         
-        let elementDirection = pointingDirection(rawValue: pointing)!
-        let elementType = cellType(rawValue: type)!
+        let elementDirection = PointingDirection(rawValue: pointing)!
+        let elementType = CellType(rawValue: type)!
         let gameElement: GameElement
         switch elementType {
         case .LaserGun:

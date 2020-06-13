@@ -9,9 +9,9 @@
 import Foundation
 
 class Laser {
-    var direction: pointingDirection
+    var direction: PointingDirection
     
-    init(direction:pointingDirection) {
+    init(direction:PointingDirection) {
         self.direction = direction
     }
 }

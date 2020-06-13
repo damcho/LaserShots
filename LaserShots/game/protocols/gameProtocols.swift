@@ -9,7 +9,7 @@
 import Foundation
 
 
-public enum cellType: String {
+public enum CellType: String {
     case LaserGun
     case LaserDestination
     case Empty
@@ -19,7 +19,7 @@ public enum cellType: String {
     case LaserTrap
 }
 
-public enum pointingDirection:String {
+public enum PointingDirection:String {
     case up
     case down
     case left
@@ -37,9 +37,9 @@ protocol laserShotsDelegate:class {
 }
 
 public protocol Reflectable {
-    var direction: pointingDirection { get set }
+    var direction: PointingDirection { get set }
 
-    func reflect(direction: pointingDirection) -> [pointingDirection]
+    func reflect(direction: PointingDirection) -> [PointingDirection]
 }
 
 public protocol GameElement: Reflectable {

@@ -11,19 +11,19 @@ import Foundation
 public final class LaserGun: GameElement {
     public var x: Int
     public var y: Int
-    public var direction: pointingDirection = .none
+    public var direction: PointingDirection = .none
     
-    public init(direction: pointingDirection, x: Int = 0, y: Int = 0) {
+    public init(direction: PointingDirection, x: Int = 0, y: Int = 0) {
         self.direction = direction
         self.x = x
         self.y = y
     }
     
-    func shoot() -> pointingDirection {
+    func shoot() -> PointingDirection {
         return self.direction
     }
     
-    public func reflect(direction: pointingDirection) -> [pointingDirection] {
+    public func reflect(direction: PointingDirection) -> [PointingDirection] {
         return []
     }
 }

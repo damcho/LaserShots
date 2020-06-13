@@ -8,12 +8,11 @@
 
 import Foundation
 
-public final class Board: BoardLoaderDelegate{
+public final class Board {
     
     private var laserGunCell:BoardCell?
     var boardCells: [[BoardCell]] = []
     var onGameStateChanged:((gameState) -> ())?
-    var onLevelLoaded:(() -> ())?
     
     private let width: Int
     private let height: Int
@@ -25,7 +24,6 @@ public final class Board: BoardLoaderDelegate{
         self.createEmptyBoard()
         self.populateBoard(elements: elements)
     }
-    
     
     private func createEmptyBoard() {
         var boardCells:[[BoardCell]] = []
@@ -57,13 +55,6 @@ public final class Board: BoardLoaderDelegate{
             }
         }
     }
-    
-    
-    func levelLoaded(board:[[BoardCell]], laserGun:BoardCell) {
-        self.boardCells = board
-        self.laserGunCell = laserGun
-        self.onLevelLoaded?()
-    }
 
     private func clearBoard() {
         for cellsArray in self.boardCells {
@@ -73,7 +64,7 @@ public final class Board: BoardLoaderDelegate{
         }
     }
     
-    private func getNextCellfor(direction:pointingDirection, currentCell:BoardCell) -> BoardCell? {
+    private func getNextCellfor(direction:PointingDirection, currentCell:BoardCell) -> BoardCell? {
         switch direction {
         case .up:
             return self.boardCells[currentCell.i][currentCell.j - 1]
@@ -88,7 +79,7 @@ public final class Board: BoardLoaderDelegate{
         }
     }
     
-    private func shootNext(directions:[pointingDirection], currentCell:BoardCell) {
+    private func shootNext(directions:[PointingDirection], currentCell:BoardCell) {
         
         if currentCell.reflectableElement is LaserTrap {
             self.onGameStateChanged?(.gameLost)

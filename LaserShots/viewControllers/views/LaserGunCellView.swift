@@ -15,7 +15,7 @@ class LaserGunCellView: LaserShotsBaseCellView {
     override func setupView() {
         super.setupView()
         self.laserView.isHidden = true
-        self.gameCell?.onLaserBeamChanged = { (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+        self.gameCell?.onLaserBeamChanged = { (direction:PointingDirection, reflections:[PointingDirection]) -> () in
             if let gameCell = self.gameCell {
                 self.laserView.isHidden = !gameCell.isReflecting()
             }

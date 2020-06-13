@@ -117,7 +117,7 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         let boardCell = self.boardCells[indexPath.row]
         var cellView:LaserShotsBaseCellView
         let reuseIdentifier = String(describing: boardCell.reflectableElement.self) + "CellView"
-      
+        print(reuseIdentifier )
         cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
         
         cellView.gameCell = boardCell

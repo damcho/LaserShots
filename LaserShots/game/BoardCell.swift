@@ -12,19 +12,17 @@ class BoardCell {
     
     let i:Int
     let j:Int
-    var onLaserBeamChanged: ((pointingDirection, [pointingDirection]) -> ())?
+    var onLaserBeamChanged: ((PointingDirection, [PointingDirection]) -> ())?
     var onCellTapped: (() -> ())?
     var reflectableElement: Reflectable? 
     var laserBeam:Laser?
   
-    
     init(i:Int, j:Int) {
         self.i = i
         self.j = j
     }
     
-    
-    func getDirection() -> pointingDirection {
+    func getDirection() -> PointingDirection {
         return self.reflectableElement?.direction ?? .none
     }
     
@@ -32,7 +30,7 @@ class BoardCell {
         return self.laserBeam != nil
     }
     
-    func getLaserReflection(from:pointingDirection = .none) -> [pointingDirection] {
+    func getLaserReflection(from:PointingDirection = .none) -> [PointingDirection] {
         var reflectDirections = [from]
     
         if let gameElement = self.reflectableElement {
@@ -59,7 +57,7 @@ class BoardCell {
         self.onLaserBeamChanged?(.none, [])
     }
     
-    func getInitialShotDirection() -> pointingDirection {
+    func getInitialShotDirection() -> PointingDirection {
         guard let laserGun = (self.reflectableElement as? LaserGun) else {
             return .none
         }

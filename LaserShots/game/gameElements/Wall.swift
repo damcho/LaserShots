@@ -9,9 +9,9 @@
 import Foundation
 
 class Wall: Reflectable {
-    var direction: pointingDirection = .none
+    var direction: PointingDirection = .none
     
-    func reflect(direction: pointingDirection) -> [pointingDirection] {
+    func reflect(direction: PointingDirection) -> [PointingDirection] {
         return [self.direction]
     }
 }

@@ -26,7 +26,7 @@ class TransparentMirrorCellView: RotatableCellView {
         }
         rotatingView.transform = rotatingView.transform.rotated(by:  -.pi / 4)
 
-        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:pointingDirection, reflections:[pointingDirection]) -> () in
+        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
             guard let gameCell = self?.gameCell else {
                 return
             }
