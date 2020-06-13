@@ -31,27 +31,24 @@ protocol BoardLoaderDelegate: class {
     func levelLoaded(board:[[BoardCell]], laserGun:BoardCell)
 }
 
-
-
 protocol laserShotsDelegate:class {
     func gameState(state:gameState) ->()
     func levelLoaded() -> ()
 }
 
-public protocol GameElement {
-    var x: Int { get set }
-    var y: Int { get set }
-
+public protocol Reflectable {
     var direction: pointingDirection { get set }
+
     func reflect(direction: pointingDirection) -> [pointingDirection]
 }
 
-extension GameElement {
-    var isRotatable: Bool { return self is Rotatable }
+public protocol GameElement: Reflectable {
+    var x: Int { get set }
+    var y: Int { get set }
 }
 
-protocol Rotatable {
-
+protocol Rotatable: GameElement {
+    mutating func rotate()
 }
 
 extension Rotatable where Self:GameElement {

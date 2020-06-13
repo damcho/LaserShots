@@ -8,9 +8,7 @@
 
 import Foundation
 
-class Wall: GameElement {
-    var x: Int = -1
-    var y: Int = -1
+class Wall: Reflectable {
     var direction: pointingDirection = .none
     
     func reflect(direction: pointingDirection) -> [pointingDirection] {

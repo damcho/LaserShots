@@ -38,7 +38,7 @@ public final class Board: BoardLoaderDelegate{
                     j == 0 ||
                     i == height+1 ||
                     i == 0{
-                    boardCell.gameElement = Wall()
+                    boardCell.reflectableElement = Wall()
                 }
             }
             boardCells.append(cellColumn)
@@ -50,7 +50,7 @@ public final class Board: BoardLoaderDelegate{
         
         for gameElement in elements {
             if gameElement.x <= self.width+1 && gameElement.y <= self.height+1 {
-                boardCells[gameElement.x][gameElement.y].gameElement = gameElement
+                boardCells[gameElement.x][gameElement.y].reflectableElement = gameElement
             }
             if gameElement is LaserGun {
                 laserGunCell = boardCells[gameElement.x][gameElement.y]
@@ -90,10 +90,10 @@ public final class Board: BoardLoaderDelegate{
     
     private func shootNext(directions:[pointingDirection], currentCell:BoardCell) {
         
-        if currentCell.cellType == .LaserTrap {
+        if currentCell.reflectableElement is LaserTrap {
             self.onGameStateChanged?(.gameLost)
             return
-        } else if currentCell.cellType == .LaserDestination{
+        } else if currentCell.reflectableElement is LaserDestination {
             self.onGameStateChanged?(.nextLevel)
             return
         }

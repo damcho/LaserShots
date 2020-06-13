@@ -14,12 +14,7 @@ class BoardCell {
     let j:Int
     var onLaserBeamChanged: ((pointingDirection, [pointingDirection]) -> ())?
     var onCellTapped: (() -> ())?
-    var cellType:cellType = .Empty
-    var gameElement:GameElement? {
-        didSet {
-            self.setupCell()
-        }
-    }
+    var reflectableElement: Reflectable? 
     var laserBeam:Laser?
   
     
@@ -28,29 +23,9 @@ class BoardCell {
         self.j = j
     }
     
-    private func setupCell() {
-        self.setCellType()
-    }
-    
-    
-    func setCellType() {
-        if self.gameElement is LaserGun {
-            cellType = .LaserGun
-        } else if self.gameElement is LaserDestination {
-            cellType = .LaserDestination
-        } else if self.gameElement is Mirror {
-            cellType = .Mirror
-        } else if self.gameElement is Wall{
-            cellType = .Wall
-        } else if self.gameElement is LaserTrap{
-            cellType = .LaserTrap
-        } else if self.gameElement is TransparentMirror{
-            cellType = .TransparentMirror
-        }
-    }
     
     func getDirection() -> pointingDirection {
-        return self.gameElement?.direction ?? .none
+        return self.reflectableElement?.direction ?? .none
     }
     
     func isReflecting () -> Bool {
@@ -60,7 +35,7 @@ class BoardCell {
     func getLaserReflection(from:pointingDirection = .none) -> [pointingDirection] {
         var reflectDirections = [from]
     
-        if let gameElement = self.gameElement {
+        if let gameElement = self.reflectableElement {
             reflectDirections = gameElement.reflect(direction:from)
             if !reflectDirections.isEmpty {
                 self.laserBeam = Laser(direction: from)
@@ -72,8 +47,8 @@ class BoardCell {
     }
     
     func onTap() {
-        if let element = self.gameElement, element.isRotatable {
-            var rotatableElement = element as! Rotatable & GameElement
+        if let element = self.reflectableElement, element is Rotatable {
+            var rotatableElement = element as! Rotatable
             rotatableElement.rotate()
             self.onCellTapped?()
         }
@@ -85,7 +60,7 @@ class BoardCell {
     }
     
     func getInitialShotDirection() -> pointingDirection {
-        guard let laserGun = (self.gameElement as? LaserGun) else {
+        guard let laserGun = (self.reflectableElement as? LaserGun) else {
             return .none
         }
         let laserDirection = laserGun.shoot()

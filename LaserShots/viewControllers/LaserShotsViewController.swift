@@ -116,23 +116,8 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let boardCell = self.boardCells[indexPath.row]
         var cellView:LaserShotsBaseCellView
-        var reuseIdentifier:String
-        switch boardCell.cellType {
-        case .Empty:
-            reuseIdentifier = "EmptyCellView"
-        case .LaserDestination:
-            reuseIdentifier = "LaserDestinationCellView"
-        case .LaserGun:
-            reuseIdentifier = "LaserGunCellView"
-        case .Mirror:
-            reuseIdentifier = "MirrorCellView"
-        case .Wall:
-            reuseIdentifier = "WallCellView"
-        case .LaserTrap:
-            reuseIdentifier = "LaserTrapCellView"
-        case .TransparentMirror:
-            reuseIdentifier = "TransparentMirrorCellView"
-        }
+        let reuseIdentifier = String(describing: boardCell.reflectableElement.self) + "CellView"
+      
         cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
         
         cellView.gameCell = boardCell

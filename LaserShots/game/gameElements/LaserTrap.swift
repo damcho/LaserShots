@@ -9,15 +9,18 @@
 import Foundation
 
 public final class LaserTrap: GameElement {
-    public var x: Int = -1
-    public var y: Int = -1
+    public var x: Int
+    public var y: Int
     public var direction = pointingDirection.none
     
     public init(x: Int, y: Int) {
         self.x = x
         self.y = y
     }
+}
+
+extension LaserTrap: Reflectable {
     public func reflect(direction: pointingDirection) -> [pointingDirection] {
-        return []
+        return [.none]
     }
 }
