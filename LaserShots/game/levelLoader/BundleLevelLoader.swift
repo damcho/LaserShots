@@ -8,9 +8,25 @@
 
 import Foundation
 
-class BundleLevelLoader: LaserShotsLevelLoader {
+public typealias LevelLoaderClientCompletion = (BundleLevelLoaderResult) -> Void
+
+public protocol LevelLoaderClient {
+    func loadLevel(name: String, completion: @escaping LevelLoaderClientCompletion)
+}
+
+public enum BundleLevelLoaderResult {
+    case success(Data)
+    case failure(BundleLoaderError)
+}
+
+public enum BundleLoaderError: Error {
+    case invalidData
+    case unknownError
+}
+
+public final class BundleLevelLoader: LevelLoaderClient {
     
-    func loadLevel(name:String, levelLoadedHandler:(Data) -> ()) {
+    public func loadLevel(name:String, completion: LevelLoaderClientCompletion) {
         guard let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "json") else {
             return
         }
@@ -18,6 +34,6 @@ class BundleLevelLoader: LaserShotsLevelLoader {
         guard let data = try? Data(contentsOf: url )else {
             return
         }
-        levelLoadedHandler(data)
+        completion(.success(data))
     }
 }

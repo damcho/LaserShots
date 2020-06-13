@@ -28,7 +28,7 @@ class LaserShotsGame  {
     }
     
     func boardCells() -> [[BoardCell]] {
-        guard let boardCells = self.currentLevel?.cells else {
+        guard let boardCells = self.currentLevel?.boardCells else {
             return []
         }
         return boardCells
@@ -49,7 +49,7 @@ class LaserShotsGame  {
     
     private func loadLevel() {
         let nextLevelName = self.boardLevelName + "\(self.levelIndex)"
-        self.currentLevel = Board()
+        self.currentLevel = Board(width: 0, height: 0, elements: [])
         self.currentLevel?.onLevelLoaded = { [unowned self] () -> () in
             self.delegate?.levelLoaded()
         }
@@ -66,6 +66,6 @@ class LaserShotsGame  {
             }
         }
         
-        self.currentLevel?.loadBoard(name: nextLevelName)
+    //    self.currentLevel?.loadBoard(name: nextLevelName)
     }
 }

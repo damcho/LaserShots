@@ -31,9 +31,7 @@ protocol BoardLoaderDelegate: class {
     func levelLoaded(board:[[BoardCell]], laserGun:BoardCell)
 }
 
-protocol LaserShotsLevelLoader {
-    func loadLevel(name:String, levelLoadedHandler:(Data) -> ())
-}
+
 
 protocol laserShotsDelegate:class {
     func gameState(state:gameState) ->()
@@ -41,6 +39,9 @@ protocol laserShotsDelegate:class {
 }
 
 public protocol GameElement {
+    var x: Int { get set }
+    var y: Int { get set }
+
     var direction: pointingDirection { get set }
     func reflect(direction: pointingDirection) -> [pointingDirection]
 }

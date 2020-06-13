@@ -10,10 +10,14 @@ import Foundation
 
 
 public final class LaserDestination:GameElement{
+    public var x: Int = -1
+    public var y: Int = -1
     public var direction: pointingDirection
     
-    public init(direction: pointingDirection) {
+     public init(direction: pointingDirection, x: Int, y: Int) {
         self.direction = direction
+        self.x = x
+        self.y = y
     }
     
     init?(jsonElement:Dictionary<String, Any>) {

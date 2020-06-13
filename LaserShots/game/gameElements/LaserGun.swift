@@ -9,10 +9,14 @@
 import Foundation
 
 public final class LaserGun: GameElement {
+    public var x: Int
+    public var y: Int
     public var direction: pointingDirection = .none
     
-    public init(direction: pointingDirection) {
+    public init(direction: pointingDirection, x: Int = 0, y: Int = 0) {
         self.direction = direction
+        self.x = x
+        self.y = y
     }
     
     public convenience init?(jsonElement:Dictionary<String, Any>) {

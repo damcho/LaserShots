@@ -24,7 +24,8 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         super.viewDidLoad()
         self.gameBoard.isUserInteractionEnabled = false
         self.registerNibs()
-        self.laserShotGame = LaserShotsGame(levelLoader: LevelLoader())
+        let levelLoaderClient = BundleLevelLoader()
+        self.laserShotGame = LaserShotsGame(levelLoader: LevelLoader(client: levelLoaderClient))
         self.laserShotGame?.delegate = self
         self.laserShotGame?.nextLevel()
     }

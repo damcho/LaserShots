@@ -8,93 +8,78 @@
 
 import Foundation
 
-class LevelLoader: LaserShotsLevelLoader  {
-    func loadLevel(name: String, levelLoadedHandler: (Data) -> ()) {
-        
+public typealias loaderCompletion = (LevelLoaderResult) -> Void
+
+public enum LevelLoaderResult {
+    case success([GameElement])
+    case failure(Error)
+}
+
+struct CodableGameElement: Codable {
+    let x: Int
+    let y: Int
+    let direction: String
+    let type: String
+}
+
+struct Root: Codable {
+    let width: Int
+    let height: Int
+    let gameElements: [CodableGameElement]
+}
+
+public protocol LaserShotsLevelLoader {
+    func loadBoard(name: String, completion: @escaping loaderCompletion)
+}
+
+public final class LevelLoader: LaserShotsLevelLoader  {
+    private let loaderClient: LevelLoaderClient
+    
+    public init(client: LevelLoaderClient) {
+        self.loaderClient = client
     }
     
-    
-    weak var delegate:BoardLoaderDelegate?
-    private var width:Int = 0
-    private var height:Int = 0
-    private let levelLoader:LaserShotsLevelLoader = BundleLevelLoader()
-    
-    func loadBoard(name: String, actionHandler: @escaping () -> () ) {
-
-        self.levelLoader.loadLevel(name: name, levelLoadedHandler: {[unowned self] (data) ->() in
-            guard let Jsonboard = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? Dictionary<String, Any> else {
-                return
+    public func loadBoard(name: String, completion: @escaping loaderCompletion) {
+        loaderClient.loadLevel(name: name, completion: { result in
+            switch result {
+            case .failure:
+                completion(.failure(NSError(domain: "some error", code: 1)))
+            case .success(let data):
+                guard let root = try? JSONDecoder().decode(Root.self, from: data) else {
+                    completion(.failure(NSError(domain: "invalid data", code: 1)))
+                    return
+                }
+                let gameElements = GameElementsMapper.map(elements: root.gameElements)
+                let levelBoard = Board(width: root.width, height: root.height, elements: gameElements)
+                completion(.success(gameElements))
             }
-            
-            guard let width = Jsonboard["width"] as? Int else {
-                return
-            }
-            guard let height = Jsonboard["height"] as? Int else {
-                return
-            }
-            self.width = width
-            self.height = height
-            
-            guard let gameElementsJsonRep = Jsonboard["gameElements"] as? Array<Dictionary<String, Any>> else {
-                return
-            }
-            let boardCells = self.createEmptyBoard()
-            guard let laserGunCell = self.populateBoard(board:boardCells, elements:gameElementsJsonRep, handler:actionHandler ) else {
-                return
-            }
-            self.delegate?.levelLoaded(board: boardCells, laserGun: laserGunCell)
         })
     }
-    
-    private func populateBoard(board:[[BoardCell]], elements:Array<Dictionary<String, Any>>, handler: @escaping () -> ()) -> BoardCell? {
-        var laserGun:BoardCell?
+}
 
-        for jsonElement in elements {
-            let elementType = jsonElement["type"] as! String
-            let x = jsonElement["x"] as! Int
-            let y = jsonElement["y"] as! Int
-            let gameElement:GameElement?
+class GameElementsMapper {
+    static func map(elements: [CodableGameElement]) -> [GameElement] {
+        return elements.compactMap { (codableElement) in
+            guard let elementDirection = pointingDirection(rawValue: codableElement.direction),
+                let elementType = cellType(rawValue: codableElement.type) else {
+                    return nil
+            }
+            
             switch elementType {
-            case "laserGun":
-                gameElement = LaserGun(jsonElement: jsonElement)
-                laserGun = board[x][y]
-            case "laserDestination":
-                gameElement = LaserDestination(jsonElement: jsonElement)
-            case "Mirror":
-                board[x][y].onCellTapped = handler
-                gameElement = Mirror(jsonElement: jsonElement)
-            case "TransparentMirror":
-                board[x][y].onCellTapped = handler
-                gameElement = TransparentMirror(jsonElement: jsonElement)
-            case "laserTrap":
-                gameElement = LaserTrap()
+            case .LaserGun:
+                return LaserGun(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+            case .LaserDestination:
+                return LaserDestination(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+            case .LaserTrap:
+                return LaserTrap(x: codableElement.x, y: codableElement.y)
+            case .Mirror:
+                return Mirror(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+            case .TransparentMirror:
+                return TransparentMirror(direction: elementDirection, x: codableElement.x, y: codableElement.y)
             default:
                 return nil
             }
-            if gameElement != nil && x <= self.width+1 && y <= self.height+1 {
-                board[x][y].gameElement = gameElement
-            }
         }
-        return laserGun
-    }
-    
-    
-    private func createEmptyBoard() -> [[BoardCell]] {
-        var boardCells:[[BoardCell]] = []
-        for i in 0...width + 1 {
-            var cellColumn:[BoardCell] = []
-            for j in 0...height + 1 {
-                let boardCell = BoardCell(i: i, j: j)
-                cellColumn.append(boardCell)
-                if j == height+1 ||
-                    j == 0 ||
-                    i == height+1 ||
-                    i == 0{
-                    boardCell.gameElement = Wall()
-                }
-            }
-            boardCells.append(cellColumn)
-        }
-        return boardCells
+        
     }
 }

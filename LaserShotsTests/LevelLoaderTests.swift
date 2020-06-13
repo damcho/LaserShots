@@ -9,92 +9,6 @@
 import XCTest
 import LaserShots
 
-typealias loaderCompletion = (LevelLoaderResult) -> Void
-typealias LevelLoaderClientCompletion = (BundleLevelLoaderResult) -> Void
-
-enum LevelLoaderResult {
-    case success([GameElement])
-    case failure(Error)
-}
-
-enum BundleLevelLoaderResult {
-    case success(Data)
-    case failure(BundleLoaderError)
-}
-
-enum BundleLoaderError: Error {
-    case invalidData
-    case unknownError
-}
-
-protocol LevelLoaderClient {
-    func loadLevel(name: String, completion: @escaping LevelLoaderClientCompletion)
-}
-
-struct CodableGameElement: Codable {
-    let x: Int
-    let y: Int
-    let direction: String
-    let type: String
-}
-
-struct Root: Codable {
-    let width: Int
-    let height: Int
-    let gameElements: [CodableGameElement]
-}
-
-class GameElementsMapper {
-    static func map(elements: [CodableGameElement]) -> [GameElement] {
-        return elements.compactMap { (codableElement) in
-            guard let elementDirection = pointingDirection(rawValue: codableElement.direction),
-                let elementType = cellType(rawValue: codableElement.type) else {
-                    return nil
-            }
-            
-            switch elementType {
-            case .LaserGun:
-                return LaserGun(direction: elementDirection)
-            case .LaserDestination:
-                return LaserDestination(direction: elementDirection)
-            case .LaserTrap:
-                return LaserTrap()
-            case .Mirror:
-                return Mirror(direction: elementDirection)
-            case .TransparentMirror:
-                return TransparentMirror(direction: elementDirection)
-            default:
-                return nil
-            }
-        }
-        
-    }
-}
-
-class LevelLoader {
-    
-    let loaderClient: LevelLoaderClient
-    init(client: LevelLoaderClient) {
-        self.loaderClient = client
-    }
-    
-    func loadBoard(name: String, completion: @escaping loaderCompletion) {
-        loaderClient.loadLevel(name: name, completion: { result in
-            switch result {
-            case .failure:
-                completion(.failure(NSError(domain: "some error", code: 1)))
-            case .success(let data):
-                guard let root = try? JSONDecoder().decode(Root.self, from: data) else {
-                    completion(.failure(NSError(domain: "invalid data", code: 1)))
-                    return
-                }
-                let gameElements = GameElementsMapper.map(elements: root.gameElements)
-                completion(.success(gameElements))
-            }
-        })
-    }
-}
-
 class LevelLoaderTests: XCTestCase {
     
     func test_levelLoader_reuturnsErrorOnLevelLoaderError() {
@@ -167,13 +81,13 @@ class LevelLoaderTests: XCTestCase {
         case .LaserGun:
             gameElement = LaserGun(direction: elementDirection)
         case .LaserDestination:
-            gameElement = LaserDestination(direction: elementDirection)
+            gameElement = LaserDestination(direction: elementDirection, x: xPos, y: yPos)
         case .LaserTrap:
-            gameElement = LaserTrap()
+            gameElement = LaserTrap(x: xPos, y: yPos)
         case .Mirror:
-            gameElement = Mirror(direction: elementDirection)
+            gameElement = Mirror(direction: elementDirection, x: xPos, y: yPos)
         case .TransparentMirror:
-            gameElement = TransparentMirror(direction: elementDirection)
+            gameElement = TransparentMirror(direction: elementDirection,x: xPos, y: yPos)
         default:
             gameElement = LaserGun(direction: elementDirection)
         }
@@ -221,9 +135,6 @@ class LevelLoaderTests: XCTestCase {
     
 }
 
-
-
-class Board {}
 
 private class BundleLevelLoaderSpy: LevelLoaderClient {
     var messages: [(BundleLevelLoaderResult) -> Void] = []

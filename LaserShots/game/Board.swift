@@ -8,34 +8,69 @@
 
 import Foundation
 
-public final class Board :BoardLoaderDelegate{
+public final class Board: BoardLoaderDelegate{
     
     private var laserGunCell:BoardCell?
-    private let boardLoader = LevelLoader()
-    var cells: [[BoardCell]] = []
+    var boardCells: [[BoardCell]] = []
     var onGameStateChanged:((gameState) -> ())?
     var onLevelLoaded:(() -> ())?
     
-    init() {
-        self.boardLoader.delegate = self
+    private let width: Int
+    private let height: Int
+    private let gameElements: [GameElement]
+    
+    public init(width: Int, height: Int, elements: [GameElement]) {
+        self.width = width
+        self.height = height
+        self.gameElements = elements
+        
+        self.createEmptyBoard()
+        self.populateBoard()
     }
     
+    
+    private func createEmptyBoard() {
+        var boardCells:[[BoardCell]] = []
+        for i in 0...width + 1 {
+            var cellColumn:[BoardCell] = []
+            for j in 0...height + 1 {
+                let boardCell = BoardCell(i: i, j: j)
+                cellColumn.append(boardCell)
+                if j == height+1 ||
+                    j == 0 ||
+                    i == height+1 ||
+                    i == 0{
+                    boardCell.gameElement = Wall()
+                }
+            }
+            boardCells.append(cellColumn)
+        }
+        self.boardCells = boardCells
+    }
+    
+    private func populateBoard() -> BoardCell? {
+        var laserGun:BoardCell?
+        
+        for gameElement in gameElements {
+            if gameElement.x <= self.width+1 && gameElement.y <= self.height+1 {
+                boardCells[gameElement.x][gameElement.y].gameElement = gameElement
+            }
+        }
+        return laserGun
+    }
+    
+    
     func levelLoaded(board:[[BoardCell]], laserGun:BoardCell) {
-        self.cells = board
+        self.boardCells = board
         self.laserGunCell = laserGun
         self.onLevelLoaded?()
     }
+    
+    
 
     
-    func loadBoard(name:String) {
-        self.boardLoader.loadBoard(name: name, actionHandler:{ [unowned self] () -> () in
-            self.clearBoard()
-            self.shootLaser()
-        })
-    }
-    
     private func clearBoard() {
-        for cellsArray in self.cells {
+        for cellsArray in self.boardCells {
             for cell in cellsArray {
                 cell.clear()
             }
@@ -45,20 +80,20 @@ public final class Board :BoardLoaderDelegate{
     private func getNextCellfor(direction:pointingDirection, currentCell:BoardCell) -> BoardCell? {
         switch direction {
         case .up:
-            return self.cells[currentCell.i][currentCell.j - 1]
+            return self.boardCells[currentCell.i][currentCell.j - 1]
         case .down:
-            return self.cells[currentCell.i ][currentCell.j + 1]
+            return self.boardCells[currentCell.i ][currentCell.j + 1]
         case .left:
-            return self.cells[currentCell.i - 1][currentCell.j]
+            return self.boardCells[currentCell.i - 1][currentCell.j]
         case .right:
-            return self.cells[currentCell.i + 1][currentCell.j]
+            return self.boardCells[currentCell.i + 1][currentCell.j]
         case .none:
             return nil
         }
     }
     
     private func shootNext(directions:[pointingDirection], currentCell:BoardCell) {
-
+        
         if currentCell.cellType == .LaserTrap {
             self.onGameStateChanged?(.gameLost)
             return
