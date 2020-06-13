@@ -19,13 +19,6 @@ public final class LaserGun: GameElement {
         self.y = y
     }
     
-    public convenience init?(jsonElement:Dictionary<String, Any>) {
-        guard let direction = jsonElement["direction"] as? String else {
-            return nil
-        }
-        self.init(direction: pointingDirection(rawValue:direction) ?? .down)
-    }
-    
     func shoot() -> pointingDirection {
         return self.direction
     }

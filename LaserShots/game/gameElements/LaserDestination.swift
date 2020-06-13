@@ -20,14 +20,6 @@ public final class LaserDestination:GameElement{
         self.y = y
     }
     
-    init?(jsonElement:Dictionary<String, Any>) {
-        
-        guard let direction = jsonElement["direction"] as? String else {
-            return nil
-        }
-        self.direction = pointingDirection(rawValue:direction) ?? .down
-    }
-    
     public func reflect(direction: pointingDirection) -> [pointingDirection] {
         return []
     }

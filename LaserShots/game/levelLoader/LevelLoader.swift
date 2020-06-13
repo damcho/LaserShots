@@ -80,6 +80,5 @@ class GameElementsMapper {
                 return nil
             }
         }
-        
     }
 }

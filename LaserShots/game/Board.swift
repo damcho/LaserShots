@@ -17,15 +17,13 @@ public final class Board: BoardLoaderDelegate{
     
     private let width: Int
     private let height: Int
-    private let gameElements: [GameElement]
     
     public init(width: Int, height: Int, elements: [GameElement]) {
         self.width = width
         self.height = height
-        self.gameElements = elements
         
         self.createEmptyBoard()
-        self.populateBoard()
+        self.populateBoard(elements: elements)
     }
     
     
@@ -48,15 +46,16 @@ public final class Board: BoardLoaderDelegate{
         self.boardCells = boardCells
     }
     
-    private func populateBoard() -> BoardCell? {
-        var laserGun:BoardCell?
+    private func populateBoard(elements: [GameElement]) {
         
-        for gameElement in gameElements {
+        for gameElement in elements {
             if gameElement.x <= self.width+1 && gameElement.y <= self.height+1 {
                 boardCells[gameElement.x][gameElement.y].gameElement = gameElement
             }
+            if gameElement is LaserGun {
+                laserGunCell = boardCells[gameElement.x][gameElement.y]
+            }
         }
-        return laserGun
     }
     
     
@@ -65,10 +64,7 @@ public final class Board: BoardLoaderDelegate{
         self.laserGunCell = laserGun
         self.onLevelLoaded?()
     }
-    
-    
 
-    
     private func clearBoard() {
         for cellsArray in self.boardCells {
             for cell in cellsArray {
