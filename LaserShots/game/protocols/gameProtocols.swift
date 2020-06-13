@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum cellType {
+public enum cellType: String {
     case LaserGun
     case LaserDestination
     case Empty

@@ -8,8 +8,12 @@
 
 import Foundation
 
-class Mirror: GameElement, Rotatable {
-    var direction: pointingDirection
+public final class Mirror: GameElement, Rotatable {
+    public var direction: pointingDirection
+    
+    public init(direction: pointingDirection) {
+        self.direction = direction
+    }
     
     init?(jsonElement:Dictionary<String, Any>) {
         
@@ -18,8 +22,8 @@ class Mirror: GameElement, Rotatable {
         }
         self.direction = pointingDirection(rawValue:direction) ?? .down
     }
-
-    func reflect(direction: pointingDirection) -> [pointingDirection] {
+    
+    public func reflect(direction: pointingDirection) -> [pointingDirection] {
         switch direction {
         case .down:
             if self.direction == .up {

@@ -47,9 +47,22 @@ struct Root: Codable {
 class GameElementsMapper {
     static func map(elements: [CodableGameElement]) -> [GameElement] {
         return elements.compactMap { (codableElement) in
-            switch codableElement.type {
-            case "LaserGun":
-                return LaserGun(direction: .down)
+            guard let elementDirection = pointingDirection(rawValue: codableElement.direction),
+                let elementType = cellType(rawValue: codableElement.type) else {
+                    return nil
+            }
+            
+            switch elementType {
+            case .LaserGun:
+                return LaserGun(direction: elementDirection)
+            case .LaserDestination:
+                return LaserDestination(direction: elementDirection)
+            case .LaserTrap:
+                return LaserTrap()
+            case .Mirror:
+                return Mirror(direction: elementDirection)
+            case .TransparentMirror:
+                return TransparentMirror(direction: elementDirection)
             default:
                 return nil
             }
@@ -114,10 +127,12 @@ class LevelLoaderTests: XCTestCase {
     func test_returnsArrayOfGameElementsOnValidJSON() {
         let (sut, loaderClient) = makeSUT()
         let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
-        let levelJSON = ["width": 2, "height": 2, "gameElements":[laserJSON1]] as [String : Any]
+        let (mirror1, mirrorJSON1) = makeGameElement("Mirror", xPos: 1, yPos: 1, pointing: "left")
+
+        let levelJSON = ["width": 2, "height": 2, "gameElements":[laserJSON1, mirrorJSON1]] as [String : Any]
         let levelData = try! JSONSerialization.data(withJSONObject: levelJSON)
         
-        expectSuccessFor(sut: sut, toCompleteWith: [laserGun1], when: {
+        expectSuccessFor(sut: sut, toCompleteWith: [laserGun1, mirror1], when: {
             loaderClient.completeWithData(data: levelData)
         })
     }
@@ -132,8 +147,25 @@ class LevelLoaderTests: XCTestCase {
     
     private func makeGameElement(_ type: String, xPos: Int, yPos: Int, pointing: String) -> (GameElement, [String: Any]) {
         let gameElementJSON = ["type": type, "x": xPos, "y": yPos,"direction": pointing] as [String : Any]
-        let laserGun = LaserGun(direction: .down)
-        return (laserGun, gameElementJSON)
+        
+        let elementDirection = pointingDirection(rawValue: pointing)!
+        let elementType = cellType(rawValue: type)!
+        let gameElement: GameElement
+        switch elementType {
+        case .LaserGun:
+            gameElement = LaserGun(direction: elementDirection)
+        case .LaserDestination:
+            gameElement = LaserDestination(direction: elementDirection)
+        case .LaserTrap:
+            gameElement = LaserTrap()
+        case .Mirror:
+            gameElement = Mirror(direction: elementDirection)
+        case .TransparentMirror:
+            gameElement = TransparentMirror(direction: elementDirection)
+        default:
+            gameElement = LaserGun(direction: elementDirection)
+        }
+        return (gameElement, gameElementJSON)
     }
     
     private func expectErrorFor(sut: LevelLoader, when action: () -> Void , file: StaticString = #file, line: UInt = #line) {
