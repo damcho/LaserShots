@@ -18,7 +18,7 @@ public enum LevelLoaderResult {
 struct CodableGameElement: Codable {
     let x: Int
     let y: Int
-    let direction: String
+    let direction: String?
     let type: String
 }
 
@@ -60,22 +60,25 @@ public final class LevelLoader: LaserShotsLevelLoader  {
 class GameElementsMapper {
     static func map(elements: [CodableGameElement]) -> [GameElement] {
         return elements.compactMap { (codableElement) in
-            guard let elementDirection = PointingDirection(rawValue: codableElement.direction),
-                let elementType = CellType(rawValue: codableElement.type) else {
-                    return nil
+            var elementDirection: PointingDirection?
+            guard let elementType = CellType(rawValue: codableElement.type) else {
+                return nil
+            }
+            if let elementDir = codableElement.direction {
+                elementDirection = PointingDirection(rawValue: elementDir)
             }
             
             switch elementType {
             case .LaserGun:
-                return LaserGun(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+                return LaserGun(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
             case .LaserDestination:
-                return LaserDestination(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+                return LaserDestination(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
             case .LaserTrap:
                 return LaserTrap(x: codableElement.x, y: codableElement.y)
             case .Mirror:
-                return Mirror(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+                return Mirror(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
             case .TransparentMirror:
-                return TransparentMirror(direction: elementDirection, x: codableElement.x, y: codableElement.y)
+                return TransparentMirror(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
             default:
                 return nil
             }

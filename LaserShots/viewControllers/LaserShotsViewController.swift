@@ -51,7 +51,6 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
                 self.boardCells.append(cell)
             }
         }
-        
     }
     
     private func animateLevelTransition() {
@@ -116,8 +115,8 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let boardCell = self.boardCells[indexPath.row]
         var cellView:LaserShotsBaseCellView
-        let reuseIdentifier = String(describing: boardCell.reflectableElement.self) + "CellView"
-        print(reuseIdentifier )
+        var reuseIdentifier =  boardCell.reflectableElement == nil ? "Empty" : String(describing: type(of: boardCell.reflectableElement.self!))
+        reuseIdentifier += "CellView"
         cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
         
         cellView.gameCell = boardCell
