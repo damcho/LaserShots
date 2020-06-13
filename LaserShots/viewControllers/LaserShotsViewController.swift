@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class LaserShotsViewController: UIViewController {
     
     @IBOutlet weak var gameBoard: UICollectionView!
     
@@ -64,6 +64,51 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         }
     }
     
+    func showAlert(title:String, msg:String, action:UIAlertAction) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func onStartButtonTapped(_ sender: Any) {
+        self.laserShotGame?.start()
+        self.gameBoard.isUserInteractionEnabled = true
+    }
+}
+
+extension LaserShotsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.boardCells.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let boardCell = self.boardCells[indexPath.row]
+        var cellView:LaserShotsBaseCellView
+        var reuseIdentifier =  boardCell.reflectableElement == nil ? "Empty" : String(describing: type(of: boardCell.reflectableElement.self!))
+        reuseIdentifier += "CellView"
+        cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
+        
+        cellView.gameCell = boardCell
+        cellView.layoutIfNeeded()
+        
+        return cellView
+    }
+}
+
+extension LaserShotsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let availableWidth = self.gameBoard.frame.width
+        let widthPerItem = availableWidth.rounded() / CGFloat(cellsPerRow)
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+}
+
+extension LaserShotsViewController: laserShotsDelegate {
+    
     func gameState(state: gameState) {
         var title:String
         var actionTitle:String
@@ -100,44 +145,6 @@ class LaserShotsViewController: UIViewController, laserShotsDelegate, UICollecti
         self.createBoardGame()
         self.gameBoard.reloadData()
         self.gameBoard.isUserInteractionEnabled = false
-    }
-    
-    func showAlert(title:String, msg:String, action:UIAlertAction) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.boardCells.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let boardCell = self.boardCells[indexPath.row]
-        var cellView:LaserShotsBaseCellView
-        var reuseIdentifier =  boardCell.reflectableElement == nil ? "Empty" : String(describing: type(of: boardCell.reflectableElement.self!))
-        reuseIdentifier += "CellView"
-        cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
-        
-        cellView.gameCell = boardCell
-        cellView.layoutIfNeeded()
-        
-        return cellView
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let availableWidth = self.gameBoard.frame.width
-        let widthPerItem = availableWidth.rounded() / CGFloat(cellsPerRow)
-        
-        return CGSize(width: widthPerItem, height: widthPerItem)
-    }
-    
-    @IBAction func onStartButtonTapped(_ sender: Any) {
-        self.laserShotGame?.start()
-        self.gameBoard.isUserInteractionEnabled = true
     }
 }
 
