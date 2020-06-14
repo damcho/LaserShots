@@ -10,13 +10,13 @@ import Foundation
 
 
 public enum CellType: String {
-    case LaserGun
-    case LaserDestination
-    case Empty
-    case Mirror
-    case TransparentMirror
-    case Wall
-    case LaserTrap
+    case laserGun
+    case laserDestination
+    case empty
+    case mirror
+    case transparentMirror
+    case wall
+    case laserTrap
 }
 
 public enum PointingDirection:String {
@@ -32,7 +32,7 @@ protocol BoardLoaderDelegate: class {
 }
 
 protocol laserShotsDelegate:class {
-    func gameState(state:gameState) ->()
+    func gameState(state:GameState) ->()
     func levelLoaded() -> ()
 }
 

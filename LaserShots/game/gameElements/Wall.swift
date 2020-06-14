@@ -8,10 +8,8 @@
 
 import Foundation
 
-class Wall: Reflectable {
-    var direction: PointingDirection = .none
-    
+struct Wall: Reflectable {    
     func reflect(direction: PointingDirection) -> [PointingDirection] {
-        return [self.direction]
+        return [.none]
     }
 }

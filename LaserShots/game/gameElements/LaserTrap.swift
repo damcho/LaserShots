@@ -21,6 +21,6 @@ public final class LaserTrap: GameElement {
 
 extension LaserTrap: Reflectable {
     public func reflect(direction: PointingDirection) -> [PointingDirection] {
-        return [.none]
+        return [direction]
     }
 }

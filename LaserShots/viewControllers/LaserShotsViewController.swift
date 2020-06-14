@@ -109,7 +109,7 @@ extension LaserShotsViewController: UICollectionViewDelegateFlowLayout {
 
 extension LaserShotsViewController: laserShotsDelegate {
     
-    func gameState(state: gameState) {
+    func gameState(state: GameState) {
         var title:String
         var actionTitle:String
         var msg:String

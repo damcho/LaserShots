@@ -40,8 +40,8 @@ class LevelLoaderTests: XCTestCase {
     
     func test_returnsBoardWithValidGameElementsOnly() {
         let (sut, loaderClient) = makeSUT()
-        let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
-        let invalidLaserGun2JSON = ["type": "LaserGun", "x": 1, "y": 1,"direction": "wrong direction"] as [String : Any]
+        let (laserGun1, laserJSON1) = makeGameElement("laserGun", xPos: 0, yPos: 0, pointing: "down")
+        let invalidLaserGun2JSON = ["type": "laserGun", "x": 1, "y": 1,"direction": "wrong direction"] as [String : Any]
         let (modelBoard, JSONBoardWithInvalidGameElement) = makeBoard(width: 2, height: 1, elements: [(laserGun1, laserJSON1), (nil, invalidLaserGun2JSON)])
         let levelData = try! JSONSerialization.data(withJSONObject: JSONBoardWithInvalidGameElement)
 
@@ -52,8 +52,8 @@ class LevelLoaderTests: XCTestCase {
     
     func test_returnsValidBoardWithValidJSONBoard() {
         let (sut, loaderClient) = makeSUT()
-        let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
-        let (mirror1, mirrorJSON1) = makeGameElement("Mirror", xPos: 1, yPos: 1, pointing: "left")
+        let (laserGun1, laserJSON1) = makeGameElement("laserGun", xPos: 0, yPos: 0, pointing: "down")
+        let (mirror1, mirrorJSON1) = makeGameElement("mirror", xPos: 1, yPos: 1, pointing: "left")
         let (modelBoard, JSONBoard) = makeBoard(width: 2, height: 1, elements: [(laserGun1, laserJSON1), (mirror1, mirrorJSON1)])
         let levelData = try! JSONSerialization.data(withJSONObject: JSONBoard)
         
@@ -77,15 +77,15 @@ class LevelLoaderTests: XCTestCase {
         let elementType = CellType(rawValue: type)!
         let gameElement: GameElement
         switch elementType {
-        case .LaserGun:
+        case .laserGun:
             gameElement = LaserGun(direction: elementDirection)
-        case .LaserDestination:
+        case .laserDestination:
             gameElement = LaserDestination(direction: elementDirection, x: xPos, y: yPos)
-        case .LaserTrap:
+        case .laserTrap:
             gameElement = LaserTrap(x: xPos, y: yPos)
-        case .Mirror:
+        case .mirror:
             gameElement = Mirror(direction: elementDirection, x: xPos, y: yPos)
-        case .TransparentMirror:
+        case .transparentMirror:
             gameElement = TransparentMirror(direction: elementDirection,x: xPos, y: yPos)
         default:
             gameElement = LaserGun(direction: elementDirection)

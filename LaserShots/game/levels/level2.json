@@ -9,49 +9,49 @@
         "direction": "down"
     },
     {
-        "type": "TransparentMirror",
+        "type": "transparentMirror",
         "x": 1,
         "y": 5,
         "direction": "right"
     },
     {
-        "type": "TransparentMirror",
+        "type": "transparentMirror",
         "x": 4,
         "y": 5,
         "direction": "right"
     },
     {
-        "type": "TransparentMirror",
+        "type": "transparentMirror",
         "x": 4,
         "y": 2,
         "direction": "right"
     },
     {
-        "type": "TransparentMirror",
+        "type": "transparentMirror",
         "x": 2,
         "y": 2,
         "direction": "right"
     },
     {
-        "type": "Mirror",
+        "type": "mirror",
         "x": 2,
         "y": 6,
         "direction": "right"
     },
     {
-        "type": "Mirror",
+        "type": "mirror",
         "x": 8,
         "y": 4,
         "direction": "right"
     },
     {
-        "type": "Mirror",
+        "type": "mirror",
         "x": 8,
         "y": 9,
         "direction": "right"
     },
     {
-        "type": "Mirror",
+        "type": "mirror",
         "x": 7,
         "y": 5,
         "direction": "right"
@@ -68,19 +68,19 @@
         "y": 2,
     },
     {
-        "type": "TransparentMirror",
+        "type": "transparentMirror",
         "x": 1,
         "y": 3,
         "direction": "left"
     },
     {
-        "type": "Mirror",
+        "type": "mirror",
         "x": 7,
         "y": 4,
         "direction": "left"
     },
     {
-        "type": "Mirror",
+        "type": "mirror",
         "x": 7,
         "y": 7,
         "direction": "left"

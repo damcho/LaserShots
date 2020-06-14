@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum gameState {
+enum GameState {
     case gameWon
     case gameLost
     case nextLevel
@@ -52,12 +52,12 @@ class LaserShotsGame  {
         self.levelLoader.loadBoard(name: nextLevelName) { (result) in
             
             switch result {
-            case .failure(let error):
+            case .failure:
                 break
-            case .success(let elements):
-                self.currentLevelBoard = Board(width: 10, height: 10, elements: [])
+            case .success(let levelBoard):
+                self.currentLevelBoard = levelBoard
                 
-                self.currentLevelBoard?.onGameStateChanged = {[unowned self] (state:gameState) in
+                self.currentLevelBoard?.onGameStateChanged = {[unowned self] (state:GameState) in
                     switch state {
                     case .nextLevel:
                         if self.levelIndex < self.numberOfLevels {

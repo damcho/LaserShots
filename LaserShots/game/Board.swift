@@ -12,7 +12,7 @@ public final class Board {
     
     private var laserGunCell:BoardCell?
     public var boardCells: [[BoardCell]] = []
-    var onGameStateChanged:((gameState) -> ())?
+    var onGameStateChanged:((GameState) -> ())?
     
     private let width: Int
     private let height: Int
@@ -47,11 +47,16 @@ public final class Board {
     private func populateBoard(elements: [GameElement]) {
         
         for gameElement in elements {
+            let boardCell = boardCells[gameElement.x][gameElement.y]
             if gameElement.x <= self.width+1 && gameElement.y <= self.height+1 {
-                boardCells[gameElement.x][gameElement.y].reflectableElement = gameElement
+                boardCell.reflectableElement = gameElement
+                boardCell.onCellTapped = {
+                    self.clearBoard()
+                    self.shootLaser()
+                }
             }
             if gameElement is LaserGun {
-                laserGunCell = boardCells[gameElement.x][gameElement.y]
+                laserGunCell = boardCell
             }
         }
     }

@@ -69,15 +69,15 @@ class GameElementsMapper {
             }
             
             switch elementType {
-            case .LaserGun:
+            case .laserGun:
                 return LaserGun(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
-            case .LaserDestination:
+            case .laserDestination:
                 return LaserDestination(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
-            case .LaserTrap:
+            case .laserTrap:
                 return LaserTrap(x: codableElement.x, y: codableElement.y)
-            case .Mirror:
+            case .mirror:
                 return Mirror(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
-            case .TransparentMirror:
+            case .transparentMirror:
                 return TransparentMirror(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
             default:
                 return nil
