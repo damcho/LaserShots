@@ -27,31 +27,30 @@ public enum PointingDirection:String {
     case none
 }
 
-protocol BoardLoaderDelegate: class {
-    func levelLoaded(board:[[BoardCell]], laserGun:BoardCell)
-}
-
 protocol laserShotsDelegate:class {
     func gameState(state:GameState) ->()
     func levelLoaded() -> ()
 }
 
+public typealias ReflectableGameElement = GameElement & Reflectable
+public typealias ReflectableRotatableGameElement = Reflectable & Rotatable
+
 public protocol Reflectable {
     func reflect(direction: PointingDirection) -> [PointingDirection]
 }
 
-public protocol GameElement: class, Reflectable  {
+public protocol GameElement: class  {
     var x: Int { get set }
     var y: Int { get set }
     var direction: PointingDirection { get set }
 }
 
-protocol Rotatable: GameElement {
+public protocol Rotatable: GameElement {
     func rotate()
 }
 
 extension Rotatable {
-    func rotate()  {
+    public func rotate()  {
         var newDirection = self.direction
         switch direction {
         case .down:

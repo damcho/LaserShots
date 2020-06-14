@@ -70,12 +70,12 @@ class LevelLoaderTests: XCTestCase {
         return (sut, loaderClient)
     }
     
-    private func makeGameElement(_ type: String, xPos: Int, yPos: Int, pointing: String) -> (GameElement, [String: Any]) {
+    private func makeGameElement(_ type: String, xPos: Int, yPos: Int, pointing: String) -> (ReflectableGameElement, [String: Any]) {
         let gameElementJSON = ["type": type, "x": xPos, "y": yPos,"direction": pointing] as [String : Any]
         
         let elementDirection = PointingDirection(rawValue: pointing)!
         let elementType = CellType(rawValue: type)!
-        let gameElement: GameElement
+        let gameElement: ReflectableGameElement
         switch elementType {
         case .laserGun:
             gameElement = LaserGun(direction: elementDirection)
@@ -93,7 +93,7 @@ class LevelLoaderTests: XCTestCase {
         return (gameElement, gameElementJSON)
     }
     
-    private func makeBoard(width: Int, height: Int, elements: [(modelElements: GameElement?, JSONElements: [String: Any])]) -> (Board, [String: Any]){
+    private func makeBoard(width: Int, height: Int, elements: [(modelElements: ReflectableGameElement?, JSONElements: [String: Any])]) -> (Board, [String: Any]){
         let board = Board(width: width, height: height, elements: elements.compactMap({ $0.modelElements }))
         let JSONBoard = ["width": width, "height": height, "gameElements": elements.map({ $0.JSONElements })] as [String : Any]
         return (board, JSONBoard)

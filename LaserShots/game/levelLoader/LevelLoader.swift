@@ -58,7 +58,7 @@ public final class LevelLoader: LaserShotsLevelLoader  {
 }
 
 class GameElementsMapper {
-    static func map(elements: [CodableGameElement]) -> [GameElement] {
+    static func map(elements: [CodableGameElement]) -> [ReflectableGameElement] {
         return elements.compactMap { (codableElement) in
             var elementDirection: PointingDirection?
             guard let elementType = CellType(rawValue: codableElement.type) else {

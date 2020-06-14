@@ -17,7 +17,7 @@ public final class Board {
     private let width: Int
     private let height: Int
     
-    public init(width: Int, height: Int, elements: [GameElement]) {
+    public init(width: Int, height: Int, elements: [ReflectableGameElement]) {
         self.width = width
         self.height = height
         
@@ -44,7 +44,7 @@ public final class Board {
         self.boardCells = boardCells
     }
     
-    private func populateBoard(elements: [GameElement]) {
+    private func populateBoard(elements: [ReflectableGameElement]) {
         
         for gameElement in elements {
             let boardCell = boardCells[gameElement.x][gameElement.y]

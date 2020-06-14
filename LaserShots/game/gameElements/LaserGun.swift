@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class LaserGun: GameElement {
+public final class LaserGun: ReflectableGameElement {
     public var x: Int
     public var y: Int
     public var direction: PointingDirection = .none
