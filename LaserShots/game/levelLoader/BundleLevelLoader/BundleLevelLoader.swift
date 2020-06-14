@@ -22,16 +22,19 @@ public enum BundleLevelLoaderResult {
 public enum BundleLoaderError: Error {
     case invalidData
     case unknownError
+    case invalidPath
 }
 
 public final class BundleLevelLoader: LevelLoaderClient {
     
     public func loadLevel(name:String, completion: LevelLoaderClientCompletion) {
         guard let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "json") else {
+            completion(.failure(.invalidPath))
             return
         }
         let url = URL(fileURLWithPath: path)
-        guard let data = try? Data(contentsOf: url )else {
+        guard let data = try? Data(contentsOf: url ) else {
+            completion(.failure(.invalidData))
             return
         }
         completion(.success(data))

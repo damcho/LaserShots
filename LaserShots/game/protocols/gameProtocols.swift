@@ -19,7 +19,7 @@ public enum CellType: String {
     case laserTrap
 }
 
-public enum PointingDirection:String {
+public enum PointingDirection: String {
     case up
     case down
     case left
@@ -27,9 +27,9 @@ public enum PointingDirection:String {
     case none
 }
 
-protocol laserShotsDelegate:class {
-    func gameState(state:GameState) ->()
-    func levelLoaded() -> ()
+protocol laserShotsDelegate: class {
+    func gameState(state: GameState)
+    func levelLoaded()
 }
 
 public typealias ReflectableDirectionableGameElement = GameElement & Directionable & Reflectable

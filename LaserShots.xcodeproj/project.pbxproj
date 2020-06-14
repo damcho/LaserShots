@@ -125,10 +125,19 @@
 		8B194D9522B2F9F800B5A74C /* levelLoader */ = {
 			isa = PBXGroup;
 			children = (
-				8B194D9322B2F5EF00B5A74C /* BundleLevelLoader.swift */,
+				8B691D2624968A0200CCA4D4 /* BundleLevelLoader */,
 				8B194D9122B1B2EB00B5A74C /* LevelLoader.swift */,
 			);
 			path = levelLoader;
+			sourceTree = "<group>";
+		};
+		8B691D2624968A0200CCA4D4 /* BundleLevelLoader */ = {
+			isa = PBXGroup;
+			children = (
+				8BFE396C22946A9B00605072 /* levels */,
+				8B194D9322B2F5EF00B5A74C /* BundleLevelLoader.swift */,
+			);
+			path = BundleLevelLoader;
 			sourceTree = "<group>";
 		};
 		8BFE3929229446CE00605072 = {
@@ -198,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				8B194D9522B2F9F800B5A74C /* levelLoader */,
-				8BFE396C22946A9B00605072 /* levels */,
 				8BFE395D229446F500605072 /* protocols */,
 				8BFE3955229446F500605072 /* gameElements */,
 				8BFE3956229446F500605072 /* BoardCell.swift */,

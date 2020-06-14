@@ -79,20 +79,28 @@ final class GameElementsMapper {
             if let elementDir = codableElement.direction {
                 elementDirection = PointingDirection(rawValue: elementDir)
             }
-            switch elementType {
-            case .laserGun:
-                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: LaserGun(direction: elementDirection ?? .none))
-            case .laserDestination:
-                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: LaserDestination(direction: elementDirection ?? .none))
-            case .laserTrap:
-                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: LaserTrap())
-            case .mirror:
-                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: Mirror(direction: elementDirection ?? .none))
-            case .transparentMirror:
-                return GameElementWrapper(x: codableElement.x, y: codableElement.y,gameElement: TransparentMirror(direction: elementDirection ?? .none))
-            default:
+            
+            guard let gameElement = GameElementsMapper.makeGaneElement(elementType: elementType, elementDirection: elementDirection) else {
                 return nil
             }
+            return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: gameElement)
+        }
+    }
+    
+    private static func makeGaneElement(elementType: CellType, elementDirection: PointingDirection?) -> GameElement? {
+        switch elementType {
+        case .laserGun:
+            return LaserGun(direction: elementDirection ?? .none)
+        case .laserDestination:
+            return LaserDestination(direction: elementDirection ?? .none)
+        case .laserTrap:
+            return LaserTrap()
+        case .mirror:
+            return Mirror(direction: elementDirection ?? .none)
+        case .transparentMirror:
+            return TransparentMirror(direction: elementDirection ?? .none)
+        default:
+            return nil
         }
     }
 }
