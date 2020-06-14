@@ -70,30 +70,30 @@ class LevelLoaderTests: XCTestCase {
         return (sut, loaderClient)
     }
     
-    private func makeGameElement(_ type: String, xPos: Int, yPos: Int, pointing: String) -> (ReflectableGameElement, [String: Any]) {
+    private func makeGameElement(_ type: String, xPos: Int, yPos: Int, pointing: String) -> (GameElementWrapper, [String: Any]) {
         let gameElementJSON = ["type": type, "x": xPos, "y": yPos,"direction": pointing] as [String : Any]
         
         let elementDirection = PointingDirection(rawValue: pointing)!
         let elementType = CellType(rawValue: type)!
-        let gameElement: ReflectableGameElement
+        let gameElementWrapper: GameElementWrapper
         switch elementType {
         case .laserGun:
-            gameElement = LaserGun(direction: elementDirection)
+            gameElementWrapper = GameElementWrapper(x: xPos, y: yPos, gameElement: LaserGun(direction: elementDirection))
         case .laserDestination:
-            gameElement = LaserDestination(direction: elementDirection, x: xPos, y: yPos)
+            gameElementWrapper = GameElementWrapper(x: xPos, y: yPos, gameElement: LaserDestination(direction: elementDirection))
         case .laserTrap:
-            gameElement = LaserTrap(x: xPos, y: yPos)
+            gameElementWrapper = GameElementWrapper(x: xPos, y: yPos, gameElement: LaserTrap())
         case .mirror:
-            gameElement = Mirror(direction: elementDirection, x: xPos, y: yPos)
+            gameElementWrapper = GameElementWrapper(x: xPos, y: yPos, gameElement: Mirror(direction: elementDirection))
         case .transparentMirror:
-            gameElement = TransparentMirror(direction: elementDirection,x: xPos, y: yPos)
+            gameElementWrapper = GameElementWrapper(x: xPos, y: yPos, gameElement: TransparentMirror(direction: elementDirection))
         default:
-            gameElement = LaserGun(direction: elementDirection)
+            gameElementWrapper = GameElementWrapper(x: xPos, y: yPos, gameElement: LaserGun(direction: elementDirection))
         }
-        return (gameElement, gameElementJSON)
+        return (gameElementWrapper, gameElementJSON)
     }
     
-    private func makeBoard(width: Int, height: Int, elements: [(modelElements: ReflectableGameElement?, JSONElements: [String: Any])]) -> (Board, [String: Any]){
+    private func makeBoard(width: Int, height: Int, elements: [(modelElements: GameElementWrapper?, JSONElements: [String: Any])]) -> (Board, [String: Any]){
         let board = Board(width: width, height: height, elements: elements.compactMap({ $0.modelElements }))
         let JSONBoard = ["width": width, "height": height, "gameElements": elements.map({ $0.JSONElements })] as [String : Any]
         return (board, JSONBoard)

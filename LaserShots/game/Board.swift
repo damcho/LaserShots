@@ -10,14 +10,14 @@ import Foundation
 
 public final class Board {
     
-    private var laserGunCell:BoardCell?
+    private var laserGunCell: BoardCell?
     public var boardCells: [[BoardCell]] = []
-    var onGameStateChanged:((GameState) -> ())?
+    var onGameStateChanged: ((GameState) -> ())?
     
     private let width: Int
     private let height: Int
     
-    public init(width: Int, height: Int, elements: [ReflectableGameElement]) {
+    public init(width: Int, height: Int, elements: [GameElementWrapper]) {
         self.width = width
         self.height = height
         
@@ -36,7 +36,7 @@ public final class Board {
                     j == 0 ||
                     i == height+1 ||
                     i == 0{
-                    boardCell.reflectableElement = Wall()
+                    boardCell.gameElement = Wall()
                 }
             }
             boardCells.append(cellColumn)
@@ -44,18 +44,18 @@ public final class Board {
         self.boardCells = boardCells
     }
     
-    private func populateBoard(elements: [ReflectableGameElement]) {
+    private func populateBoard(elements: [GameElementWrapper]) {
         
-        for gameElement in elements {
-            let boardCell = boardCells[gameElement.x][gameElement.y]
-            if gameElement.x <= self.width+1 && gameElement.y <= self.height+1 {
-                boardCell.reflectableElement = gameElement
-                boardCell.onCellTapped = {
+        for gameElementWrapper in elements {
+            let boardCell = boardCells[gameElementWrapper.x][gameElementWrapper.y]
+            if gameElementWrapper.x <= self.width+1 && gameElementWrapper.y <= self.height+1 {
+                boardCell.gameElement = gameElementWrapper.gameElement
+                boardCell.onCellAction = {
                     self.clearBoard()
                     self.shootLaser()
                 }
             }
-            if gameElement is LaserGun {
+            if gameElementWrapper.gameElement is Shooter {
                 laserGunCell = boardCell
             }
         }
@@ -86,10 +86,10 @@ public final class Board {
     
     private func shootNext(directions:[PointingDirection], currentCell:BoardCell) {
         
-        if currentCell.reflectableElement is LaserTrap {
+        if currentCell.gameElement is GameTrap {
             self.onGameStateChanged?(.gameLost)
             return
-        } else if currentCell.reflectableElement is LaserDestination {
+        } else if currentCell.gameElement is GameDestination {
             self.onGameStateChanged?(.nextLevel)
             return
         }
@@ -97,7 +97,7 @@ public final class Board {
         for laserDirection in directions {
             let nextCell = self.getNextCellfor(direction: laserDirection, currentCell: currentCell)
             if nextCell != nil {
-                let newDirections = nextCell!.getLaserReflection(from: laserDirection)
+                let newDirections = nextCell!.getLaserReflection(originDirection: laserDirection)
                 self.shootNext(directions: newDirections, currentCell: nextCell!)
             }
         }

@@ -84,7 +84,7 @@ extension LaserShotsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let boardCell = self.boardCells[indexPath.row]
         var cellView:LaserShotsBaseCellView
-        var reuseIdentifier =  boardCell.reflectableElement == nil ? "Empty" : String(describing: type(of: boardCell.reflectableElement.self!))
+        var reuseIdentifier =  boardCell.gameElement == nil ? "Empty" : String(describing: type(of: boardCell.gameElement.self!))
         reuseIdentifier += "CellView"
         cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
         

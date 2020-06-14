@@ -8,19 +8,6 @@
 
 import Foundation
 
-public final class LaserTrap: GameElement {
-    public var x: Int
-    public var y: Int
-    public var direction = PointingDirection.none
-    
-    public init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
-    }
-}
-
-extension LaserTrap: Reflectable {
-    public func reflect(direction: PointingDirection) -> [PointingDirection] {
-        return [direction]
-    }
+public final class LaserTrap: GameElement, GameTrap {    
+    public init() { }
 }

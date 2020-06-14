@@ -8,22 +8,16 @@
 
 import Foundation
 
-public final class LaserGun: ReflectableGameElement {
-    public var x: Int
-    public var y: Int
-    public var direction: PointingDirection = .none
+public final class LaserGun: GameElement, Directionable {
+    public var direction: PointingDirection
     
-    public init(direction: PointingDirection, x: Int = 0, y: Int = 0) {
+    public init(direction: PointingDirection) {
         self.direction = direction
-        self.x = x
-        self.y = y
     }
-    
-    func shoot() -> PointingDirection {
+}
+
+extension LaserGun: Shooter {
+    public func shoot() -> PointingDirection {
         return self.direction
-    }
-    
-    public func reflect(direction: PointingDirection) -> [PointingDirection] {
-        return []
     }
 }

@@ -8,19 +8,15 @@
 
 import Foundation
 
-public final class Mirror: GameElement, Rotatable {
-    public var x: Int
-    public var y: Int
+public final class Mirror: ReflectableRotatableGameElement {
     public var direction: PointingDirection
     
-     public init(direction: PointingDirection, x: Int, y: Int) {
+     public init(direction: PointingDirection) {
         self.direction = direction
-        self.x = x
-        self.y = y
     }
 }
 
-extension Mirror: Reflectable {
+extension Mirror {
     public func reflect(direction: PointingDirection) -> [PointingDirection] {
          switch direction {
          case .down:

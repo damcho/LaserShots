@@ -9,20 +9,10 @@
 import Foundation
 
 
-public final class LaserDestination: GameElement{
-    public var x: Int
-    public var y: Int
+public final class LaserDestination: GameElement, Directionable, GameDestination{
     public var direction: PointingDirection
     
-    public init(direction: PointingDirection, x: Int, y: Int) {
+    public init(direction: PointingDirection) {
         self.direction = direction
-        self.x = x
-        self.y = y
-    }
-}
-
-extension LaserDestination: Reflectable {
-    public func reflect(direction: PointingDirection) -> [PointingDirection] {
-        return [.none]
     }
 }

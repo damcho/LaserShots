@@ -32,20 +32,18 @@ protocol laserShotsDelegate:class {
     func levelLoaded() -> ()
 }
 
-public typealias ReflectableGameElement = GameElement & Reflectable
-public typealias ReflectableRotatableGameElement = Reflectable & Rotatable
+public typealias ReflectableDirectionableGameElement = GameElement & Directionable & Reflectable
+public typealias ReflectableRotatableGameElement = GameElement & Reflectable & Rotatable
 
 public protocol Reflectable {
     func reflect(direction: PointingDirection) -> [PointingDirection]
 }
 
-public protocol GameElement: class  {
-    var x: Int { get set }
-    var y: Int { get set }
+public protocol Directionable: class  {
     var direction: PointingDirection { get set }
 }
 
-public protocol Rotatable: GameElement {
+public protocol Rotatable: Directionable {
     func rotate()
 }
 
@@ -68,4 +66,10 @@ extension Rotatable {
     }
 }
 
+public protocol GameElement {}
+public protocol GameTrap {}
+public protocol GameDestination {}
+public protocol Shooter {
+    func shoot() -> PointingDirection
+}
 

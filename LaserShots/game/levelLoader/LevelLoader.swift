@@ -28,6 +28,18 @@ struct Root: Codable {
     let gameElements: [CodableGameElement]
 }
 
+public struct GameElementWrapper {
+    let x: Int
+    let y: Int
+    let gameElement: GameElement
+    
+    public init(x: Int, y: Int, gameElement: GameElement) {
+        self.x = x
+        self.y = y
+        self.gameElement = gameElement
+    }
+}
+
 public protocol LaserShotsLevelLoader {
     func loadBoard(name: String, completion: @escaping loaderCompletion)
 }
@@ -49,16 +61,16 @@ public final class LevelLoader: LaserShotsLevelLoader  {
                     completion(.failure(NSError(domain: "invalid data", code: 1)))
                     return
                 }
-                let gameElements = GameElementsMapper.map(elements: root.gameElements)
-                let levelBoard = Board(width: root.width, height: root.height, elements: gameElements)
+                let gameElementsWrappers = GameElementsMapper.map(elements: root.gameElements)
+                let levelBoard = Board(width: root.width, height: root.height, elements: gameElementsWrappers)
                 completion(.success(levelBoard))
             }
         })
     }
 }
 
-class GameElementsMapper {
-    static func map(elements: [CodableGameElement]) -> [ReflectableGameElement] {
+final class GameElementsMapper {
+    static func map(elements: [CodableGameElement]) -> [GameElementWrapper] {
         return elements.compactMap { (codableElement) in
             var elementDirection: PointingDirection?
             guard let elementType = CellType(rawValue: codableElement.type) else {
@@ -67,18 +79,17 @@ class GameElementsMapper {
             if let elementDir = codableElement.direction {
                 elementDirection = PointingDirection(rawValue: elementDir)
             }
-            
             switch elementType {
             case .laserGun:
-                return LaserGun(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
+                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: LaserGun(direction: elementDirection ?? .none))
             case .laserDestination:
-                return LaserDestination(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
+                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: LaserDestination(direction: elementDirection ?? .none))
             case .laserTrap:
-                return LaserTrap(x: codableElement.x, y: codableElement.y)
+                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: LaserTrap())
             case .mirror:
-                return Mirror(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
+                return GameElementWrapper(x: codableElement.x, y: codableElement.y, gameElement: Mirror(direction: elementDirection ?? .none))
             case .transparentMirror:
-                return TransparentMirror(direction: elementDirection ?? .none, x: codableElement.x, y: codableElement.y)
+                return GameElementWrapper(x: codableElement.x, y: codableElement.y,gameElement: TransparentMirror(direction: elementDirection ?? .none))
             default:
                 return nil
             }

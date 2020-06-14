@@ -8,8 +8,5 @@
 
 import Foundation
 
-struct Wall: Reflectable {    
-    func reflect(direction: PointingDirection) -> [PointingDirection] {
-        return [.none]
-    }
-}
+struct Wall: GameElement {}
+
