@@ -53,9 +53,8 @@ public final class BoardCell: Equatable {
     }
     
     func onTap() {
-        if let element = self.gameElement, element is Rotatable {
-            let rotatableElement = element as! Rotatable
-            rotatableElement.rotate()
+        if self.gameElement is Rotatable {
+            (self.gameElement as! Rotatable).rotate()
             self.onCellAction?()
         }
     }
