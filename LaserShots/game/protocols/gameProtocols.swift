@@ -37,22 +37,21 @@ protocol laserShotsDelegate:class {
 }
 
 public protocol Reflectable {
-    var direction: PointingDirection { get set }
-
     func reflect(direction: PointingDirection) -> [PointingDirection]
 }
 
-public protocol GameElement: Reflectable {
+public protocol GameElement: class, Reflectable  {
     var x: Int { get set }
     var y: Int { get set }
+    var direction: PointingDirection { get set }
 }
 
 protocol Rotatable: GameElement {
-    mutating func rotate()
+    func rotate()
 }
 
-extension Rotatable where Self:GameElement {
-    mutating func rotate()  {
+extension Rotatable {
+    func rotate()  {
         var newDirection = self.direction
         switch direction {
         case .down:

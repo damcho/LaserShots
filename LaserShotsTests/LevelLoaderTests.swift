@@ -28,44 +28,43 @@ class LevelLoaderTests: XCTestCase {
         })
     }
     
-    func test_returnsEmptyListOnEmptyGameElementsJSONLevel() {
+    func test_returnsEmptyBoardOnEmptyGameElementsLevel() {
         let (sut, loaderClient) = makeSUT()
-        
-        expectSuccessFor(sut: sut, toCompleteWith: [], when: {
-            let emptyGameElementsLevel = ["width": 2, "height": 2, "gameElements":[]] as [String : Any]
-            let levelData = try! JSONSerialization.data(withJSONObject: emptyGameElementsLevel)
+        let (emptyBoard, emptyBoardJSON) = makeBoard(width: 2, height: 1, elements: [])
+
+        expectSuccessFor(sut: sut, toCompleteWith: emptyBoard , when: {
+            let levelData = try! JSONSerialization.data(withJSONObject: emptyBoardJSON)
             loaderClient.completeWithData(data: levelData)
         })
     }
     
-    func test_returnsValidGameElementsOnlyWhenJSONContainsInvalidElement() {
+    func test_returnsBoardWithValidGameElementsOnly() {
         let (sut, loaderClient) = makeSUT()
         let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
         let invalidLaserGun2JSON = ["type": "LaserGun", "x": 1, "y": 1,"direction": "wrong direction"] as [String : Any]
-        let levelWithInvalidGameElement = ["width": 2, "height": 2, "gameElements":[laserJSON1, invalidLaserGun2JSON]] as [String : Any]
-        let levelData = try! JSONSerialization.data(withJSONObject: levelWithInvalidGameElement)
+        let (modelBoard, JSONBoardWithInvalidGameElement) = makeBoard(width: 2, height: 1, elements: [(laserGun1, laserJSON1), (nil, invalidLaserGun2JSON)])
+        let levelData = try! JSONSerialization.data(withJSONObject: JSONBoardWithInvalidGameElement)
 
-        expectSuccessFor(sut: sut, toCompleteWith: [laserGun1], when: {
+        expectSuccessFor(sut: sut, toCompleteWith: modelBoard, when: {
             loaderClient.completeWithData(data: levelData)
         })
     }
     
-    func test_returnsArrayOfGameElementsOnValidJSONLevel() {
+    func test_returnsValidBoardWithValidJSONBoard() {
         let (sut, loaderClient) = makeSUT()
         let (laserGun1, laserJSON1) = makeGameElement("LaserGun", xPos: 0, yPos: 0, pointing: "down")
         let (mirror1, mirrorJSON1) = makeGameElement("Mirror", xPos: 1, yPos: 1, pointing: "left")
+        let (modelBoard, JSONBoard) = makeBoard(width: 2, height: 1, elements: [(laserGun1, laserJSON1), (mirror1, mirrorJSON1)])
+        let levelData = try! JSONSerialization.data(withJSONObject: JSONBoard)
         
-        let levelJSON = ["width": 2, "height": 2, "gameElements":[laserJSON1, mirrorJSON1]] as [String : Any]
-        let levelData = try! JSONSerialization.data(withJSONObject: levelJSON)
-        
-        expectSuccessFor(sut: sut, toCompleteWith: [laserGun1, mirror1], when: {
+        expectSuccessFor(sut: sut, toCompleteWith: modelBoard, when: {
             loaderClient.completeWithData(data: levelData)
         })
     }
     
     
     //Helpers
-    private func makeSUT() -> (LevelLoader, BundleLevelLoaderSpy) {
+    private func makeSUT() -> (LaserShotsLevelLoader, BundleLevelLoaderSpy) {
         let loaderClient = BundleLevelLoaderSpy()
         let sut = LevelLoader(client: loaderClient)
         return (sut, loaderClient)
@@ -94,7 +93,13 @@ class LevelLoaderTests: XCTestCase {
         return (gameElement, gameElementJSON)
     }
     
-    private func expectErrorFor(sut: LevelLoader, when action: () -> Void , file: StaticString = #file, line: UInt = #line) {
+    private func makeBoard(width: Int, height: Int, elements: [(modelElements: GameElement?, JSONElements: [String: Any])]) -> (Board, [String: Any]){
+        let board = Board(width: width, height: height, elements: elements.compactMap({ $0.modelElements }))
+        let JSONBoard = ["width": width, "height": height, "gameElements": elements.map({ $0.JSONElements })] as [String : Any]
+        return (board, JSONBoard)
+    }
+    
+    private func expectErrorFor(sut: LaserShotsLevelLoader, when action: () -> Void , file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "expect received error")
         
         sut.loadBoard(name: "level1", completion: {resullt in
@@ -112,15 +117,18 @@ class LevelLoaderTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
-    private func expectSuccessFor(sut: LevelLoader, toCompleteWith expectedElements: [GameElement], when action: () -> Void , file: StaticString = #file, line: UInt = #line) {
+    private func expectSuccessFor(sut: LaserShotsLevelLoader, toCompleteWith expectedBoard: Board, when action: () -> Void , file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "expect results")
         
         sut.loadBoard(name: "level1", completion: {result in
             switch result {
-            case .success(let receivedElements):
-                XCTAssertEqual(expectedElements.count, receivedElements.count, file: file, line: line)
-                receivedElements.enumerated().forEach { (index, receivedElement) in
-                    XCTAssertEqual(receivedElement.direction, expectedElements[index].direction, file: file, line: line)
+            case .success(let receivedBoard):
+                XCTAssertEqual(expectedBoard.boardCells.count , receivedBoard.boardCells.count, file: file, line: line)
+                expectedBoard.boardCells.enumerated().forEach { (i, expectedBoardCellsRow) in
+                    expectedBoardCellsRow.enumerated().forEach { (j, expectedBoardCell) in
+                        XCTAssertEqual(expectedBoardCell , receivedBoard.boardCells[i][j], file: file, line: line)
+                    }
+
                 }
             default:
                 XCTFail("expected success but got failure instead", file: file, line: line)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BoardCell {
+public final class BoardCell: Equatable {
     
     let i:Int
     let j:Int
@@ -22,8 +22,12 @@ class BoardCell {
         self.j = j
     }
     
+    public static func == (lhs: BoardCell, rhs: BoardCell) -> Bool {
+        return lhs.i == rhs.i && lhs.j == rhs.j && type(of: lhs.reflectableElement) == type(of: rhs.reflectableElement)
+    }
+    
     func getDirection() -> PointingDirection {
-        return self.reflectableElement?.direction ?? .none
+        return reflectableElement is GameElement ? (reflectableElement as! GameElement).direction : .none
     }
     
     func isReflecting () -> Bool {
@@ -46,7 +50,7 @@ class BoardCell {
     
     func onTap() {
         if let element = self.reflectableElement, element is Rotatable {
-            var rotatableElement = element as! Rotatable
+            let rotatableElement = element as! Rotatable
             rotatableElement.rotate()
             self.onCellTapped?()
         }

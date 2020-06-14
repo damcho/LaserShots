@@ -11,7 +11,7 @@ import Foundation
 public typealias loaderCompletion = (LevelLoaderResult) -> Void
 
 public enum LevelLoaderResult {
-    case success([GameElement])
+    case success(Board)
     case failure(Error)
 }
 
@@ -51,7 +51,7 @@ public final class LevelLoader: LaserShotsLevelLoader  {
                 }
                 let gameElements = GameElementsMapper.map(elements: root.gameElements)
                 let levelBoard = Board(width: root.width, height: root.height, elements: gameElements)
-                completion(.success(gameElements))
+                completion(.success(levelBoard))
             }
         })
     }
