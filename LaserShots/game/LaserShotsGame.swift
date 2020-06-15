@@ -27,13 +27,6 @@ class LaserShotsGame  {
         self.levelLoader = levelLoader
     }
     
-    func boardCells() -> [[BoardCell]] {
-        guard let boardCells = self.currentLevelBoard?.boardCells else {
-            return []
-        }
-        return boardCells
-    }
-    
     func start() {
         self.currentLevelBoard?.shootLaser()
     }
@@ -61,15 +54,15 @@ class LaserShotsGame  {
                     switch state {
                     case .nextLevel:
                         if self.levelIndex < self.numberOfLevels {
-                            self.delegate?.gameState(state: state)
+                            self.delegate?.gameStateChanged(state: state)
                         } else {
-                            self.delegate?.gameState(state: .gameWon)
+                            self.delegate?.gameStateChanged(state: .gameWon)
                         }
                     default:
-                        self.delegate?.gameState(state: state)
+                        self.delegate?.gameStateChanged(state: state)
                     }
                 }
-                self.delegate?.levelLoaded()
+                self.delegate?.levelLoaded(with: self.currentLevelBoard?.boardCells ?? [])
             }
         }
     }

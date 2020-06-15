@@ -15,9 +15,14 @@ class LaserTrapCellView: LaserShotsBaseCellView {
     @IBOutlet weak var horizontalLaser1View: UIView!
     @IBOutlet weak var horizontalLaser2View: UIView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.blackHoleView.layer.cornerRadius = self.blackHoleView.frame.size.width / 2
+    }
+    
     override func setupView() {
         self.hideLaserBeams()
-        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
+        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
             switch direction {
             case .right:
                 self?.horizontalLaser2View.isHidden = false
@@ -38,10 +43,5 @@ class LaserTrapCellView: LaserShotsBaseCellView {
         verticalLaser1View.isHidden = true
         horizontalLaser1View.isHidden = true
         horizontalLaser2View.isHidden = true
-    }
-    
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        self.blackHoleView.layer.cornerRadius = self.blackHoleView.frame.size.width / 2
     }
 }

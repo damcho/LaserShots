@@ -21,13 +21,14 @@ class TransparentMirrorCellView: RotatableCellView {
         self.horizontalLaserBeam2.isHidden = true
         self.verticalLaserBeam1.isHidden = true
         self.verticalLaserBeam2.isHidden = true
+        
         guard let rotatingView = self.gameElementContainerView else {
             return
         }
         rotatingView.transform = rotatingView.transform.rotated(by:  -.pi / 4)
-
-        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
-            guard let gameCell = self?.gameCell else {
+        
+        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
+            guard let gameCell = self?.gameCellViewModel else {
                 return
             }
             let shouldHideLaserBeams = !gameCell.isReflecting()

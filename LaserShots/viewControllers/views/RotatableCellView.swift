@@ -22,7 +22,7 @@ class RotatableCellView : LaserShotsBaseCellView {
         UIView.animate(withDuration: 0.15, animations: { () -> Void in
             rotatingView.transform = rotatingView.transform.rotated(by:  .pi / 2)
         }) {[weak self] (succeed) -> Void in
-            self?.gameCell?.onTap()
+            self?.gameCellViewModel?.onTap()
         }
     }
 }

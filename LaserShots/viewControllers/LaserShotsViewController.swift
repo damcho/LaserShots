@@ -12,9 +12,9 @@ class LaserShotsViewController: UIViewController {
     
     @IBOutlet weak var gameBoard: UICollectionView!
     
-    var laserShotGame:LaserShotsGame?
-    var boardCells:[BoardCell] = []
+    var boardCells: [CellViewModel] = []
     var cellsPerRow = 0
+    var laserShotsGameViewModel: LaserGameViewModel?
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
@@ -22,12 +22,44 @@ class LaserShotsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.gameBoard.isUserInteractionEnabled = false
-        self.registerNibs()
+        gameBoard.isUserInteractionEnabled = false
+        registerNibs()
+        
         let levelLoaderClient = BundleLevelLoader()
-        self.laserShotGame = LaserShotsGame(levelLoader: LevelLoader(client: levelLoaderClient))
-        self.laserShotGame?.delegate = self
-        self.laserShotGame?.nextLevel()
+        let game = LaserShotsGame(levelLoader: LevelLoader(client: levelLoaderClient))
+        laserShotsGameViewModel = LaserGameViewModel(laserShotsGame: game)
+        bind()
+        laserShotsGameViewModel?.nextLevel()
+    }
+    
+    private func bind() {
+        self.laserShotsGameViewModel?.onBoardLoaded = { [weak self] (cells, cellsPerRow) in
+            self?.boardCells = cells
+            self?.cellsPerRow = cellsPerRow
+            self?.gameBoard.reloadData()
+            self?.gameBoard.isUserInteractionEnabled = false
+        }
+        
+        self.laserShotsGameViewModel?.onGameStateChanged = { [weak self] (alertViewModel) in
+            var action:(UIAlertAction) -> Void
+            
+            switch alertViewModel.state {
+            case .gameLost:
+                action = {[weak self](action:UIAlertAction) ->() in
+                    self?.laserShotsGameViewModel?.restartLevel()
+                }
+            case.gameWon:
+                action = {[weak self](action:UIAlertAction) ->() in
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            case.nextLevel:
+                action = {[weak self](action:UIAlertAction) ->() in
+                    self?.animateLevelTransition()
+                }
+            }
+            
+            self?.showAlert(title: alertViewModel.titleText, msg: alertViewModel.alertMsgText, action: UIAlertAction(title:alertViewModel.actionTitleTText , style: .default, handler:action))
+        }
     }
     
     private func registerNibs () {
@@ -40,24 +72,11 @@ class LaserShotsViewController: UIViewController {
         self.gameBoard.register(UINib(nibName: TransparentMirrorCellView.nibName(), bundle: nil), forCellWithReuseIdentifier: "TransparentMirrorCellView")
     }
     
-    func createBoardGame() {
-        self.boardCells = []
-        guard let gameBoardCells = self.laserShotGame?.boardCells() else {
-            return
-        }
-        cellsPerRow = gameBoardCells[0].count
-        for cellsArray in gameBoardCells {
-            for cell in cellsArray {
-                self.boardCells.append(cell)
-            }
-        }
-    }
-    
     private func animateLevelTransition() {
         UIView.animate(withDuration: 1, animations: {[weak self] () -> Void in
             self?.gameBoard.alpha = 0
         }) {[weak self] (succeed) -> Void in
-            self?.laserShotGame?.nextLevel()
+            self?.laserShotsGameViewModel?.nextLevel()
             UIView.animate(withDuration: 1, animations: {[weak self] () -> Void in
                 self?.gameBoard.alpha = 1
             })
@@ -71,7 +90,7 @@ class LaserShotsViewController: UIViewController {
     }
     
     @IBAction func onStartButtonTapped(_ sender: Any) {
-        self.laserShotGame?.start()
+        self.laserShotsGameViewModel?.start()
         self.gameBoard.isUserInteractionEnabled = true
     }
 }
@@ -82,15 +101,9 @@ extension LaserShotsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let boardCell = self.boardCells[indexPath.row]
-        var cellView:LaserShotsBaseCellView
-        var reuseIdentifier =  boardCell.gameElement == nil ? "Empty" : String(describing: type(of: boardCell.gameElement.self!))
-        reuseIdentifier += "CellView"
-        cellView = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LaserShotsBaseCellView
-        
-        cellView.gameCell = boardCell
-        cellView.layoutIfNeeded()
-        
+        let boardCellViewModel = self.boardCells[indexPath.row]
+        let cellView = collectionView.dequeueReusableCell(withReuseIdentifier: boardCellViewModel.cellViewName, for: indexPath) as! LaserShotsBaseCellView
+        cellView.gameCellViewModel = boardCellViewModel
         return cellView
     }
 }
@@ -107,44 +120,4 @@ extension LaserShotsViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension LaserShotsViewController: laserShotsDelegate {
-    
-    func gameState(state: GameState) {
-        var title:String
-        var actionTitle:String
-        var msg:String
-        var action:(UIAlertAction) -> Void
-        switch state {
-        case .nextLevel:
-            action = {[weak self](action:UIAlertAction) ->() in
-                self?.animateLevelTransition()
-            }
-            actionTitle = "next level"
-            msg = "YEAHH"
-            title = "You passed to the next level"
-        case .gameWon:
-            action = {[weak self](action:UIAlertAction) ->() in
-                self?.navigationController?.popViewController(animated: true)
-            }
-            actionTitle = "Main screen"
-            msg = "YEAHH"
-            title = "You Finished all the levels"
-        case .gameLost:
-            action = {[weak self](action:UIAlertAction) ->() in
-                self?.laserShotGame?.restartLevel()
-            }
-            actionTitle = "Restart level"
-            msg = "You lost"
-            title = "Ups"
-        }
-        
-        self.showAlert(title: title, msg: msg, action: UIAlertAction(title:actionTitle , style: .default, handler:action))
-    }
-    
-    func levelLoaded() {
-        self.createBoardGame()
-        self.gameBoard.reloadData()
-        self.gameBoard.isUserInteractionEnabled = false
-    }
-}
 

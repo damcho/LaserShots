@@ -28,8 +28,8 @@ public enum PointingDirection: String {
 }
 
 protocol laserShotsDelegate: class {
-    func gameState(state: GameState)
-    func levelLoaded()
+    func gameStateChanged(state: GameState)
+    func levelLoaded(with boardCells: [[BoardCell]])
 }
 
 public typealias ReflectableDirectionableGameElement = GameElement & Directionable & Reflectable

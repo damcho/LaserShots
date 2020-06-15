@@ -12,22 +12,22 @@ class LaserShotsBaseCellView: UICollectionViewCell, NibInstantiatable {
 
     @IBOutlet weak var gameElementContainerView: UIView?
     
-    var gameCell:BoardCell? {
+    var gameCellViewModel: CellViewModel? {
         didSet {
             self.setupView()
         }
     }
-    
+
     func setupView() {
         self.rotate()
     }
     
     func rotate(){
-        guard let gameElement = self.gameCell else {
+        guard let viewModel = self.gameCellViewModel else {
             return
         }
         var radiansToRotate:CGFloat
-        switch gameElement.getDirection() {
+        switch viewModel.direction() {
         case .left:
             radiansToRotate = .pi/2
         case .right:

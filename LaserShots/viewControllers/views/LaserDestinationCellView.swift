@@ -9,13 +9,13 @@
 import UIKit
 
 class LaserDestinationCellView: LaserShotsBaseCellView {
-
-    @IBOutlet weak var laserView: UIView!
     
+    @IBOutlet weak var laserView: UIView!
+
     override func setupView() {
         super.setupView()
         self.laserView.isHidden = true
-        self.gameCell?.onLaserBeamChanged = { [weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
+        self.gameCellViewModel?.onLaserBeamChanged = { [weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
             self?.laserView.isHidden = direction == .none
         }
     }

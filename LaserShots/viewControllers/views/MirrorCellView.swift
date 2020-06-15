@@ -9,18 +9,18 @@
 import UIKit
 
 class MirrorCellView: RotatableCellView {
-  
+    
     @IBOutlet weak var laserBeam2View: UIView!
     @IBOutlet weak var laserBeam1View: UIView!
     @IBOutlet weak var mirrorView: UIView!
     
     override func setupView() {
         super.setupView()
-        self.mirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
         self.shouldShowLaserBeam(false)
-
-        self.gameCell?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
-            let shouldShowLaserBeam = !reflections.isEmpty || self?.gameCell?.isReflecting() ?? false
+        self.mirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
+        
+        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
+            let shouldShowLaserBeam = !reflections.isEmpty || self?.gameCellViewModel?.isReflecting() ?? false
             self?.shouldShowLaserBeam( shouldShowLaserBeam)
         }
     }

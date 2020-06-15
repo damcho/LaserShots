@@ -8,7 +8,4 @@
 
 import UIKit
 
-class WallCellView: LaserShotsBaseCellView {
-
-
-}
+class WallCellView: LaserShotsBaseCellView {}

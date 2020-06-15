@@ -27,7 +27,10 @@ public final class BoardCell: Equatable {
     }
     
     func getDirection() -> PointingDirection {
-        return gameElement is Directionable ? (gameElement as! Directionable).direction : .none
+        guard let element = self.gameElement else {
+            return .none
+        }
+        return element is Directionable ? (element as! Directionable).direction : .none
     }
     
     func isReflecting () -> Bool {

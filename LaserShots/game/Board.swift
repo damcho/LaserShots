@@ -11,7 +11,7 @@ import Foundation
 public final class Board {
     
     private var laserGunCell: BoardCell?
-    public var boardCells: [[BoardCell]] = []
+    var boardCells: [[BoardCell]] = []
     var onGameStateChanged: ((GameState) -> ())?
     
     private let width: Int
