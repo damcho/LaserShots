@@ -144,6 +144,25 @@
 			path = BundleLevelLoader;
 			sourceTree = "<group>";
 		};
+		8B691D2B249789D000CCA4D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8B691D29249755B700CCA4D4 /* CellViewModel.swift */,
+				8B691D272497398800CCA4D4 /* LaserGameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8B691D2C249789FF00CCA4D4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8BFE3956229446F500605072 /* BoardCell.swift */,
+				8BFE3957229446F500605072 /* Board.swift */,
+				8BFE39672294472000605072 /* LaserShotsGame.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		8BFE3929229446CE00605072 = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +184,7 @@
 		8BFE3934229446CE00605072 /* LaserShots */ = {
 			isa = PBXGroup;
 			children = (
-				8BFE3971229483EF00605072 /* viewControllers */,
+				8BFE3971229483EF00605072 /* UI */,
 				8BFE396B22944A9200605072 /* game */,
 				8BFE3935229446CE00605072 /* AppDelegate.swift */,
 				8BFE3939229446CE00605072 /* Main.storyboard */,
@@ -210,14 +229,11 @@
 		8BFE396B22944A9200605072 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				8B691D2C249789FF00CCA4D4 /* Main */,
+				8B691D2B249789D000CCA4D4 /* ViewModels */,
 				8B194D9522B2F9F800B5A74C /* levelLoader */,
 				8BFE395D229446F500605072 /* protocols */,
 				8BFE3955229446F500605072 /* gameElements */,
-				8BFE3956229446F500605072 /* BoardCell.swift */,
-				8BFE3957229446F500605072 /* Board.swift */,
-				8BFE39672294472000605072 /* LaserShotsGame.swift */,
-				8B691D272497398800CCA4D4 /* LaserGameViewModel.swift */,
-				8B691D29249755B700CCA4D4 /* CellViewModel.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -231,7 +247,7 @@
 			path = levels;
 			sourceTree = "<group>";
 		};
-		8BFE3971229483EF00605072 /* viewControllers */ = {
+		8BFE3971229483EF00605072 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				8BFE3973229590C200605072 /* views */,
@@ -239,7 +255,7 @@
 				8BFE398422959DD700605072 /* ViewControllerProtocols.swift */,
 				8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */,
 			);
-			path = viewControllers;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		8BFE3973229590C200605072 /* views */ = {

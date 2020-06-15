@@ -33,6 +33,6 @@ final class CellViewModel {
     }
     
     func onTap() {
-        boardCell.onTap()
+        boardCell.performAction()
     }
 }

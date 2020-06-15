@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct AlertViewModel {
-    let titleText: String
-    let actionTitleTText: String
-    let alertMsgText: String
-    let state: GameState
-}
-
-class LaserGameViewModel {
+final class LaserGameViewModel {
+    
+    struct AlertViewModel {
+        let titleText: String
+        let actionTitleTText: String
+        let alertMsgText: String
+        let state: GameState
+    }
     
     private let laserShotsGame: LaserShotsGame
     var onBoardLoaded: (([CellViewModel], Int) -> Void)?

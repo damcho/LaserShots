@@ -55,7 +55,7 @@ public final class BoardCell: Equatable {
         return reflectDirections
     }
     
-    func onTap() {
+    func performAction() {
         if self.gameElement is Rotatable {
             (self.gameElement as! Rotatable).rotate()
             self.onCellAction?()
