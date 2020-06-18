@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let game = LaserShotsGame(levelLoader: LevelLoader(client: levelLoaderClient))
         guard let rootvc = LaserShotsiOSComposer.composeWith(laserShotsGame: game) else { return false }
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: rootvc)
+        let navController = UINavigationController(rootViewController: rootvc)
+        navController.isNavigationBarHidden = true
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
 
         return true
