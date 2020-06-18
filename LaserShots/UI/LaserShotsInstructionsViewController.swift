@@ -16,9 +16,6 @@ class LaserShotsInstructionsViewController: UIViewController {
     var routingAction: (() -> Void)?
     
     @IBAction func onLetsGoButtonPressed(_ sender: Any) {
-   //     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-   //     let laserShotGameVC = storyboard.instantiateViewController(withIdentifier: "LaserShotsViewController")
         self.routingAction?()
     }
-    
 }
