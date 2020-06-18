@@ -8,12 +8,12 @@
 
 import UIKit
 
-class LaserShotsViewController: UIViewController {
+final class LaserShotsViewController: UIViewController {
     
     @IBOutlet weak var gameBoard: UICollectionView!
     
-    var boardCells: [CellViewModel] = []
-    var cellsPerRow = 0
+    private var boardCells: [CellViewModel] = []
+    private var cellsPerRow = 0
     var laserShotsGameViewModel: LaserGameViewModel?
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
@@ -24,10 +24,6 @@ class LaserShotsViewController: UIViewController {
         super.viewDidLoad()
         gameBoard.isUserInteractionEnabled = false
         registerNibs()
-        
-        let levelLoaderClient = BundleLevelLoader()
-        let game = LaserShotsGame(levelLoader: LevelLoader(client: levelLoaderClient))
-        laserShotsGameViewModel = LaserGameViewModel(laserShotsGame: game)
         bind()
         laserShotsGameViewModel?.nextLevel()
     }

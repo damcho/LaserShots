@@ -1,42 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Soe-Qa-fxd">
-    <device id="ipad12_9rounded" orientation="landscape">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="2t1-st-Has">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="Soe-Qa-fxd" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y3H-KP-XU7">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="UmE-0O-xN2" kind="relationship" relationship="rootViewController" id="8GV-DY-A3X"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uh4-xH-6cf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1159" y="41"/>
-        </scene>
         <!--Laser Shots Instructions View Controller-->
         <scene sceneID="1yk-bf-oAv">
             <objects>
-                <viewController id="UmE-0O-xN2" customClass="LaserShotsInstructionsViewController" customModule="LaserShots" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LaserShotsInstructionsViewController" id="UmE-0O-xN2" customClass="LaserShotsInstructionsViewController" customModule="LaserShots" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="klA-1H-j3F">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lasers" translatesAutoresizingMaskIntoConstraints="NO" id="Dqr-WI-Gsy">
-                                <rect key="frame" x="0.0" y="24" width="1366" height="980"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1004"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="257" verticalCompressionResistancePriority="752" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFz-Ec-11N">
-                                <rect key="frame" x="50" y="232" width="1266" height="217"/>
+                                <rect key="frame" x="50" y="208" width="1266" height="241"/>
                                 <string key="text">Shoot the laser gun and reflect the laser beam by tapping on a mirror and rotating it clockwise until you reach the laser destination in red. Beware of the tblack holes that pull everything in!!.. even light</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,7 +63,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="256" verticalCompressionResistancePriority="755" text="Laser Shots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4u-Rx-4fQ">
-                                <rect key="frame" x="555" y="24" width="256" height="200"/>
+                                <rect key="frame" x="555" y="0.0" width="256" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="WLE-D2-CEZ"/>
                                 </constraints>
@@ -196,13 +180,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lasers" translatesAutoresizingMaskIntoConstraints="NO" id="YVX-Va-1Da">
-                                <rect key="frame" x="0.0" y="24" width="386" height="980"/>
+                                <rect key="frame" x="0.0" y="0.0" width="362" height="1004"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="space2" translatesAutoresizingMaskIntoConstraints="NO" id="8PA-31-FGO">
-                                <rect key="frame" x="386" y="24" width="980" height="980"/>
+                                <rect key="frame" x="362" y="0.0" width="1004" height="1004"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO6-de-dfd">
-                                <rect key="frame" x="386" y="24" width="980" height="980"/>
+                                <rect key="frame" x="362" y="0.0" width="1004" height="1004"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sO6-de-dfd" secondAttribute="height" multiplier="1:1" id="BSq-Ys-roI"/>
@@ -229,13 +213,13 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laser Shots" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxf-MW-Jkd">
-                                <rect key="frame" x="5" y="30" width="376" height="43"/>
+                                <rect key="frame" x="5" y="30" width="352" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4z-N4-lwp">
-                                <rect key="frame" x="148" y="113" width="90" height="61"/>
+                                <rect key="frame" x="136" y="113" width="90" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="1Tm-vb-3e4"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="9k4-05-4tH"/>

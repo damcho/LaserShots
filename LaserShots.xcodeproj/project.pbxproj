@@ -14,6 +14,8 @@
 		8B19F25422A753B30030BB1E /* level2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F25322A753B30030BB1E /* level2.json */; };
 		8B691D282497398800CCA4D4 /* LaserGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B691D272497398800CCA4D4 /* LaserGameViewModel.swift */; };
 		8B691D2A249755B700CCA4D4 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B691D29249755B700CCA4D4 /* CellViewModel.swift */; };
+		8B759D4D2498C39800C58A34 /* LaserShotsiOSComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759D4C2498C39800C58A34 /* LaserShotsiOSComposer.swift */; };
+		8B759D4F249B0E4500C58A34 /* ViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759D4E249B0E4500C58A34 /* ViewController+extensions.swift */; };
 		8B8313CE2490E146005C119C /* LevelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8313CD2490E146005C119C /* LevelLoaderTests.swift */; };
 		8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */; };
 		8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */; };
@@ -68,6 +70,8 @@
 		8B19F25322A753B30030BB1E /* level2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = level2.json; sourceTree = "<group>"; };
 		8B691D272497398800CCA4D4 /* LaserGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserGameViewModel.swift; sourceTree = "<group>"; };
 		8B691D29249755B700CCA4D4 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		8B759D4C2498C39800C58A34 /* LaserShotsiOSComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsiOSComposer.swift; sourceTree = "<group>"; };
+		8B759D4E249B0E4500C58A34 /* ViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+extensions.swift"; sourceTree = "<group>"; };
 		8B8313CD2490E146005C119C /* LevelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelLoaderTests.swift; sourceTree = "<group>"; };
 		8BE846AC22A1F1F100A40AF1 /* LaserTrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrap.swift; sourceTree = "<group>"; };
 		8BE846AE22A1F32A00A40AF1 /* LaserTrapCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserTrapCellView.swift; sourceTree = "<group>"; };
@@ -156,9 +160,11 @@
 		8B691D2C249789FF00CCA4D4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				8BFE3935229446CE00605072 /* AppDelegate.swift */,
 				8BFE3956229446F500605072 /* BoardCell.swift */,
 				8BFE3957229446F500605072 /* Board.swift */,
 				8BFE39672294472000605072 /* LaserShotsGame.swift */,
+				8B759D4C2498C39800C58A34 /* LaserShotsiOSComposer.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -186,7 +192,6 @@
 			children = (
 				8BFE3971229483EF00605072 /* UI */,
 				8BFE396B22944A9200605072 /* game */,
-				8BFE3935229446CE00605072 /* AppDelegate.swift */,
 				8BFE3939229446CE00605072 /* Main.storyboard */,
 				8BFE393C229446CF00605072 /* Assets.xcassets */,
 				8BFE393E229446CF00605072 /* LaunchScreen.storyboard */,
@@ -254,6 +259,7 @@
 				8BFE3937229446CE00605072 /* LaserShotsViewController.swift */,
 				8BFE398422959DD700605072 /* ViewControllerProtocols.swift */,
 				8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */,
+				8B759D4E249B0E4500C58A34 /* ViewController+extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 				8BFE3965229446F500605072 /* Wall.swift in Sources */,
 				8B691D2A249755B700CCA4D4 /* CellViewModel.swift in Sources */,
 				8BFE3963229446F500605072 /* Mirror.swift in Sources */,
+				8B759D4D2498C39800C58A34 /* LaserShotsiOSComposer.swift in Sources */,
 				8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */,
 				8BE846AD22A1F1F100A40AF1 /* LaserTrap.swift in Sources */,
 				8BFE3962229446F500605072 /* Laser.swift in Sources */,
@@ -414,6 +421,7 @@
 				8BFE39892296E52800605072 /* WallCellView.swift in Sources */,
 				8B194D9422B2F5EF00B5A74C /* BundleLevelLoader.swift in Sources */,
 				8BFE39752295911600605072 /* EmptyCellView.swift in Sources */,
+				8B759D4F249B0E4500C58A34 /* ViewController+extensions.swift in Sources */,
 				8B194D9222B1B2EB00B5A74C /* LevelLoader.swift in Sources */,
 				8BFE3966229446F500605072 /* gameProtocols.swift in Sources */,
 				8BFE3960229446F500605072 /* Board.swift in Sources */,
@@ -581,13 +589,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XA45JM35QJ;
 				INFOPLIST_FILE = LaserShots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DM.LaserShots;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bandofcoders.nemd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -598,15 +607,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = KP9RT2KA4D;
 				INFOPLIST_FILE = LaserShots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = DM.LaserShots;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maf.sharesit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "MAF Share Developer Profile (sharesit)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

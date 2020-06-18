@@ -13,11 +13,12 @@ class LaserShotsInstructionsViewController: UIViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .lightContent
     }
+    var routingAction: (() -> Void)?
+    
     @IBAction func onLetsGoButtonPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let laserShotGameVC = storyboard.instantiateViewController(withIdentifier: "LaserShotsViewController")
-
-        self.navigationController?.pushViewController(laserShotGameVC, animated: true)
+   //     let storyboard = UIStoryboard(name: "Main", bundle: nil)
+   //     let laserShotGameVC = storyboard.instantiateViewController(withIdentifier: "LaserShotsViewController")
+        self.routingAction?()
     }
     
 }
