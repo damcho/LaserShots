@@ -2,6 +2,9 @@
 
 ![CI](https://github.com/damcho/LaserShots/workflows/CI/badge.svg?branch=master)
 
+## App Arquitecture
+![app arq](LaserShotsAppArq.png)
+
 ## Description
 ### Version of the Laser shots game. The objective is to reflect the laser beam shot with mirrors so that it reaches the laser beam destination.
 
