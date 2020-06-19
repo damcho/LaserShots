@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class CellViewModel {
-    let boardCell: BoardCell
-    var cellViewName: String {
+public final class CellViewModel {
+    private let boardCell: BoardCell
+    public var cellViewName: String {
         return boardCell.gameElement == nil ? "EmptyCellView" : String( describing: type(of: boardCell.gameElement.self!)) + "CellView"
     }
     
@@ -18,21 +18,21 @@ final class CellViewModel {
         self.boardCell = boardCell
     }
     
-    var onLaserBeamChanged: ((PointingDirection, [PointingDirection]) -> Void)? {
+    public var onLaserBeamChanged: ((PointingDirection, [PointingDirection]) -> Void)? {
         didSet {
             boardCell.onLaserBeamChanged = self.onLaserBeamChanged
         }
     }
     
-    func direction() -> PointingDirection {
+    public func direction() -> PointingDirection {
         return boardCell.getDirection()
     }
     
-    func isReflecting() -> Bool {
+    public func isReflecting() -> Bool {
         return boardCell.isReflecting()
     }
     
-    func onTap() {
+    public func onTap() {
         boardCell.performAction()
     }
 }

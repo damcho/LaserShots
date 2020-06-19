@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import LaserShots
+import LaserShotsGameCore
 
 class LevelLoaderTests: XCTestCase {
     

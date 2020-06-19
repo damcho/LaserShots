@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LaserShotsGameCore
 
 class LaserTrapCellView: LaserShotsBaseCellView {
     @IBOutlet weak var blackHoleView: UIView!

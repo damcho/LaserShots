@@ -8,33 +8,33 @@
 
 import Foundation
 
-final class LaserGameViewModel {
+public final class LaserGameViewModel {
     
-    struct AlertViewModel {
-        let titleText: String
-        let actionTitleTText: String
-        let alertMsgText: String
-        let state: GameState
+    public struct AlertViewModel {
+        public let titleText: String
+        public let actionTitleTText: String
+        public let alertMsgText: String
+        public let state: GameState
     }
     
     private let laserShotsGame: LaserShotsGame
-    var onBoardLoaded: (([CellViewModel], Int) -> Void)?
-    var onGameStateChanged: ((AlertViewModel) -> Void)?
+    public var onBoardLoaded: (([CellViewModel], Int) -> Void)?
+    public var onGameStateChanged: ((AlertViewModel) -> Void)?
     
-    init(laserShotsGame: LaserShotsGame) {
+    public init(laserShotsGame: LaserShotsGame) {
         self.laserShotsGame = laserShotsGame
         self.laserShotsGame.delegate = self
     }
     
-    func start() {
+    public func start() {
         self.laserShotsGame.start()
     }
     
-    func nextLevel() {
+    public func nextLevel() {
         self.laserShotsGame.nextLevel()
     }
     
-    func restartLevel(){
+    public func restartLevel(){
         self.laserShotsGame.restartLevel()
     }
     

@@ -8,22 +8,23 @@
 
 import Foundation
 
-enum GameState {
+public enum GameState {
     case gameWon
     case gameLost
     case nextLevel
 }
 
-class LaserShotsGame  {
+public class LaserShotsGame  {
     private let numberOfLevels = 2
     private let boardLevelName: String = "level"
     private var levelIndex = 0
     private var currentLevelBoard: Board?
+    private let levelLoader: LaserShotsLevelLoader
+
     weak var delegate: laserShotsDelegate?
     
-    let levelLoader: LaserShotsLevelLoader
     
-    init(levelLoader: LaserShotsLevelLoader) {
+    public init(levelLoader: LaserShotsLevelLoader) {
         self.levelLoader = levelLoader
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LaserShotsGameCore
 
 class MirrorCellView: RotatableCellView {
     

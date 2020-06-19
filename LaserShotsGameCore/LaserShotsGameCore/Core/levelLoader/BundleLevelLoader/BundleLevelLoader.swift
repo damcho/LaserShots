@@ -27,6 +27,8 @@ public enum BundleLoaderError: Error {
 
 public final class BundleLevelLoader: LevelLoaderClient {
     
+    public init() {}
+    
     public func loadLevel(name:String, completion: LevelLoaderClientCompletion) {
         guard let path = Bundle(for: type(of: self)).path(forResource: name, ofType: "json") else {
             completion(.failure(.invalidPath))
