@@ -27,6 +27,7 @@
 		8B759DA4249CC98D00C58A34 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA2249CC98D00C58A34 /* CellViewModel.swift */; };
 		8B759DA6249CC9B500C58A34 /* LevelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */; };
 		8B759DA9249CCA4D00C58A34 /* gameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA8249CCA4D00C58A34 /* gameProtocols.swift */; };
+		8B759DB3249D2B1800C58A34 /* GameElementsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DB2249D2B1800C58A34 /* GameElementsMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		8B759DA2249CC98D00C58A34 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelLoaderTests.swift; sourceTree = "<group>"; };
 		8B759DA8249CCA4D00C58A34 /* gameProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameProtocols.swift; sourceTree = "<group>"; };
+		8B759DB2249D2B1800C58A34 /* GameElementsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElementsMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				8B759D96249CC95900C58A34 /* BundleLevelLoader */,
 				8B759D9B249CC95900C58A34 /* LevelLoader.swift */,
+				8B759DB2249D2B1800C58A34 /* GameElementsMapper.swift */,
 			);
 			name = levelLoader;
 			path = Core/levelLoader;
@@ -321,6 +324,7 @@
 				8B759D91249CC91F00C58A34 /* Laser.swift in Sources */,
 				8B759D8E249CC91F00C58A34 /* LaserDestination.swift in Sources */,
 				8B759D85249CC8F300C58A34 /* Board.swift in Sources */,
+				8B759DB3249D2B1800C58A34 /* GameElementsMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

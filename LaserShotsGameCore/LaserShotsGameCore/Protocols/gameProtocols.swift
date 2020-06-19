@@ -32,8 +32,8 @@ protocol laserShotsDelegate: class {
     func levelLoaded(with boardCells: [[BoardCell]])
 }
 
-public typealias ReflectableDirectionableGameElement = GameElement & Directionable & Reflectable
-public typealias ReflectableRotatableGameElement = GameElement & Reflectable & Rotatable
+typealias ReflectableDirectionableGameElement = GameElement & Directionable & Reflectable
+typealias ReflectableRotatableGameElement = GameElement & Reflectable & Rotatable
 
 public protocol Reflectable {
     func reflect(direction: PointingDirection) -> [PointingDirection]
