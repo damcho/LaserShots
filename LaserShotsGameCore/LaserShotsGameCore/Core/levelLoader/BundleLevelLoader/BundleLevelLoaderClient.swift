@@ -25,7 +25,7 @@ public enum BundleLoaderError: Error {
     case invalidPath
 }
 
-public final class BundleLevelLoader: LevelLoaderClient {
+public final class BundleLevelLoaderClient: LevelLoaderClient {
     
     public init() {}
     
