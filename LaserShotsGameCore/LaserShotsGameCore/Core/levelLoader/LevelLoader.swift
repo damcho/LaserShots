@@ -40,7 +40,8 @@ public final class LevelLoader: LaserShotsLevelLoader  {
     }
     
     public func loadBoard(name: String, completion: @escaping loaderCompletion) {
-        loaderClient.loadLevel(name: name, completion: { result in
+        loaderClient.loadLevel(name: name, completion: {[weak self] result in
+            guard self != nil else { return }
             switch result {
             case .failure:
                 completion(.failure(NSError(domain: "some error", code: 1)))

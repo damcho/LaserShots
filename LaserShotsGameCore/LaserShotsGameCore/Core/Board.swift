@@ -50,9 +50,9 @@ public final class Board {
             let boardCell = boardCells[gameElementWrapper.x][gameElementWrapper.y]
             if gameElementWrapper.x <= self.width+1 && gameElementWrapper.y <= self.height+1 {
                 boardCell.gameElement = gameElementWrapper.gameElement
-                boardCell.onCellAction = {
-                    self.clearBoard()
-                    self.shootLaser()
+                boardCell.onCellAction = { [weak self] in
+                    self?.clearBoard()
+                    self?.shootLaser()
                 }
             }
             if gameElementWrapper.gameElement is Shooter {
