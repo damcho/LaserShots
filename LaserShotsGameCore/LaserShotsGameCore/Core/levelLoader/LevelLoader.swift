@@ -44,11 +44,15 @@ public final class LevelLoader: LaserShotsLevelLoader  {
             guard self != nil else { return }
             switch result {
             case .failure:
-                completion(.failure(NSError(domain: "some error", code: 1)))
+                completion(.failure(NSError(domain: "unknown error", code: 1)))
             case .success(let data):
                 do {
                     let (wrapperElements, width, height) = try GameElementsMapper.map(data: data)
-                    completion(.success(Board(width: width, height: height, elements: wrapperElements)))
+                    guard let board = (Board(width: width, height: height, elements: wrapperElements)) else {
+                        completion(.failure((NSError(domain: "Invalid arguments", code: 1))))
+                        return
+                    }
+                    completion(.success(board))
                 } catch (let error) {
                     completion(.failure(error))
                 }

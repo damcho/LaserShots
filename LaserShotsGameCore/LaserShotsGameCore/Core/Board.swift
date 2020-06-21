@@ -17,7 +17,8 @@ public final class Board {
     private let width: Int
     private let height: Int
     
-    public init(width: Int, height: Int, elements: [GameElementWrapper]) {
+    public init?(width: Int, height: Int, elements: [GameElementWrapper]) {
+        guard width > 0, height > 0 else { return nil }
         self.width = width
         self.height = height
         

@@ -32,7 +32,7 @@ class LevelLoaderTests: XCTestCase {
         let (sut, loaderClient) = makeSUT()
         let (emptyBoard, emptyBoardJSON) = makeBoard(width: 2, height: 1, elements: [])
 
-        expectSuccessFor(sut: sut, toCompleteWith: emptyBoard , when: {
+        expectSuccessFor(sut: sut, toCompleteWith: emptyBoard! , when: {
             let levelData = try! JSONSerialization.data(withJSONObject: emptyBoardJSON)
             loaderClient.completeWithData(data: levelData)
         })
@@ -45,7 +45,7 @@ class LevelLoaderTests: XCTestCase {
         let (modelBoard, JSONBoardWithInvalidGameElement) = makeBoard(width: 2, height: 1, elements: [(laserGun1, laserJSON1), (nil, invalidLaserGun2JSON)])
         let levelData = try! JSONSerialization.data(withJSONObject: JSONBoardWithInvalidGameElement)
 
-        expectSuccessFor(sut: sut, toCompleteWith: modelBoard, when: {
+        expectSuccessFor(sut: sut, toCompleteWith: modelBoard!, when: {
             loaderClient.completeWithData(data: levelData)
         })
     }
@@ -57,7 +57,7 @@ class LevelLoaderTests: XCTestCase {
         let (modelBoard, JSONBoard) = makeBoard(width: 2, height: 1, elements: [(laserGun1, laserJSON1), (mirror1, mirrorJSON1)])
         let levelData = try! JSONSerialization.data(withJSONObject: JSONBoard)
         
-        expectSuccessFor(sut: sut, toCompleteWith: modelBoard, when: {
+        expectSuccessFor(sut: sut, toCompleteWith: modelBoard!, when: {
             loaderClient.completeWithData(data: levelData)
         })
     }
@@ -93,7 +93,7 @@ class LevelLoaderTests: XCTestCase {
         return (gameElementWrapper, gameElementJSON)
     }
     
-    private func makeBoard(width: Int, height: Int, elements: [(modelElements: GameElementWrapper?, JSONElements: [String: Any])]) -> (Board, [String: Any]){
+    private func makeBoard(width: Int, height: Int, elements: [(modelElements: GameElementWrapper?, JSONElements: [String: Any])]) -> (Board?, [String: Any]){
         let board = Board(width: width, height: height, elements: elements.compactMap({ $0.modelElements }))
         let JSONBoard = ["width": width, "height": height, "gameElements": elements.map({ $0.JSONElements })] as [String : Any]
         return (board, JSONBoard)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B6AB12C249F6A7400F27349 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12B249F6A7400F27349 /* BoardTests.swift */; };
 		8B759D64249CC76A00C58A34 /* LaserShotsGameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B759D5A249CC76A00C58A34 /* LaserShotsGameCore.framework */; };
 		8B759D6B249CC76A00C58A34 /* LaserShotsGameCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B759D5D249CC76A00C58A34 /* LaserShotsGameCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B759D83249CC8F300C58A34 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759D80249CC8F300C58A34 /* BoardCell.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B6AB12B249F6A7400F27349 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		8B759D5A249CC76A00C58A34 /* LaserShotsGameCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LaserShotsGameCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B759D5D249CC76A00C58A34 /* LaserShotsGameCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaserShotsGameCore.h; sourceTree = "<group>"; };
 		8B759D5E249CC76A00C58A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */,
 				8B759D6A249CC76A00C58A34 /* Info.plist */,
+				8B6AB12B249F6A7400F27349 /* BoardTests.swift */,
 			);
 			path = LaserShotsGameCoreTests;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B6AB12C249F6A7400F27349 /* BoardTests.swift in Sources */,
 				8B759DA6249CC9B500C58A34 /* LevelLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
