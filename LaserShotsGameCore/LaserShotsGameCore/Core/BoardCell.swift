@@ -15,7 +15,11 @@ public final class BoardCell: Equatable {
     var onLaserBeamChanged: ((PointingDirection, [PointingDirection]) -> ())?
     var onCellAction: (() -> ())?
     var gameElement: GameElement?
-    var laserBeam:Laser?
+    var laserBeam:Laser? {
+        didSet {
+            self.onLaserBeamChanged?(laserBeam?.direction ?? .none, laserBeam?.reflectingDirections ?? [])
+        }
+    }
     
     init(i:Int, j:Int) {
         self.i = i
@@ -43,15 +47,11 @@ public final class BoardCell: Equatable {
         if let gameElement = self.gameElement {
             if gameElement is Reflectable {
                 reflectDirections = (gameElement as! Reflectable).reflect(direction: originDirection)
-                if !reflectDirections.isEmpty {
-                    self.laserBeam = Laser(direction: originDirection)
-                }
             } else {
                 reflectDirections = []
             }
         }
-        self.onLaserBeamChanged?(originDirection, reflectDirections)
-        
+        self.laserBeam = Laser(direction: originDirection, reflectingDirections: reflectDirections)
         return reflectDirections
     }
     
@@ -64,7 +64,6 @@ public final class BoardCell: Equatable {
     
     func clear() {
         self.laserBeam = nil
-        self.onLaserBeamChanged?(.none, [])
     }
     
     func getInitialShotDirection() -> PointingDirection {
@@ -72,7 +71,7 @@ public final class BoardCell: Equatable {
             return .none
         }
         let laserDirection = laserGun.shoot()
-        self.laserBeam = Laser(direction: laserDirection)
+        self.laserBeam = Laser(direction: laserDirection, reflectingDirections: [laserDirection])
         self.onLaserBeamChanged?(laserDirection, [laserDirection])
         return laserDirection
     }

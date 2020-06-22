@@ -10,8 +10,10 @@ import Foundation
 
 final class Laser: Directionable {
     var direction: PointingDirection
+    var reflectingDirections: [PointingDirection]
     
-    init(direction: PointingDirection) {
+    init(direction: PointingDirection, reflectingDirections: [PointingDirection]) {
         self.direction = direction
+        self.reflectingDirections = reflectingDirections
     }
 }

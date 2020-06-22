@@ -124,8 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */,
-				8B759D6A249CC76A00C58A34 /* Info.plist */,
 				8B6AB12B249F6A7400F27349 /* BoardTests.swift */,
+				8B759D6A249CC76A00C58A34 /* Info.plist */,
 			);
 			path = LaserShotsGameCoreTests;
 			sourceTree = "<group>";
