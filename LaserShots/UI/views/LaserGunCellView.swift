@@ -17,9 +17,7 @@ class LaserGunCellView: LaserShotsBaseCellView {
         super.setupView()
         self.laserView.isHidden = true
         self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (laser, reflections) in
-            if let gameCell = self?.gameCellViewModel {
-                self?.laserView.isHidden = !gameCell.isReflecting()
-            }
+            self?.laserView.isHidden = reflections.isEmpty
         }
     }
 }

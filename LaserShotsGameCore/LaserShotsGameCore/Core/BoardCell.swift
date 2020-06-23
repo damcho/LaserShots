@@ -15,17 +15,17 @@ public final class BoardCell: Equatable {
     var onLaserBeamChanged: ((Laser?, [Laser]) -> ())?
     var onCellAction: (() -> ())?
     var gameElement: GameElement?
-    var laserBeam: Laser? {
+    var inwardLaserBeam: Laser?
+    private var outwardLaserBeams: [Laser] {
         didSet {
-            self.onLaserBeamChanged?(laserBeam , reflectedLaserBeams)
+            self.onLaserBeamChanged?(inwardLaserBeam , outwardLaserBeams)
         }
     }
-    private var reflectedLaserBeams: [Laser]
     
     init(i:Int, j:Int) {
         self.i = i
         self.j = j
-        reflectedLaserBeams = []
+        outwardLaserBeams = []
     }
     
     public static func == (lhs: BoardCell, rhs: BoardCell) -> Bool {
@@ -40,17 +40,20 @@ public final class BoardCell: Equatable {
     }
     
     func isReflecting () -> Bool {
-        return !self.reflectedLaserBeams.isEmpty
+        return !self.outwardLaserBeams.isEmpty
     }
     
     func reflect(_ laser: Laser) -> [Laser] {
-        self.reflectedLaserBeams = [laser]
+        self.inwardLaserBeam = laser
+        var reflectingLasers: [Laser] = [laser]
         if let gameElement = self.gameElement {
-            self.reflectedLaserBeams = gameElement is Reflectable ?
+            reflectingLasers = gameElement is Reflectable ?
                 (gameElement as! Reflectable).reflect(laser) : []
+            self.outwardLaserBeams.append(contentsOf: reflectingLasers)
+        } else {
+            self.outwardLaserBeams = [laser]
         }
-        self.laserBeam = laser
-        return self.reflectedLaserBeams
+        return reflectingLasers
     }
     
     func performAction() {
@@ -61,8 +64,8 @@ public final class BoardCell: Equatable {
     }
     
     func clear() {
-        self.reflectedLaserBeams = []
-        self.laserBeam = nil
+        self.inwardLaserBeam = nil
+        self.outwardLaserBeams = []
     }
     
     func getInitialLaser() -> Laser? {
@@ -70,8 +73,8 @@ public final class BoardCell: Equatable {
             return nil
         }
         let initialLaserBeam =  laserGun.shoot()
-        self.reflectedLaserBeams = [initialLaserBeam]
-        self.laserBeam = initialLaserBeam
-        return self.laserBeam
+        self.inwardLaserBeam = initialLaserBeam
+        self.outwardLaserBeams = [initialLaserBeam]
+        return self.inwardLaserBeam
     }
 }
