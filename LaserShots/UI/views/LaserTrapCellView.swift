@@ -23,8 +23,8 @@ class LaserTrapCellView: LaserShotsBaseCellView {
     
     override func setupView() {
         self.hideLaserBeams()
-        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
-            switch direction {
+        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (laser, reflections) -> () in
+            switch laser?.direction {
             case .right:
                 self?.horizontalLaser2View.isHidden = false
             case .left:

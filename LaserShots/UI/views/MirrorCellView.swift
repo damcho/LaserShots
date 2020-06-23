@@ -20,13 +20,12 @@ class MirrorCellView: RotatableCellView {
         self.shouldShowLaserBeam(false)
         self.mirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
         
-        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (direction:PointingDirection, reflections:[PointingDirection]) -> () in
-            let shouldShowLaserBeam = !reflections.isEmpty || self?.gameCellViewModel?.isReflecting() ?? false
-            self?.shouldShowLaserBeam( shouldShowLaserBeam)
+        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (laser, reflections) in
+            self?.shouldShowLaserBeam(!reflections.isEmpty)
         }
     }
     
-    private func shouldShowLaserBeam(_ should:Bool) {
+    private func shouldShowLaserBeam(_ should: Bool) {
         self.laserBeam2View.isHidden = !should
         self.laserBeam1View.isHidden = !should
     }
