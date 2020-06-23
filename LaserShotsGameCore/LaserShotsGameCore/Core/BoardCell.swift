@@ -12,18 +12,20 @@ public final class BoardCell: Equatable {
     
     let i:Int
     let j:Int
-    var onLaserBeamChanged: ((PointingDirection, [PointingDirection]) -> ())?
+    var onLaserBeamChanged: ((Laser?, [Laser]) -> ())?
     var onCellAction: (() -> ())?
     var gameElement: GameElement?
-    var laserBeam:Laser? {
+    var laserBeam: Laser? {
         didSet {
-            self.onLaserBeamChanged?(laserBeam?.direction ?? .none, laserBeam?.reflectingDirections ?? [])
+            self.onLaserBeamChanged?(laserBeam , reflectedLaserBeams)
         }
     }
+    private var reflectedLaserBeams: [Laser]
     
     init(i:Int, j:Int) {
         self.i = i
         self.j = j
+        reflectedLaserBeams = []
     }
     
     public static func == (lhs: BoardCell, rhs: BoardCell) -> Bool {
@@ -38,21 +40,17 @@ public final class BoardCell: Equatable {
     }
     
     func isReflecting () -> Bool {
-        return self.laserBeam != nil
+        return !self.reflectedLaserBeams.isEmpty
     }
     
-    func getLaserReflection(originDirection: PointingDirection = .none) -> [PointingDirection] {
-        var reflectDirections: [PointingDirection] = [originDirection]
-        
+    func reflect(_ laser: Laser) -> [Laser] {
+        self.reflectedLaserBeams = [laser]
         if let gameElement = self.gameElement {
-            if gameElement is Reflectable {
-                reflectDirections = (gameElement as! Reflectable).reflect(direction: originDirection)
-            } else {
-                reflectDirections = []
-            }
+            self.reflectedLaserBeams = gameElement is Reflectable ?
+                (gameElement as! Reflectable).reflect(laser) : []
         }
-        self.laserBeam = Laser(direction: originDirection, reflectingDirections: reflectDirections)
-        return reflectDirections
+        self.laserBeam = laser
+        return self.reflectedLaserBeams
     }
     
     func performAction() {
@@ -63,16 +61,17 @@ public final class BoardCell: Equatable {
     }
     
     func clear() {
+        self.reflectedLaserBeams = []
         self.laserBeam = nil
     }
     
-    func getInitialShotDirection() -> PointingDirection {
+    func getInitialLaser() -> Laser? {
         guard let laserGun = (self.gameElement as? Shooter) else {
-            return .none
+            return nil
         }
-        let laserDirection = laserGun.shoot()
-        self.laserBeam = Laser(direction: laserDirection, reflectingDirections: [laserDirection])
-        self.onLaserBeamChanged?(laserDirection, [laserDirection])
-        return laserDirection
+        let initialLaserBeam =  laserGun.shoot()
+        self.reflectedLaserBeams = [initialLaserBeam]
+        self.laserBeam = initialLaserBeam
+        return self.laserBeam
     }
 }

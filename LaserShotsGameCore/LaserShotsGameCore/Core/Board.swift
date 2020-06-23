@@ -70,8 +70,8 @@ public final class Board {
         }
     }
     
-    private func getNextCellfor(direction:PointingDirection, currentCell:BoardCell) -> BoardCell? {
-        switch direction {
+    private func getNextCellHitBy(_ laser: Laser, currentCell:BoardCell) -> BoardCell? {
+        switch laser.direction {
         case .up:
             return self.boardCells[currentCell.i][currentCell.j - 1]
         case .down:
@@ -85,7 +85,7 @@ public final class Board {
         }
     }
     
-    private func shootNext(directions:[PointingDirection], currentCell:BoardCell) {
+    private func shoot(_ laserBeams: [Laser], for currentCell: BoardCell) {
         
         if currentCell.gameElement is GameTrap {
             self.onGameStateChanged?(.gameLost)
@@ -95,20 +95,20 @@ public final class Board {
             return
         }
         
-        for laserDirection in directions {
-            let nextCell = self.getNextCellfor(direction: laserDirection, currentCell: currentCell)
+        for laser in laserBeams {
+            let nextCell = self.getNextCellHitBy(laser, currentCell: currentCell)
             if nextCell != nil {
-                let newDirections = nextCell!.getLaserReflection(originDirection: laserDirection)
-                self.shootNext(directions: newDirections, currentCell: nextCell!)
+                let reflectedLasers = nextCell!.reflect(laser)
+                self.shoot(reflectedLasers, for: nextCell!)
             }
         }
     }
     
     func shootLaser() {
-        guard let laserGunCell = self.laserGunCell else {
+        guard let laserGunCell = self.laserGunCell,
+            let initialLaserBeam =  laserGunCell.getInitialLaser()  else {
             return
         }
-        let laserDirection = laserGunCell.getInitialShotDirection()
-        self.shootNext(directions: [laserDirection], currentCell: laserGunCell)
+        self.shoot([initialLaserBeam], for: laserGunCell)
     }
 }

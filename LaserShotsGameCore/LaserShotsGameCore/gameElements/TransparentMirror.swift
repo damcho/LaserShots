@@ -17,37 +17,37 @@ public final class TransparentMirror: ReflectableRotatableGameElement {
 }
 
 extension TransparentMirror {
-    public func reflect(direction: PointingDirection) -> [PointingDirection] {
-        switch direction {
+    public func reflect(_ laser: Laser) -> [Laser] {
+        switch laser.direction {
         case .down:
             if self.direction == .up {
-                return [.left, .down]
+                return [Laser(direction: .left), Laser(direction: .down)]
             } else if self.direction == .right {
-                return [.right, .down]
+                return [Laser(direction: .right), Laser(direction: .down)]
             } else {
                 return []
             }
         case .up:
             if self.direction == .down {
-                return [.right, .up]
+                return [Laser(direction: .right), Laser(direction: .up)]
             } else if self.direction == .left {
-                return [.left, .up]
+                return [Laser(direction: .left), Laser(direction: .up)]
             } else {
                 return []
             }
         case .left:
             if self.direction == .right {
-                return [.up, .left]
+                return [Laser(direction: .up), Laser(direction: .left)]
             } else if self.direction == .down {
-                return [.down, .left]
+                return [Laser(direction: .down), Laser(direction: .left)]
             } else {
                 return []
             }
         case .right:
             if self.direction == .left {
-                return [.down, .right]
+                return [Laser(direction: .down), Laser(direction: .right)]
             } else if self.direction == .up {
-                return [.up, .right]
+                return [Laser(direction: .up), Laser(direction: .right)]
             } else {
                 return []
             }

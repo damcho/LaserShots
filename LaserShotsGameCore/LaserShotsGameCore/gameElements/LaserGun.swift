@@ -17,7 +17,7 @@ public final class LaserGun: GameElement, Directionable {
 }
 
 extension LaserGun: Shooter {
-    public func shoot() -> PointingDirection {
-        return self.direction
+    public func shoot() -> Laser {
+        return Laser(direction: self.direction)
     }
 }

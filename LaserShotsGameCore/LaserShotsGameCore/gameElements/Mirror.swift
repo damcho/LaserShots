@@ -17,37 +17,37 @@ public final class Mirror: ReflectableRotatableGameElement {
 }
 
 extension Mirror {
-    public func reflect(direction: PointingDirection) -> [PointingDirection] {
-         switch direction {
+    public func reflect(_ laser: Laser) -> [Laser] {
+        switch laser.direction {
          case .down:
              if self.direction == .up {
-                 return [.left]
+                 return [Laser(direction: .left)]
              } else if self.direction == .right {
-                 return [.right]
+                 return [Laser(direction: .right)]
              } else {
                  return []
              }
          case .up:
              if self.direction == .down {
-                 return [.right]
+                 return [Laser(direction: .right)]
              } else if self.direction == .left {
-                 return [.left]
+                 return [Laser(direction: .left)]
              } else {
                  return []
              }
          case .left:
              if self.direction == .right {
-                 return [.up]
+                 return [Laser(direction: .up)]
              } else if self.direction == .down {
-                 return [.down]
+                 return [Laser(direction: .down)]
              } else {
                  return []
              }
          case .right:
              if self.direction == .left {
-                 return [.down]
+                 return [Laser(direction: .down)]
              } else if self.direction == .up {
-                 return [.up]
+                 return [Laser(direction: .up)]
              } else {
                  return []
              }

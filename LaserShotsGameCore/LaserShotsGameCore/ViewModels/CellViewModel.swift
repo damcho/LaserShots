@@ -18,7 +18,7 @@ public final class CellViewModel {
         self.boardCell = boardCell
     }
     
-    public var onLaserBeamChanged: ((PointingDirection, [PointingDirection]) -> Void)? {
+    public var onLaserBeamChanged: ((Laser?, [Laser]) -> Void)? {
         didSet {
             boardCell.onLaserBeamChanged = self.onLaserBeamChanged
         }

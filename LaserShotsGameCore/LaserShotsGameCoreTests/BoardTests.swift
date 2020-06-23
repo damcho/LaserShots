@@ -45,7 +45,7 @@ class BoardTests: XCTestCase {
         let laserGunWrapper = GameElementWrapper(x: 1, y: 0, gameElement: LaserGun(direction: .down))
         var boardCellsReflectingLaser: [BoardCell] = []
         let board = makeSUT(width: 3, height: 3, elements: [laserGunWrapper])
-        let expectedBoardCellsReflecting = [board.boardCells[1][0],board.boardCells[1][1], board.boardCells[1][2], board.boardCells[1][3], board.boardCells[1][4]]
+        let expectedBoardCellsReflecting = [board.boardCells[1][0],board.boardCells[1][1], board.boardCells[1][2], board.boardCells[1][3]]
         
         board.shootLaser()
 

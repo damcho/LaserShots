@@ -36,7 +36,7 @@ typealias ReflectableDirectionableGameElement = GameElement & Directionable & Re
 typealias ReflectableRotatableGameElement = GameElement & Reflectable & Rotatable
 
 public protocol Reflectable {
-    func reflect(direction: PointingDirection) -> [PointingDirection]
+    func reflect(_ laser: Laser) -> [Laser]
 }
 
 public protocol Directionable: class  {
@@ -70,6 +70,6 @@ public protocol GameElement {}
 public protocol GameTrap {}
 public protocol GameDestination {}
 public protocol Shooter {
-    func shoot() -> PointingDirection
+    func shoot() -> Laser
 }
 
