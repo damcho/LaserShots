@@ -12,21 +12,21 @@ import XCTest
 class LaserShotsGameTests: XCTestCase {
     
     func test_LaserShotsGameCreationDoesNotLoadLevel() {
-        let (_ , loader, _) = makeSUT()
+        let (_ , loader, _, _) = makeSUT()
         XCTAssertNil(loader.completion)
     }
     
     func test_loadLevelWithError() {
-        let (sut , loader, delegate) = makeSUT()
+        let (sut , loader, _ ,delegate) = makeSUT()
         sut.loadLevel()
         loader.completeLoadingWithError(NSError(domain: "loading error", code: 1))
         
         XCTAssertTrue(delegate.boardCellsMatrixArray.isEmpty)
+        XCTAssertTrue(delegate.gameStateArray.isEmpty)
     }
     
     func test_loadLevelSuccessfully() {
-        let board = Board(width: 3, height: 3, elements: [])!
-        let (sut , loader, delegate) = makeSUT()
+        let (sut , loader, board, delegate) = makeSUT()
         sut.loadLevel()
         
         loader.completeLoadingWithSuccess(board: board)
@@ -36,19 +36,18 @@ class LaserShotsGameTests: XCTestCase {
     }
     
     func test_gameStateChangesOnGameLost() {
-        let board = Board(width: 3, height: 3, elements: [])!
-        let (sut , loader, delegate) = makeSUT()
+        let (sut , loader, board, delegate) = makeSUT()
         sut.loadLevel()
         
         expectGameState([.gameLost], for: delegate, when: {
             loader.completeLoadingWithSuccess(board: board)
+            sut.start()
             board.onLevelStateChanged?(.levelLost)
         })
     }
     
     func test_gameStateNextLevelOnLevelPassed() {
-        let board = Board(width: 3, height: 3, elements: [])!
-        let (sut , loader, delegate) = makeSUT()
+        let (sut , loader, board, delegate) = makeSUT()
         sut.loadLevel()
         
         expectGameState([.nextLevel], for: delegate, when: {
@@ -59,8 +58,7 @@ class LaserShotsGameTests: XCTestCase {
     }
     
     func test_gameStateWonOnAllLevelsPassed() {
-        let board = Board(width: 3, height: 3, elements: [])!
-        let (sut , loader, delegate) = makeSUT()
+        let (sut ,loader, board, delegate) = makeSUT()
         sut.loadLevel()
         
         expectGameState([.nextLevel, .gameWon], for: delegate, when: {
@@ -73,19 +71,20 @@ class LaserShotsGameTests: XCTestCase {
     }
     
     func test_loadSameLevelOnRestartLevel() {
-          let board = Board(width: 3, height: 3, elements: [])!
-          let (sut , loader, delegate) = makeSUT()
-          sut.loadLevel()
-          
-          expectGameState([.gameLost, .nextLevel], for: delegate, when: {
-              loader.completeLoadingWithSuccess(board: board)
-              sut.start()
-              board.onLevelStateChanged?(.levelLost)
-              sut.loadLevel()
-              board.onLevelStateChanged?(.levelPassed)
-          })
-      }
-
+        let (sut ,loader, board, delegate) = makeSUT()
+        sut.loadLevel()
+        
+        expectGameState([.gameLost, .nextLevel, .gameWon], for: delegate, when: {
+            loader.completeLoadingWithSuccess(board: board)
+            sut.start()
+            board.onLevelStateChanged?(.levelLost)
+            sut.loadLevel()
+            board.onLevelStateChanged?(.levelPassed)
+            sut.loadLevel()
+            board.onLevelStateChanged?(.levelPassed)
+        })
+    }
+    
     //Helpers
     
     private func expectGameState(_ states: [GameState], for delegate: LaserShotsDelegateSpy, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
@@ -95,13 +94,14 @@ class LaserShotsGameTests: XCTestCase {
         XCTAssertEqual(delegate.gameStateArray, states, file: file, line: line)
     }
     
-    private func makeSUT() -> (LaserShotsGame, LevelLoaderSpy, LaserShotsDelegateSpy) {
+    private func makeSUT() -> (LaserShotsGame, LevelLoaderSpy, Board, LaserShotsDelegateSpy) {
         let loader = LevelLoaderSpy()
         let sut = LaserShotsGame(levelLoader: loader)
         sut.numberOfLevels = 2
         let delegate =  LaserShotsDelegateSpy()
         sut.delegate = delegate
-        return (sut, loader, delegate)
+        let board = Board(width: 3, height: 3, elements: [])!
+        return (sut, loader, board, delegate)
     }
 }
 
