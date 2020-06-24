@@ -56,7 +56,7 @@ public final class BoardCell: Equatable {
         return reflectingLasers
     }
     
-    func performAction() {
+    func rotateElement() {
         if self.gameElement is Rotatable {
             (self.gameElement as! Rotatable).rotate()
             self.onCellAction?()

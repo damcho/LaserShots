@@ -48,7 +48,7 @@ class BoardTests: XCTestCase {
         let expectedBoardCellsReflecting = [board.boardCells[1][0],board.boardCells[1][1], board.boardCells[1][2], board.boardCells[1][3]]
         
         board.shootLaser()
-
+        
         board.boardCells.forEach { (boardCellsArray) in
             boardCellsReflectingLaser.append (contentsOf: boardCellsArray.filter({ (boardCell) -> Bool in
                 return boardCell.isReflecting()
@@ -56,6 +56,29 @@ class BoardTests: XCTestCase {
         }
         
         XCTAssertEqual(boardCellsReflectingLaser, expectedBoardCellsReflecting)
+    }
+    
+    func test_boardClearedAfterCellAction() {
+        let laserGunWrapper = GameElementWrapper(x: 1, y: 0, gameElement: LaserGun(direction: .down))
+        let mirrorWrapper = GameElementWrapper(x: 1, y: 2, gameElement: Mirror(direction: .up))
+        
+        var boardCellsReflectingLaser: [BoardCell] = []
+        let board = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, mirrorWrapper])
+        
+        let expectedBoardCellsReflecting = [board.boardCells[1][0],board.boardCells[1][1], board.boardCells[1][2], board.boardCells[2][2], board.boardCells[3][2]]
+        
+        board.shootLaser()
+        
+        board.boardCells[1][2].rotateElement()
+        
+        board.boardCells.forEach { (boardCellsArray) in
+            boardCellsReflectingLaser.append (contentsOf: boardCellsArray.filter({ (boardCell) -> Bool in
+                return boardCell.isReflecting()
+            }))
+        }
+        
+        XCTAssertEqual(boardCellsReflectingLaser, expectedBoardCellsReflecting)
+        
     }
     
     
