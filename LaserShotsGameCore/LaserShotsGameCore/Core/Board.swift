@@ -8,11 +8,16 @@
 
 import Foundation
 
+enum levelState {
+    case levelPassed
+    case levelLost
+}
+
 public final class Board {
     
     var laserGunCell: BoardCell?
     public var boardCells: [[BoardCell]] = []
-    var onGameStateChanged: ((GameState) -> ())?
+    var onLevelStateChanged: ((levelState) -> ())?
     
     private let width: Int
     private let height: Int
@@ -88,10 +93,10 @@ public final class Board {
     private func shoot(_ laserBeams: [Laser], for currentCell: BoardCell) {
         
         if currentCell.gameElement is GameTrap {
-            self.onGameStateChanged?(.gameLost)
+            self.onLevelStateChanged?(.levelLost)
             return
         } else if currentCell.gameElement is GameDestination {
-            self.onGameStateChanged?(.nextLevel)
+            self.onLevelStateChanged?(.levelPassed)
             return
         }
         
