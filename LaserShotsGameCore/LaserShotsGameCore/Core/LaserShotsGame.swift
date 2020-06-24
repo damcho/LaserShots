@@ -51,7 +51,7 @@ public class LaserShotsGame  {
             case .success(let levelBoard):
                 self.currentLevelBoard = levelBoard
                 
-                self.currentLevelBoard?.onGameStateChanged = {[unowned self] (state:GameState) in
+                self.currentLevelBoard?.onGameStateChanged = {[unowned self] (state) in
                     switch state {
                     case .nextLevel:
                         if self.levelIndex < self.numberOfLevels {
