@@ -8,6 +8,16 @@
 
 import Foundation
 
+public enum CellType: String {
+    case laserGun
+    case laserDestination
+    case empty
+    case mirror
+    case transparentMirror
+    case wall
+    case laserTrap
+}
+
 final class GameElementsMapper {
     struct CodableGameElement: Codable {
          let x: Int

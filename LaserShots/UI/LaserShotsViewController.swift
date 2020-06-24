@@ -26,7 +26,7 @@ final class LaserShotsViewController: UIViewController {
         gameBoard.isUserInteractionEnabled = false
         registerNibs()
         bind()
-        laserShotsGameViewModel?.nextLevel()
+        laserShotsGameViewModel?.loadLevel()
     }
     
     private func bind() {
@@ -43,7 +43,7 @@ final class LaserShotsViewController: UIViewController {
             switch alertViewModel.state {
             case .gameLost:
                 action = {[weak self](action:UIAlertAction) ->() in
-                    self?.laserShotsGameViewModel?.restartLevel()
+                    self?.laserShotsGameViewModel?.loadLevel()
                 }
             case.gameWon:
                 action = {[weak self](action:UIAlertAction) ->() in
@@ -73,7 +73,7 @@ final class LaserShotsViewController: UIViewController {
         UIView.animate(withDuration: 1, animations: {[weak self] () -> Void in
             self?.gameBoard.alpha = 0
         }) {[weak self] (succeed) -> Void in
-            self?.laserShotsGameViewModel?.nextLevel()
+            self?.laserShotsGameViewModel?.loadLevel()
             UIView.animate(withDuration: 1, animations: {[weak self] () -> Void in
                 self?.gameBoard.alpha = 1
             })

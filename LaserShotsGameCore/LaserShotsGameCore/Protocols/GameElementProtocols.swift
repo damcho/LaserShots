@@ -1,36 +1,12 @@
 //
-//  gameProtocols.swift
-//  NavalWars
+//  RotatableProtocol.swift
+//  LaserShotsGameCore
 //
-//  Created by Damian Modernell on 21/05/2019.
-//  Copyright © 2019 Damian Modernell. All rights reserved.
+//  Created by Damian Modernell on 6/24/20.
+//  Copyright © 2020 Damian Modernell. All rights reserved.
 //
 
 import Foundation
-
-
-public enum CellType: String {
-    case laserGun
-    case laserDestination
-    case empty
-    case mirror
-    case transparentMirror
-    case wall
-    case laserTrap
-}
-
-public enum PointingDirection: String {
-    case up
-    case down
-    case left
-    case right
-    case none
-}
-
-protocol laserShotsDelegate: class {
-    func gameStateChanged(state: GameState)
-    func levelLoaded(with boardCells: [[BoardCell]])
-}
 
 typealias ReflectableDirectionableGameElement = GameElement & Directionable & Reflectable
 typealias ReflectableRotatableGameElement = GameElement & Reflectable & Rotatable
@@ -72,4 +48,3 @@ public protocol GameDestination {}
 public protocol Shooter {
     func shoot() -> Laser
 }
-

@@ -10,6 +10,7 @@
 		8B6AB12C249F6A7400F27349 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12B249F6A7400F27349 /* BoardTests.swift */; };
 		8B6AB12E24A3119B00F27349 /* GameElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12D24A3119B00F27349 /* GameElementTests.swift */; };
 		8B6AB13024A3378900F27349 /* LaserShotsGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12F24A3378900F27349 /* LaserShotsGameTests.swift */; };
+		8B6AB13224A3A0AD00F27349 /* GameElementProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB13124A3A0AD00F27349 /* GameElementProtocols.swift */; };
 		8B759D64249CC76A00C58A34 /* LaserShotsGameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B759D5A249CC76A00C58A34 /* LaserShotsGameCore.framework */; };
 		8B759D6B249CC76A00C58A34 /* LaserShotsGameCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B759D5D249CC76A00C58A34 /* LaserShotsGameCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B759D83249CC8F300C58A34 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759D80249CC8F300C58A34 /* BoardCell.swift */; };
@@ -29,7 +30,6 @@
 		8B759DA3249CC98D00C58A34 /* LaserGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA1249CC98D00C58A34 /* LaserGameViewModel.swift */; };
 		8B759DA4249CC98D00C58A34 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA2249CC98D00C58A34 /* CellViewModel.swift */; };
 		8B759DA6249CC9B500C58A34 /* LevelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */; };
-		8B759DA9249CCA4D00C58A34 /* gameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DA8249CCA4D00C58A34 /* gameProtocols.swift */; };
 		8B759DB3249D2B1800C58A34 /* GameElementsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759DB2249D2B1800C58A34 /* GameElementsMapper.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +47,7 @@
 		8B6AB12B249F6A7400F27349 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		8B6AB12D24A3119B00F27349 /* GameElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElementTests.swift; sourceTree = "<group>"; };
 		8B6AB12F24A3378900F27349 /* LaserShotsGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsGameTests.swift; sourceTree = "<group>"; };
+		8B6AB13124A3A0AD00F27349 /* GameElementProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElementProtocols.swift; sourceTree = "<group>"; };
 		8B759D5A249CC76A00C58A34 /* LaserShotsGameCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LaserShotsGameCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B759D5D249CC76A00C58A34 /* LaserShotsGameCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaserShotsGameCore.h; sourceTree = "<group>"; };
 		8B759D5E249CC76A00C58A34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,7 +70,6 @@
 		8B759DA1249CC98D00C58A34 /* LaserGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaserGameViewModel.swift; sourceTree = "<group>"; };
 		8B759DA2249CC98D00C58A34 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelLoaderTests.swift; sourceTree = "<group>"; };
-		8B759DA8249CCA4D00C58A34 /* gameProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameProtocols.swift; sourceTree = "<group>"; };
 		8B759DB2249D2B1800C58A34 /* GameElementsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElementsMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,7 +201,7 @@
 		8B759DA7249CCA2B00C58A34 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				8B759DA8249CCA4D00C58A34 /* gameProtocols.swift */,
+				8B6AB13124A3A0AD00F27349 /* GameElementProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -319,8 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B759D92249CC91F00C58A34 /* LaserTrap.swift in Sources */,
+				8B6AB13224A3A0AD00F27349 /* GameElementProtocols.swift in Sources */,
 				8B759D93249CC91F00C58A34 /* Wall.swift in Sources */,
-				8B759DA9249CCA4D00C58A34 /* gameProtocols.swift in Sources */,
 				8B759D8F249CC91F00C58A34 /* LaserGun.swift in Sources */,
 				8B759D9C249CC95900C58A34 /* BundleLevelLoaderClient.swift in Sources */,
 				8B759D90249CC91F00C58A34 /* TransparentMirror.swift in Sources */,

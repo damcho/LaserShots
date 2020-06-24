@@ -30,12 +30,8 @@ public final class LaserGameViewModel {
         self.laserShotsGame.start()
     }
     
-    public func nextLevel() {
-        self.laserShotsGame.nextLevel()
-    }
-    
-    public func restartLevel(){
-        self.laserShotsGame.restartLevel()
+    public func loadLevel() {
+        self.laserShotsGame.loadLevel()
     }
     
     private func createBoardGame(with cells: [[BoardCell]]) -> [CellViewModel] {

@@ -18,17 +18,16 @@ class LaserShotsGameTests: XCTestCase {
     
     func test_loadLevelWithError() {
         let (sut , loader, delegate) = makeSUT()
-        sut.nextLevel()
+        sut.loadLevel()
         loader.completeLoadingWithError(NSError(domain: "loading error", code: 1))
         
         XCTAssertTrue(delegate.boardCellsMatrixArray.isEmpty)
-        
     }
     
     func test_loadLevelSuccessfully() {
         let board = Board(width: 3, height: 3, elements: [])!
         let (sut , loader, delegate) = makeSUT()
-        sut.nextLevel()
+        sut.loadLevel()
         
         loader.completeLoadingWithSuccess(board: board)
         
@@ -39,7 +38,7 @@ class LaserShotsGameTests: XCTestCase {
     func test_gameStateChangesOnGameLost() {
         let board = Board(width: 3, height: 3, elements: [])!
         let (sut , loader, delegate) = makeSUT()
-        sut.nextLevel()
+        sut.loadLevel()
         
         expectGameState([.gameLost], for: delegate, when: {
             loader.completeLoadingWithSuccess(board: board)
@@ -50,10 +49,11 @@ class LaserShotsGameTests: XCTestCase {
     func test_gameStateNextLevelOnLevelPassed() {
         let board = Board(width: 3, height: 3, elements: [])!
         let (sut , loader, delegate) = makeSUT()
-        sut.nextLevel()
+        sut.loadLevel()
         
         expectGameState([.nextLevel], for: delegate, when: {
             loader.completeLoadingWithSuccess(board: board)
+            sut.start()
             board.onLevelStateChanged?(.levelPassed)
         })
     }
@@ -61,19 +61,35 @@ class LaserShotsGameTests: XCTestCase {
     func test_gameStateWonOnAllLevelsPassed() {
         let board = Board(width: 3, height: 3, elements: [])!
         let (sut , loader, delegate) = makeSUT()
-        sut.nextLevel()
+        sut.loadLevel()
         
         expectGameState([.nextLevel, .gameWon], for: delegate, when: {
             loader.completeLoadingWithSuccess(board: board)
+            sut.start()
             board.onLevelStateChanged?(.levelPassed)
-            sut.nextLevel()
+            sut.loadLevel()
             board.onLevelStateChanged?(.levelPassed)
         })
     }
+    
+    func test_loadSameLevelOnRestartLevel() {
+          let board = Board(width: 3, height: 3, elements: [])!
+          let (sut , loader, delegate) = makeSUT()
+          sut.loadLevel()
+          
+          expectGameState([.gameLost, .nextLevel], for: delegate, when: {
+              loader.completeLoadingWithSuccess(board: board)
+              sut.start()
+              board.onLevelStateChanged?(.levelLost)
+              sut.loadLevel()
+              board.onLevelStateChanged?(.levelPassed)
+          })
+      }
 
     //Helpers
     
     private func expectGameState(_ states: [GameState], for delegate: LaserShotsDelegateSpy, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        
         action()
         
         XCTAssertEqual(delegate.gameStateArray, states, file: file, line: line)
@@ -82,6 +98,7 @@ class LaserShotsGameTests: XCTestCase {
     private func makeSUT() -> (LaserShotsGame, LevelLoaderSpy, LaserShotsDelegateSpy) {
         let loader = LevelLoaderSpy()
         let sut = LaserShotsGame(levelLoader: loader)
+        sut.numberOfLevels = 2
         let delegate =  LaserShotsDelegateSpy()
         sut.delegate = delegate
         return (sut, loader, delegate)
