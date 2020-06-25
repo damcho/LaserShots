@@ -20,7 +20,7 @@ class BoardTests: XCTestCase {
     }
     
     func test_boardIsEmptyWhenGameElementsIsEmpty() {
-        let board = makeSUT(width: 3, height: 3, elements: [])
+        let (board, _) = makeSUT(width: 3, height: 3, elements: [])
         
         board.boardCells.forEach { (boardCellsArray) in
             let gameElementsList = boardCellsArray.filter({ (boardCell) -> Bool in
@@ -36,40 +36,74 @@ class BoardTests: XCTestCase {
     func test_BoardIsCreatedWithElements() {
         let laserGunWrapper = GameElementWrapper(x: 1, y: 1, gameElement: LaserGun(direction: .down))
         let laserDestinationWrapper = GameElementWrapper(x: 2, y: 2, gameElement: LaserDestination(direction: .down))
-        let board = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, laserDestinationWrapper])
+        let (board, _) = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, laserDestinationWrapper])
         XCTAssertTrue(board.boardCells[1][1].gameElement is LaserGun)
         XCTAssertTrue(board.boardCells[2][2].gameElement is LaserDestination)
     }
     
     func test_LaserShotStart() {
         let laserGunWrapper = GameElementWrapper(x: 1, y: 0, gameElement: LaserGun(direction: .down))
-        var boardCellsReflectingLaser: [BoardCell] = []
-        let board = makeSUT(width: 3, height: 3, elements: [laserGunWrapper])
+        let (board, _) = makeSUT(width: 3, height: 3, elements: [laserGunWrapper])
         let expectedBoardCellsReflecting = [board.boardCells[1][0],board.boardCells[1][1], board.boardCells[1][2], board.boardCells[1][3]]
-        
-        board.shootLaser()
-        
-        board.boardCells.forEach { (boardCellsArray) in
-            boardCellsReflectingLaser.append (contentsOf: boardCellsArray.filter({ (boardCell) -> Bool in
-                return boardCell.isReflecting()
-            }))
-        }
-        
-        XCTAssertEqual(boardCellsReflectingLaser, expectedBoardCellsReflecting)
+                
+        expectReflectingCells(expectedBoardCellsReflecting, for: board, when: {
+            board.shootLaser()
+        })
     }
     
-    func test_boardClearedAfterCellAction() {
+    func test_boardClearedAndReDrawedLaserAfterElementRotation() {
         let laserGunWrapper = GameElementWrapper(x: 1, y: 0, gameElement: LaserGun(direction: .down))
         let mirrorWrapper = GameElementWrapper(x: 1, y: 2, gameElement: Mirror(direction: .up))
         
-        var boardCellsReflectingLaser: [BoardCell] = []
-        let board = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, mirrorWrapper])
+        let (board, _) = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, mirrorWrapper])
         
         let expectedBoardCellsReflecting = [board.boardCells[1][0],board.boardCells[1][1], board.boardCells[1][2], board.boardCells[2][2], board.boardCells[3][2]]
         
-        board.shootLaser()
+        expectReflectingCells(expectedBoardCellsReflecting, for: board, when: {
+            board.shootLaser()
+            board.boardCells[1][2].rotateElement()
+        })
+    }
+    
+    func test_LevelLostOnLaserTrapHit() {
+        let laserGunWrapper = GameElementWrapper(x: 1, y: 0, gameElement: LaserGun(direction: .down))
+        let laserTrapWrapper = GameElementWrapper(x: 1, y: 2, gameElement: LaserTrap())
         
-        board.boardCells[1][2].rotateElement()
+        let (board, boardDelegate) = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, laserTrapWrapper])
+        expectLevelState(.levelLost, for: boardDelegate, when: {
+            board.shootLaser()
+        })
+    }
+    
+    func test_levelWonOnLaserDestinationHit() {
+        let laserGunWrapper = GameElementWrapper(x: 1, y: 0, gameElement: LaserGun(direction: .down))
+        let laserTrapWrapper = GameElementWrapper(x: 1, y: 2, gameElement: LaserDestination(direction: .up))
+        
+        let (board, boardDelegate) = makeSUT(width: 3, height: 3, elements: [laserGunWrapper, laserTrapWrapper])
+        expectLevelState(.levelPassed, for: boardDelegate, when: {
+            board.shootLaser()
+        })
+    }
+    
+    //Helper
+    private func makeSUT(width: Int, height: Int, elements: [GameElementWrapper]) -> (Board, BoardDelegateSpy) {
+        let board = Board(width: width, height: height, elements: elements)
+        let boardDelegate = BoardDelegateSpy()
+        board?.onLevelStateChanged = boardDelegate.onLevelStateChanged
+        XCTAssertNotNil(board)
+        return (board!, boardDelegate)
+    }
+    
+    private func expectLevelState(_ state: LevelState, for delegate: BoardDelegateSpy, when action: () -> Void, file: StaticString = #file, line: UInt = #line ) {
+        action()
+        
+        XCTAssertEqual([state], delegate.levelStates, file: file, line: line)
+    }
+    
+    private func expectReflectingCells(_ expectedCells: [BoardCell], for board: Board, when action: () -> Void, file: StaticString = #file, line: UInt = #line) {
+        var boardCellsReflectingLaser: [BoardCell] = []
+        
+        action()
         
         board.boardCells.forEach { (boardCellsArray) in
             boardCellsReflectingLaser.append (contentsOf: boardCellsArray.filter({ (boardCell) -> Bool in
@@ -77,15 +111,19 @@ class BoardTests: XCTestCase {
             }))
         }
         
-        XCTAssertEqual(boardCellsReflectingLaser, expectedBoardCellsReflecting)
-        
+        XCTAssertEqual(boardCellsReflectingLaser, expectedCells)
     }
+}
+
+private class BoardDelegateSpy {
+    var levelStates: [LevelState]?
     
+    var onLevelStateChanged: ((LevelState) -> Void)?
     
-    //Helper
-    private func makeSUT(width: Int, height: Int, elements: [GameElementWrapper]) -> Board {
-        let board = Board(width: width, height: height, elements: elements)
-        XCTAssertNotNil(board)
-        return board!
+    init() {
+        self.levelStates = []
+        self.onLevelStateChanged = { [weak self](state: LevelState) in
+            self?.levelStates?.append(state)
+        }
     }
 }

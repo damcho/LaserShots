@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum levelState {
+enum LevelState {
     case levelPassed
     case levelLost
 }
@@ -17,7 +17,7 @@ public final class Board {
     
     var laserGunCell: BoardCell?
     public var boardCells: [[BoardCell]] = []
-    var onLevelStateChanged: ((levelState) -> ())?
+    var onLevelStateChanged: ((LevelState) -> ())?
     
     private let width: Int
     private let height: Int
