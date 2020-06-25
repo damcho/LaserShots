@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8B2E4C1C24A453C000F5E43F /* BundleLevelLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E4C1B24A453C000F5E43F /* BundleLevelLoaderTests.swift */; };
+		8B2E4C1E24A4621C00F5E43F /* BoardCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E4C1D24A4621C00F5E43F /* BoardCellTests.swift */; };
+		8B2E4C2724A4B3EC00F5E43F /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E4C2624A4B3EB00F5E43F /* testData.json */; };
 		8B6AB12C249F6A7400F27349 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12B249F6A7400F27349 /* BoardTests.swift */; };
 		8B6AB12E24A3119B00F27349 /* GameElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12D24A3119B00F27349 /* GameElementTests.swift */; };
 		8B6AB13024A3378900F27349 /* LaserShotsGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB12F24A3378900F27349 /* LaserShotsGameTests.swift */; };
@@ -46,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		8B2E4C1B24A453C000F5E43F /* BundleLevelLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleLevelLoaderTests.swift; sourceTree = "<group>"; };
+		8B2E4C1D24A4621C00F5E43F /* BoardCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCellTests.swift; sourceTree = "<group>"; };
+		8B2E4C2624A4B3EB00F5E43F /* testData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
 		8B6AB12B249F6A7400F27349 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		8B6AB12D24A3119B00F27349 /* GameElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElementTests.swift; sourceTree = "<group>"; };
 		8B6AB12F24A3378900F27349 /* LaserShotsGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsGameTests.swift; sourceTree = "<group>"; };
@@ -94,6 +98,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B2E4C1F24A4639800F5E43F /* LevelLoaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */,
+				8B2E4C1B24A453C000F5E43F /* BundleLevelLoaderTests.swift */,
+				8B2E4C2624A4B3EB00F5E43F /* testData.json */,
+			);
+			path = LevelLoaderTests;
+			sourceTree = "<group>";
+		};
 		8B759D50249CC76A00C58A34 = {
 			isa = PBXGroup;
 			children = (
@@ -129,11 +143,11 @@
 		8B759D67249CC76A00C58A34 /* LaserShotsGameCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				8B2E4C1B24A453C000F5E43F /* BundleLevelLoaderTests.swift */,
-				8B759DA5249CC9B500C58A34 /* LevelLoaderTests.swift */,
-				8B6AB12F24A3378900F27349 /* LaserShotsGameTests.swift */,
+				8B2E4C1F24A4639800F5E43F /* LevelLoaderTests */,
 				8B6AB12D24A3119B00F27349 /* GameElementTests.swift */,
+				8B2E4C1D24A4621C00F5E43F /* BoardCellTests.swift */,
 				8B6AB12B249F6A7400F27349 /* BoardTests.swift */,
+				8B6AB12F24A3378900F27349 /* LaserShotsGameTests.swift */,
 				8B759D6A249CC76A00C58A34 /* Info.plist */,
 			);
 			path = LaserShotsGameCoreTests;
@@ -311,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2E4C2724A4B3EC00F5E43F /* testData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +363,7 @@
 				8B2E4C1C24A453C000F5E43F /* BundleLevelLoaderTests.swift in Sources */,
 				8B6AB13024A3378900F27349 /* LaserShotsGameTests.swift in Sources */,
 				8B6AB12C249F6A7400F27349 /* BoardTests.swift in Sources */,
+				8B2E4C1E24A4621C00F5E43F /* BoardCellTests.swift in Sources */,
 				8B759DA6249CC9B500C58A34 /* LevelLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
