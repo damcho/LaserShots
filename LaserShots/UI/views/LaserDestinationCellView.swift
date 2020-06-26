@@ -9,15 +9,4 @@
 import UIKit
 import LaserShotsGameCore
 
-class LaserDestinationCellView: LaserShotsBaseCellView {
-    
-    @IBOutlet weak var laserView: UIView!
-
-    override func setupView() {
-        super.setupView()
-        self.laserView.isHidden = true
-        self.gameCellViewModel?.onLaserBeamChanged = { [weak self] (laser, reflections) in
-            self?.laserView.isHidden = laser == nil
-        }
-    }
-}
+class LaserDestinationCellView: LaserShotsBaseCellView { }

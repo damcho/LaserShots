@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,26 +16,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBO-6A-Skw">
                     <rect key="frame" x="0.0" y="0.0" width="96" height="98"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtC-s8-9df">
-                            <rect key="frame" x="43" y="49" width="10" height="49"/>
-                            <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="10" id="d1a-9G-ET9"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-9x-Vqu">
                             <rect key="frame" x="0.0" y="0.0" width="96" height="49"/>
                             <color key="backgroundColor" red="1" green="0.12920191005696924" blue="0.090351056646799988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="v0Y-ac-Ouz"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="XtC-s8-9df" firstAttribute="height" secondItem="0fR-9x-Vqu" secondAttribute="height" id="3Ge-Vl-MGS"/>
                         <constraint firstItem="0fR-9x-Vqu" firstAttribute="top" secondItem="RBO-6A-Skw" secondAttribute="top" id="3wr-EU-MeJ"/>
-                        <constraint firstItem="XtC-s8-9df" firstAttribute="top" secondItem="0fR-9x-Vqu" secondAttribute="bottom" id="K5E-Ip-Y27"/>
                         <constraint firstItem="0fR-9x-Vqu" firstAttribute="leading" secondItem="RBO-6A-Skw" secondAttribute="leading" id="RXR-bA-SEg"/>
-                        <constraint firstAttribute="bottom" secondItem="XtC-s8-9df" secondAttribute="bottom" id="XRR-Tf-gss"/>
-                        <constraint firstItem="XtC-s8-9df" firstAttribute="centerX" secondItem="RBO-6A-Skw" secondAttribute="centerX" id="axI-pc-jYi"/>
                         <constraint firstItem="0fR-9x-Vqu" firstAttribute="centerX" secondItem="RBO-6A-Skw" secondAttribute="centerX" id="yRd-Qa-6iX"/>
                         <constraint firstAttribute="trailing" secondItem="0fR-9x-Vqu" secondAttribute="trailing" id="zwT-bd-NHU"/>
                     </constraints>
@@ -52,7 +43,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="gameElementContainerView" destination="RBO-6A-Skw" id="m4P-pj-yU6"/>
-                <outlet property="laserView" destination="XtC-s8-9df" id="bQS-cA-m29"/>
             </connections>
             <point key="canvasLocation" x="-136.23188405797103" y="101.11607142857143"/>
         </view>

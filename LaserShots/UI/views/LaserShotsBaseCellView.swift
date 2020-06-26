@@ -10,16 +10,35 @@ import UIKit
 import LaserShotsGameCore
 
 class LaserShotsBaseCellView: UICollectionViewCell, NibInstantiatable {
-
+    
     @IBOutlet weak var gameElementContainerView: UIView?
+    var laserReflectionsView: ReflectionsView?
+    
+    override func awakeFromNib() {
+        let reflectionsView = ReflectionsView.fromNib()
+        reflectionsView.frame = self.bounds
+        self.laserReflectionsView = reflectionsView
+        self.insertSubview(reflectionsView, at: 0)
+    }
     
     var gameCellViewModel: CellViewModel? {
         didSet {
             self.setupView()
         }
     }
-
+    
     func setupView() {
+        self.laserReflectionsView?.hideBeams(true)
+        self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (laser, reflections) -> () in
+            guard let laserBeam = laser else {
+                self?.laserReflectionsView?.hideBeams(true)
+                return
+            }
+            self?.laserReflectionsView?.setOriginLaserView(laser: laserBeam)
+            reflections.forEach { (reflectedLaser) in
+                self?.laserReflectionsView?.setLaserViewFor(laser: reflectedLaser)
+            }
+        }
         self.rotate()
     }
     

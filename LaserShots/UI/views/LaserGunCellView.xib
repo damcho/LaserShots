@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,23 +19,16 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zve-GX-eto">
                             <rect key="frame" x="0.0" y="0.0" width="120" height="51"/>
                             <color key="backgroundColor" red="0.1324024821" green="0.1094454963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CZ-KE-oUp">
-                            <rect key="frame" x="55" y="51" width="10" height="51"/>
-                            <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="10" id="Bpl-tF-g9t"/>
+                                <constraint firstAttribute="height" constant="51" id="zgS-hX-SsI"/>
                             </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="6CZ-KE-oUp" firstAttribute="height" secondItem="Zve-GX-eto" secondAttribute="height" id="0Bm-Ki-YFS"/>
                         <constraint firstAttribute="trailing" secondItem="Zve-GX-eto" secondAttribute="trailing" id="5DN-Hm-3mO"/>
-                        <constraint firstItem="6CZ-KE-oUp" firstAttribute="top" secondItem="Zve-GX-eto" secondAttribute="bottom" id="Crx-Wy-dEk"/>
                         <constraint firstItem="Zve-GX-eto" firstAttribute="centerX" secondItem="1QL-Re-Yo6" secondAttribute="centerX" id="Je6-Zj-fRz"/>
                         <constraint firstItem="Zve-GX-eto" firstAttribute="leading" secondItem="1QL-Re-Yo6" secondAttribute="leading" id="b2m-mw-VQS"/>
-                        <constraint firstItem="6CZ-KE-oUp" firstAttribute="centerX" secondItem="1QL-Re-Yo6" secondAttribute="centerX" id="tge-6J-Wt6"/>
                     </constraints>
                 </view>
             </subviews>
@@ -45,14 +37,12 @@
                 <constraint firstItem="1QL-Re-Yo6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0cS-fB-LXa"/>
                 <constraint firstAttribute="bottom" secondItem="1QL-Re-Yo6" secondAttribute="bottom" id="bno-Lz-E7z"/>
                 <constraint firstItem="Zve-GX-eto" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="g4m-S3-9Ec"/>
-                <constraint firstAttribute="bottom" secondItem="6CZ-KE-oUp" secondAttribute="bottom" id="qy0-FK-8iW"/>
                 <constraint firstAttribute="trailing" secondItem="1QL-Re-Yo6" secondAttribute="trailing" id="v7z-5W-wiG"/>
                 <constraint firstItem="1QL-Re-Yo6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wnQ-SP-kUm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="gameElementContainerView" destination="1QL-Re-Yo6" id="Aqa-pQ-wSW"/>
-                <outlet property="laserView" destination="6CZ-KE-oUp" id="0FC-ng-ZuK"/>
             </connections>
             <point key="canvasLocation" x="-171.01449275362319" y="4.6875"/>
         </view>

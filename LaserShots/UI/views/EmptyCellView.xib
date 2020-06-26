@@ -1,51 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyCellView" customModule="LaserShots" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="215" height="211"/>
+        <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyCellView" customModule="LaserShots" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="261" height="244"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w97-FS-lLn">
-                    <rect key="frame" x="102.5" y="0.0" width="10" height="211"/>
-                    <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="10" id="ffO-7L-f6i"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DhH-Sj-VdH">
-                    <rect key="frame" x="0.0" y="100.5" width="215" height="10"/>
-                    <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="tintColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="10" id="aa6-WL-SuT"/>
-                    </constraints>
-                </view>
-            </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstItem="DhH-Sj-VdH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0wy-8E-KXM"/>
-                <constraint firstAttribute="trailing" secondItem="DhH-Sj-VdH" secondAttribute="trailing" id="4uD-h8-ioP"/>
-                <constraint firstItem="w97-FS-lLn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TYM-AM-qBb"/>
-                <constraint firstItem="DhH-Sj-VdH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ai1-is-2b6"/>
-                <constraint firstItem="w97-FS-lLn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bu0-N9-k1d"/>
-                <constraint firstAttribute="bottom" secondItem="w97-FS-lLn" secondAttribute="bottom" id="kDX-fp-lTU"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="horizontalLaserView" destination="DhH-Sj-VdH" id="hvf-0c-Shh"/>
-                <outlet property="verticalLaserView" destination="w97-FS-lLn" id="rwT-KF-AFa"/>
-            </connections>
-            <point key="canvasLocation" x="-49" y="26"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="26.811594202898554" y="-138.61607142857142"/>
         </view>
     </objects>
 </document>
