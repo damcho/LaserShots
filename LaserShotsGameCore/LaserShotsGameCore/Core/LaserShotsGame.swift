@@ -28,16 +28,16 @@ public enum PointingDirection: String {
 }
 
 public class LaserShotsGame  {
-    var numberOfLevels = 2
-    var boardLevelName: String = "level"
-    private var levelIndex = 1
+    var levelNames: [String]
+    private var levelIndex = 0
     private var currentLevelBoard: Board?
     private let levelLoader: LaserShotsLevelLoader
     
     weak var delegate: laserShotsDelegate?
     
-    public init(levelLoader: LaserShotsLevelLoader) {
+    public init(levelLoader: LaserShotsLevelLoader, levelNames: [String]) {
         self.levelLoader = levelLoader
+        self.levelNames = levelNames
     }
     
     func start() {
@@ -54,7 +54,7 @@ public class LaserShotsGame  {
             switch state {
             case .levelPassed:
                 self.levelIndex += 1
-                self.levelIndex <= self.numberOfLevels ?
+                self.levelIndex < self.levelNames.count ?
                     self.delegate?.gameStateChanged(state: .nextLevel) :
                     self.delegate?.gameStateChanged(state: .gameWon)
             default:
@@ -65,13 +65,15 @@ public class LaserShotsGame  {
     }
     
     private func loadBoard() {
-        let nextLevelName = self.boardLevelName + "\(self.levelIndex)"
-        self.levelLoader.loadBoard(name: nextLevelName) { (result) in
-            switch result {
-            case .failure:
-                break
-            case .success(let levelBoard):
-                self.boardLoadedWithSuccess(levelBoard)
+        if levelIndex < levelNames.count {
+            let nextLevelName = self.levelNames[levelIndex]
+            self.levelLoader.loadBoard(name: nextLevelName) { (result) in
+                switch result {
+                case .failure:
+                    break
+                case .success(let levelBoard):
+                    self.boardLoadedWithSuccess(levelBoard)
+                }
             }
         }
     }

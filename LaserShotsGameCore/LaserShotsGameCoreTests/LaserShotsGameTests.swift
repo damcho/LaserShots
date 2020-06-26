@@ -96,8 +96,7 @@ class LaserShotsGameTests: XCTestCase {
     
     private func makeSUT() -> (LaserShotsGame, LevelLoaderSpy, Board, LaserShotsDelegateSpy) {
         let loader = LevelLoaderSpy()
-        let sut = LaserShotsGame(levelLoader: loader)
-        sut.numberOfLevels = 2
+        let sut = LaserShotsGame(levelLoader: loader, levelNames: ["level1", "level2"])
         let delegate =  LaserShotsDelegateSpy()
         sut.delegate = delegate
         let board = Board(width: 3, height: 3, elements: [])!
