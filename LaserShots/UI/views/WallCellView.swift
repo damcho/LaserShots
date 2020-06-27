@@ -8,4 +8,4 @@
 
 import UIKit
 
-class WallCellView: LaserShotsBaseCellView {}
+class WallCellView: UICollectionViewCell, NibInstantiatable {}

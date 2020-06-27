@@ -99,8 +99,10 @@ extension LaserShotsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let boardCellViewModel = self.boardCells[indexPath.row]
-        let cellView = collectionView.dequeueReusableCell(withReuseIdentifier: boardCellViewModel.cellViewName, for: indexPath) as! LaserShotsBaseCellView
-        cellView.gameCellViewModel = boardCellViewModel
+        let cellView = collectionView.dequeueReusableCell(withReuseIdentifier: boardCellViewModel.cellViewName, for: indexPath)
+        if cellView is LaserShotsBaseCellView {
+            ( cellView as! LaserShotsBaseCellView).gameCellViewModel  = boardCellViewModel
+        }
         return cellView
     }
 }

@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MirrorCellView" customModule="LaserShots" customModuleProvider="target">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="MirrorCellView" customModule="LaserShots" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="116" height="120"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjA-bF-3l7">
                     <rect key="frame" x="0.0" y="0.0" width="116" height="120"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCR-Ud-Xe9">
-                            <rect key="frame" x="53" y="62.5" width="10" height="57.5"/>
-                            <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="10" id="eqV-ld-lHZ"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0l-Ba-stB">
-                            <rect key="frame" x="58" y="55" width="58" height="10"/>
-                            <color key="backgroundColor" red="0.095542682569999995" green="0.030973293969999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="10" id="hLw-lU-RMg"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf2-4E-7Nt">
                             <rect key="frame" x="5" y="52.5" width="106" height="15"/>
                             <subviews>
@@ -54,16 +39,10 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="uCR-Ud-Xe9" firstAttribute="top" secondItem="Gf2-4E-7Nt" secondAttribute="bottom" constant="-5" id="2TX-aC-Enu"/>
                         <constraint firstAttribute="trailing" secondItem="Gf2-4E-7Nt" secondAttribute="trailing" constant="5" id="4aX-9B-JQ0"/>
-                        <constraint firstItem="P0l-Ba-stB" firstAttribute="leading" secondItem="uCR-Ud-Xe9" secondAttribute="trailing" constant="-5" id="9vA-n1-eSj"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="B0q-4y-joR"/>
-                        <constraint firstItem="P0l-Ba-stB" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="URd-8T-buB"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="leading" secondItem="vjA-bF-3l7" secondAttribute="leading" constant="5" id="aHF-Cc-6zX"/>
-                        <constraint firstItem="uCR-Ud-Xe9" firstAttribute="centerX" secondItem="vjA-bF-3l7" secondAttribute="centerX" id="am3-2B-NaL"/>
                         <constraint firstItem="Gf2-4E-7Nt" firstAttribute="centerY" secondItem="vjA-bF-3l7" secondAttribute="centerY" id="tzf-Si-vR6"/>
-                        <constraint firstAttribute="bottom" secondItem="uCR-Ud-Xe9" secondAttribute="bottom" id="uMm-jC-4V6"/>
-                        <constraint firstAttribute="trailing" secondItem="P0l-Ba-stB" secondAttribute="trailing" id="zPZ-aM-nFc"/>
                     </constraints>
                 </view>
             </subviews>
@@ -76,10 +55,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="gameElementContainerView" destination="vjA-bF-3l7" id="3mj-5t-FOy"/>
-                <outlet property="laserBeam1View" destination="uCR-Ud-Xe9" id="eBk-0D-Qtb"/>
-                <outlet property="laserBeam2View" destination="P0l-Ba-stB" id="9PQ-xS-Aom"/>
-                <outlet property="mirrorView" destination="Gf2-4E-7Nt" id="DmM-4i-XU9"/>
+                <outlet property="gameElementView" destination="Gf2-4E-7Nt" id="Ppd-Uf-LAz"/>
             </connections>
             <point key="canvasLocation" x="-519" y="3"/>
         </view>

@@ -101,7 +101,7 @@
         "type": "transparentMirror",
         "x": 1,
         "y": 3,
-        "direction": "left"
+        "direction": "right"
     }
     ]
 }
