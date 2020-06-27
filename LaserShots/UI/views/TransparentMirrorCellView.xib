@@ -58,7 +58,7 @@
             </constraints>
             <size key="customSize" width="147" height="122"/>
             <connections>
-                <outlet property="gameElementContainerView" destination="eje-c6-BER" id="L7p-sR-mkl"/>
+                <outlet property="gameElementView" destination="eje-c6-BER" id="R2e-BD-qZh"/>
             </connections>
             <point key="canvasLocation" x="207.97101449275365" y="126.5625"/>
         </collectionViewCell>

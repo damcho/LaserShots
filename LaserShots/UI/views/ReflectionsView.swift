@@ -16,6 +16,10 @@ class ReflectionsView: UIView, NibInstantiatable {
     @IBOutlet weak var rightHorizontalLaserView: UIView!
     @IBOutlet weak var topVerticalLaserView: UIView!
     
+    override func awakeFromNib() {
+        self.hideBeams(true)
+    }
+    
     func hideBeams(_ shouldHide: Bool) {
         self.LeftHorizontalLaserView.isHidden = shouldHide
         self.bottomVerticalLaserView.isHidden = shouldHide
@@ -23,8 +27,8 @@ class ReflectionsView: UIView, NibInstantiatable {
         self.rightHorizontalLaserView.isHidden = shouldHide
     }
     
-    func setOriginLaserView(laser: Laser) {
-        switch laser.direction {
+    func setOriginLaserView(laser: Laser?) {
+        switch laser?.direction {
         case .down:
             self.topVerticalLaserView.isHidden = false
         case .up:
@@ -38,18 +42,20 @@ class ReflectionsView: UIView, NibInstantiatable {
         }
     }
     
-    func setLaserViewFor(laser: Laser) {
-        switch laser.direction {
-        case .down:
-            self.bottomVerticalLaserView.isHidden = false
-        case .up:
-            self.topVerticalLaserView.isHidden = false
-        case .left:
-            self.LeftHorizontalLaserView.isHidden = false
-        case .right:
-            self.rightHorizontalLaserView.isHidden = false
-        default:
-            break
+    func setLaserReflectionsfor(lasers: [Laser]) {
+        lasers.forEach { (reflectedLaser) in
+            switch reflectedLaser.direction {
+            case .down:
+                self.bottomVerticalLaserView.isHidden = false
+            case .up:
+                self.topVerticalLaserView.isHidden = false
+            case .left:
+                self.LeftHorizontalLaserView.isHidden = false
+            case .right:
+                self.rightHorizontalLaserView.isHidden = false
+            default:
+                break
+            }
         }
     }
 }

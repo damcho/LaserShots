@@ -11,6 +11,7 @@
 		8B19F25222A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */; };
 		8B2E4C2924A607E800F5E43F /* EmptyCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E4C2824A607E800F5E43F /* EmptyCellView.swift */; };
 		8B2E4C2B24A60BBA00F5E43F /* EmptyCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B2E4C2A24A60BBA00F5E43F /* EmptyCellView.xib */; };
+		8B2E4C2D24A7009000F5E43F /* GameElementCellViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2E4C2C24A7009000F5E43F /* GameElementCellViewProtocols.swift */; };
 		8B759D4D2498C39800C58A34 /* LaserShotsiOSComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759D4C2498C39800C58A34 /* LaserShotsiOSComposer.swift */; };
 		8B759D4F249B0E4500C58A34 /* ViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B759D4E249B0E4500C58A34 /* ViewController+extensions.swift */; };
 		8B759DAC249D0EE500C58A34 /* LaserShotsGameCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B759DAB249D0EE500C58A34 /* LaserShotsGameCore.framework */; };
@@ -68,6 +69,7 @@
 		8B19F25122A6FAFA0030BB1E /* LaserShotsInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsInstructionsViewController.swift; sourceTree = "<group>"; };
 		8B2E4C2824A607E800F5E43F /* EmptyCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCellView.swift; sourceTree = "<group>"; };
 		8B2E4C2A24A60BBA00F5E43F /* EmptyCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCellView.xib; sourceTree = "<group>"; };
+		8B2E4C2C24A7009000F5E43F /* GameElementCellViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameElementCellViewProtocols.swift; sourceTree = "<group>"; };
 		8B759D4C2498C39800C58A34 /* LaserShotsiOSComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaserShotsiOSComposer.swift; sourceTree = "<group>"; };
 		8B759D4E249B0E4500C58A34 /* ViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+extensions.swift"; sourceTree = "<group>"; };
 		8B759DAB249D0EE500C58A34 /* LaserShotsGameCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LaserShotsGameCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 		8BFE3971229483EF00605072 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8B2E4C2C24A7009000F5E43F /* GameElementCellViewProtocols.swift */,
 				8BFE3973229590C200605072 /* views */,
 				8BFE3937229446CE00605072 /* LaserShotsViewController.swift */,
 				8BFE398422959DD700605072 /* ViewControllerProtocols.swift */,
@@ -332,6 +335,7 @@
 				8BFE39772295912A00605072 /* LaserGunCellView.swift in Sources */,
 				8BFE39792295913D00605072 /* LaserDestinationCellView.swift in Sources */,
 				8B759D4D2498C39800C58A34 /* LaserShotsiOSComposer.swift in Sources */,
+				8B2E4C2D24A7009000F5E43F /* GameElementCellViewProtocols.swift in Sources */,
 				8BE846B022A1F32A00A40AF1 /* LaserTrapCellView.swift in Sources */,
 				8BFE3938229446CE00605072 /* LaserShotsViewController.swift in Sources */,
 				8B2E4C2924A607E800F5E43F /* EmptyCellView.swift in Sources */,

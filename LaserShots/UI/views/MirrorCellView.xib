@@ -55,8 +55,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="gameElementContainerView" destination="vjA-bF-3l7" id="3mj-5t-FOy"/>
-                <outlet property="mirrorView" destination="Gf2-4E-7Nt" id="DmM-4i-XU9"/>
+                <outlet property="gameElementView" destination="Gf2-4E-7Nt" id="Ppd-Uf-LAz"/>
             </connections>
             <point key="canvasLocation" x="-519" y="3"/>
         </view>

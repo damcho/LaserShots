@@ -7,6 +7,5 @@
 //
 
 import UIKit
-import LaserShotsGameCore
 
-class LaserGunCellView: LaserShotsBaseCellView {}
+class LaserGunCellView: LaserShotsBaseCellView, DirectionableCell {}

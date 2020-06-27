@@ -10,17 +10,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LaserGunCellView" customModule="LaserShots" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="120" height="102"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QL-Re-Yo6">
-                    <rect key="frame" x="0.0" y="0.0" width="120" height="102"/>
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zve-GX-eto">
-                            <rect key="frame" x="0.0" y="0.0" width="120" height="51"/>
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                             <color key="backgroundColor" red="0.1324024821" green="0.1094454963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="51" id="zgS-hX-SsI"/>
+                                <constraint firstAttribute="width" secondItem="Zve-GX-eto" secondAttribute="height" multiplier="2:1" id="OWY-Lg-RY8"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -42,7 +42,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="gameElementContainerView" destination="1QL-Re-Yo6" id="Aqa-pQ-wSW"/>
+                <outlet property="gameElementView" destination="1QL-Re-Yo6" id="veK-Aq-CqO"/>
             </connections>
             <point key="canvasLocation" x="-171.01449275362319" y="4.6875"/>
         </view>

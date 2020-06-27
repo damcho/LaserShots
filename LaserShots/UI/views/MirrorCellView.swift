@@ -7,14 +7,5 @@
 //
 
 import UIKit
-import LaserShotsGameCore
 
-class MirrorCellView: RotatableCellView {
-    
-    @IBOutlet weak var mirrorView: UIView!
-    
-    override func setupView() {
-        super.setupView()
-        self.mirrorView.transform = CGAffineTransform(rotationAngle: -.pi / 4)
-    }
-}
+class MirrorCellView: RotatableCellView, DirectionableCell {}

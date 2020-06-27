@@ -11,9 +11,9 @@ import LaserShotsGameCore
 
 class LaserShotsBaseCellView: UICollectionViewCell, NibInstantiatable {
     
-    @IBOutlet weak var gameElementContainerView: UIView?
     var laserReflectionsView: ReflectionsView?
-    
+    @IBOutlet weak var gameElementView: UIView!
+
     override func awakeFromNib() {
         let reflectionsView = ReflectionsView.fromNib()
         reflectionsView.frame = self.bounds
@@ -28,35 +28,23 @@ class LaserShotsBaseCellView: UICollectionViewCell, NibInstantiatable {
     }
     
     func setupView() {
+        self.setupCellPosition()
         self.laserReflectionsView?.hideBeams(true)
+        
         self.gameCellViewModel?.onLaserBeamChanged = {[weak self] (laser, reflections) -> () in
             guard let laserBeam = laser else {
                 self?.laserReflectionsView?.hideBeams(true)
                 return
             }
             self?.laserReflectionsView?.setOriginLaserView(laser: laserBeam)
-            reflections.forEach { (reflectedLaser) in
-                self?.laserReflectionsView?.setLaserViewFor(laser: reflectedLaser)
-            }
+            self?.laserReflectionsView?.setLaserReflectionsfor(lasers: reflections)
         }
-        self.rotate()
     }
     
-    func rotate(){
-        guard let viewModel = self.gameCellViewModel else {
-            return
+    
+    func setupCellPosition(){
+        if self is DirectionableCell {
+            (self as! DirectionableCell).setupInitialDirection()
         }
-        var radiansToRotate:CGFloat
-        switch viewModel.direction() {
-        case .left:
-            radiansToRotate = .pi/2
-        case .right:
-            radiansToRotate = .pi * 3/2
-        case .up:
-            radiansToRotate = .pi
-        default:
-            radiansToRotate = 0
-        }
-        self.gameElementContainerView?.transform = CGAffineTransform(rotationAngle: radiansToRotate)
     }
 }

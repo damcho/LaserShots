@@ -7,16 +7,5 @@
 //
 
 import UIKit
-import LaserShotsGameCore
 
-class TransparentMirrorCellView: RotatableCellView {
-    
-    override func setupView() {
-        super.setupView()
-        
-        guard let rotatingView = self.gameElementContainerView else {
-            return
-        }
-        rotatingView.transform = rotatingView.transform.rotated(by:  -.pi / 4)
-    }
-}
+class TransparentMirrorCellView: RotatableCellView, DirectionableCell {}
